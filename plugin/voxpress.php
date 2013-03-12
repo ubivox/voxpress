@@ -303,7 +303,7 @@ add_action("widgets_init", create_function("", "register_widget('Ubivox_Widget')
 # Ajax backend
 ###############################################################################
 
-function ubivox_ajax_request_Handler() {
+function ubivox_ajax_request_handler() {
 
     if (isset($_POST["ubivox_subscribe"])) {
 

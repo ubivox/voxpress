@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Voxpress
-Plugin URI: http://bitbucket.org/ubivox/voxpress
+Plugin URI: https://bitbucket.org/ubivox/voxpress
 Description: Integrates your Wordpress with Ubivox
 Version: 0.1
 Author: Ubivox Developers

@@ -229,6 +229,8 @@ class Ubivox_Widget extends WP_Widget {
 
     public function widget( $args, $instance ) {
 
+        wp_enqueue_script("jquery");
+
         echo $args["before_widget"];
 
         echo '<form method="POST" class="ubivox_subscription">';
@@ -297,4 +299,38 @@ class Ubivox_Widget extends WP_Widget {
 
 add_action("widgets_init", create_function("", "register_widget('Ubivox_Widget');"));
 
+###############################################################################
+# Ajax backend
+###############################################################################
+
+function ubivox_ajax_request_Handler() {
+
+    if (isset($_POST["ubivox_subscribe"])) {
+
+        $email_address = trim($_POST["email_address"]);
+        $list_id = intval($_POST["list_id"]);
+
+        $api = new UbivoxAPI();
+
+        try {
+
+            $api->call("ubivox.create_subscription",
+                       array($email_address, array($list_id), true));
+
+            return json_encode(array("status" => "ok"));
+
+        } catch (UbivoxAPIError $e) {
+
+            return json_encode(array(
+                "status" => "error",
+                "message" => $e->getMessage(),
+            ));
+
+        }
+
+    }
+
+}
+
+add_action("init", "ubivox_ajax_request_handler");
 ?>

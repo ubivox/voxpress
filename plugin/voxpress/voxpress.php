@@ -229,7 +229,10 @@ class Ubivox_Widget extends WP_Widget {
 
     public function widget( $args, $instance ) {
 
-        wp_enqueue_script("jquery");
+        wp_enqueue_script("ubivox-ajax", plugins_url("/voxpress/scripts/ubivox.js"), array("jquery", "json2"));
+        wp_localize_script("ubivox-ajax", "UbivoxAjax", array("ajaxurl" => admin_url("admin-ajax.php")));
+
+        add_action("admin_print_scripts", "ubivox_subscription_javascript");
 
         echo $args["before_widget"];
 
@@ -240,6 +243,8 @@ class Ubivox_Widget extends WP_Widget {
         }
 
         echo '<form method="POST" class="ubivox_subscription">';
+
+        echo '<input type="hidden" name="list_id" value="'.intval($instance["list_id"]).'">';
 
         echo '<p>';
         echo '<label for="'.$this->get_field_id("email_address").'">E-mail:</label><br>';
@@ -252,23 +257,21 @@ class Ubivox_Widget extends WP_Widget {
                 continue;
             }
 
+            echo '<p class="ubivox_input ubivox_'.$field["datatype"].'">';
+
             switch ($field["datatype"]) {
 
             case "textarea":
 
-                echo '<p>';
                 echo '<label for="'.$this->get_field_id("data_".$field["key"]).'">'.esc_html($field["title"]).':</label><br>';
-                echo '<textarea name="data_'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" style="width: 100%; height: 50px;"></textarea>';
-                echo '</p>';
+                echo '<textarea name="'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" style="width: 100%; height: 50px;"></textarea>';
 
                 break;
 
             case "checkbox":
 
-                echo '<p>';
                 echo '<label for="'.$this->get_field_id("data_".$field["key"]).'">'.esc_html($field["title"]).':</label><br>';
-                echo '<input type="checkbox" name="data_'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" value="1">';
-                echo '</p>';
+                echo '<input type="checkbox" name="'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" value="1">';
 
                 break;
 
@@ -281,9 +284,8 @@ class Ubivox_Widget extends WP_Widget {
                     $multiple = "";
                 }
 
-                echo '<p>';
                 echo '<label for="'.$this->get_field_id("data_".$field["key"]).'">'.esc_html($field["title"]).':</label><br>';
-                echo '<select name="data_'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" style="width: 100%;"'.$multiple.'>';
+                echo '<select name="'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" style="width: 100%;"'.$multiple.'>';
 
                 foreach ($field["choices"] as $choice) {
                     list($key, $value) = $choice;
@@ -292,58 +294,54 @@ class Ubivox_Widget extends WP_Widget {
 
                 echo '</select>';
 
-                echo '</p>';
-
                 break;
 
             case "select_radio":
 
-                echo '<p>';
                 echo '<label>'.esc_html($field["title"]).':</label><br>';
 
                 foreach ($field["choices"] as $choice) {
 
                     list($key, $value) = $choice;
-                    echo '<input type="radio" name="data_'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]."_".$key).'" value="'.esc_attr($key).'">&nbsp;';
+                    echo '<input type="radio" name="'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]."_".$key).'" value="'.esc_attr($key).'">&nbsp;';
                     echo '<label for="'.$this->get_field_id("data_".$field["key"]."_".$key).'">'.esc_html($value).'</label><br>';
                 }
-
-                echo '</p>';
 
                 break;
 
             case "select_checkbox":
 
-                echo '<p>';
                 echo '<label>'.esc_html($field["title"]).':</label><br>';
 
                 foreach ($field["choices"] as $choice) {
 
                     list($key, $value) = $choice;
-                    echo '<input type="checkbox" name="data_'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]."_".$key).'" value="'.esc_attr($key).'">&nbsp;';
+                    echo '<input type="checkbox" name="'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]."_".$key).'" value="'.esc_attr($key).'">&nbsp;';
                     echo '<label for="'.$this->get_field_id("data_".$field["key"]."_".$key).'">'.esc_html($value).'</label><br>';
                 }
-
-                echo '</p>';
 
                 break;
 
             default:
 
-                echo '<p>';
                 echo '<label for="'.$this->get_field_id("data_".$field["key"]).'">'.esc_html($field["title"]).':</label><br>';
-                echo '<input type="text" name="data_'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" value="">';
-                echo '</p>';
+                echo '<input type="text" name="'.esc_attr($field["key"]).'" id="'.$this->get_field_id("data_".$field["key"]).'" value="">';
 
             }
+
+            echo '</p>';
 
         }
 
         echo '<p>';
-        echo '<button class="ubivox_signup">'.$instance["button_text"].'</button>';
+        echo '<button class="ubivox_signup_button">'.$instance["button_text"].'</button>';
         echo '</p>';
 
         echo '</form>';
+
+        echo '<p class="success_text" style="display: none;">';
+        echo esc_html($instance["success_text"]);
+        echo '</p>';
 
         echo $args["after_widget"];
     }
@@ -355,6 +353,7 @@ class Ubivox_Widget extends WP_Widget {
         $instance["list_id"] = intval($new_instance["list_id"]);
         $instance["button_text"] = strip_tags($new_instance["button_text"]);
         $instance["title"] = strip_tags($new_instance["title"]);
+        $instance["success_text"] = strip_tags($new_instance["success_text"]);
 
         try {
             $api = new UbivoxAPI();
@@ -417,6 +416,12 @@ class Ubivox_Widget extends WP_Widget {
             $data = array();
         }
 
+        if (isset($instance["success_text"])) {
+            $success_text = $instance["success_text"];
+        } else {
+            $success_text = __("Thank you.", "ubivox");
+        }
+
         echo '<p>';
         echo '<label for="'.$this->get_field_id("title").'">Title:</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.esc_attr($title).'">';
@@ -458,6 +463,11 @@ class Ubivox_Widget extends WP_Widget {
 
         echo '</p>';
 
+        echo '<p>';
+        echo '<label for="'.$this->get_field_id("success_text").'">Success text:</label>';
+        echo '<textarea class="widefat" id="'.$this->get_field_id('success_text').'" name="'.$this->get_field_name('success_text').'">'.esc_html($success_text).'</textarea>';
+        echo '</p>';
+
     }
 
 }
@@ -470,32 +480,35 @@ add_action("widgets_init", create_function("", "register_widget('Ubivox_Widget')
 
 function ubivox_ajax_request_handler() {
 
-    if (isset($_POST["ubivox_subscribe"])) {
+    header("Content-Type: application/json");
 
-        $email_address = trim($_POST["email_address"]);
-        $list_id = intval($_POST["list_id"]);
+    $email_address = $_POST["email_address"];
+    $list_id = $_POST["list_id"];
+    $data = json_decode(stripslashes($_POST["data"]), true);
 
-        $api = new UbivoxAPI();
+    $api = new UbivoxAPI();
 
-        try {
+    try {
 
-            $api->call("ubivox.create_subscription",
-                       array($email_address, array($list_id), true));
+        $api->call("ubivox.create_subscription_with_data",
+                   array($email_address, array($list_id), true, $data));
 
-            return json_encode(array("status" => "ok"));
+            echo json_encode(array("status" => "ok"));
 
-        } catch (UbivoxAPIError $e) {
+    } catch (UbivoxAPIError $e) {
 
-            return json_encode(array(
-                "status" => "error",
-                "message" => $e->getMessage(),
-            ));
-
-        }
+        echo json_encode(array(
+            "status" => "error",
+            "message" => $e->getMessage(),
+        ));
 
     }
 
+    exit;
+
 }
 
-add_action("init", "ubivox_ajax_request_handler");
+add_action("wp_ajax_ubivox_subscribe", "ubivox_ajax_request_handler");
+add_action("wp_ajax_nopriv_ubivox_subscribe", "ubivox_ajax_request_handler");
+
 ?>

@@ -326,6 +326,8 @@ class Ubivox_Widget extends WP_Widget {
 
                 echo '</p>';
 
+                break;
+
             default:
 
                 echo '<p>';

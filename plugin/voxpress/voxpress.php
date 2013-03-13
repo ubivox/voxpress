@@ -34,6 +34,12 @@ class UbivoxAPI {
 
     public function call($method, $params = null) {
 
+        if (!function_exists("xmlrpc_encode_request")) {
+            throw new UbivoxAPIException(
+                "The Ubivox plugin requires the <a href='http://php.net/xmlrpc' target='_blank'>PHP XML-RPC extension</a> to be enabled."
+            );
+        }
+
         $auth = get_option("uvx_api_username").":".
             get_option("uvx_api_password");
 
@@ -228,11 +234,6 @@ class Ubivox_Widget extends WP_Widget {
     }
 
     public function widget( $args, $instance ) {
-
-        wp_enqueue_script("ubivox-ajax", plugins_url("/voxpress/scripts/ubivox.js"), array("jquery", "json2"));
-        wp_localize_script("ubivox-ajax", "UbivoxAjax", array("ajaxurl" => admin_url("admin-ajax.php")));
-
-        add_action("admin_print_scripts", "ubivox_subscription_javascript");
 
         echo $args["before_widget"];
 
@@ -510,5 +511,14 @@ function ubivox_ajax_request_handler() {
 
 add_action("wp_ajax_ubivox_subscribe", "ubivox_ajax_request_handler");
 add_action("wp_ajax_nopriv_ubivox_subscribe", "ubivox_ajax_request_handler");
+
+function ubivox_init() {
+
+    wp_enqueue_script("ubivox-ajax", plugins_url("/voxpress/scripts/ubivox.js"), array("jquery", "json2"));
+    wp_localize_script("ubivox-ajax", "UbivoxAjax", array("ajaxurl" => admin_url("admin-ajax.php")));
+
+}
+
+add_action("init", "ubivox_init");
 
 ?>

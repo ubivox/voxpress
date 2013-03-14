@@ -18,6 +18,11 @@ require "widgets/unsubscription.php"; // Ubivox unsubscription widget
 require "widgets/archive.php";        // Ubivox archive widget
 require "widgets/control_panel.php";  // Ubivox control panel widget
 
+define(
+    "UBIVOX_BASE_URL", get_option("uvx_api_url") ?
+    preg_replace('#/xmlrpc/?$#', "", get_option("uvx_api_url")) : null
+);
+
 ###############################################################################
 # Settings page
 ###############################################################################

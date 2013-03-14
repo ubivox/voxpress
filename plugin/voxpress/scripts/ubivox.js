@@ -44,16 +44,19 @@ jQuery(function() {
             if ($p.hasClass("ubivox_select")) {
                 var $select = $p.find("select");
                 data[$select.attr("name")] = $select.val();
+                return;
             }
 
             if ($p.hasClass("ubivox_select_multiple")) {
                 var $select = $p.find("select");
                 data[$select.attr("name")] = $select.val().join(",");
+                return;
             }
 
             if ($p.hasClass("ubivox_select_radio")) {
                 var $input = $p.find("input:checked");
                 data[$input.attr("name")] = $input.val();
+                return;
             }
 
             if ($p.hasClass("ubivox_select_checkbox")) {
@@ -65,6 +68,8 @@ jQuery(function() {
                 });
 
                 data[$input.attr("name")] = checked.join(",");
+
+                return;
             }
 
         });

@@ -21,6 +21,30 @@ class Ubivox_Archive_Widget extends WP_Widget {
         }
 
         echo '<ul>';
+        
+        try {
+
+            $api = new UbivoxAPI();
+
+            $newsletters = $api->call("ubivox.maillist_archive", 
+                                      array($instance["list_id"], $instance["count"]));
+
+        } catch (UbivoxAPIException $e) {
+            echo "<p>Connection problems. See settings for details.</p>";
+            return;
+        }
+
+        foreach ($newsletters as $newsletter) {
+
+            $sent = strtotime($newsletter["send_time"]);
+            $sent = date("Y-m-d H:i", $sent);
+
+            echo '<li>';
+            echo '<a href="'.esc_attr($newsletter["archive_url"]).'" target="_blank">'.esc_html($newsletter["subject"]).'</a><br>';
+            echo '('.$sent.')';
+            echo '</li>';
+        }
+
         echo '</ul>';
 
         echo $args["after_widget"];

@@ -30,7 +30,7 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
         echo '</p>';
 
         echo '<p>';
-        echo '<button class="ubivox_signup_button">'.$instance["button_text"].'</button>';
+        echo '<button class="ubivox_signout_button">'.$instance["button_text"].'</button>';
         echo '</p>';
 
         echo '</form>';

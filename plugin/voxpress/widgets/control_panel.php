@@ -22,7 +22,7 @@ class Ubivox_Control_Panel_Widget extends WP_Widget {
 
         echo '<p>'.esc_html($instance["description"]).'</p>';
 
-        echo '<p>';
+        echo '<p align="center">';
         echo '<button class="ubivox_control_panel" rel="'.$instance["url"].'">'.$instance["button_text"].'</button>';
         echo '</p>';
 

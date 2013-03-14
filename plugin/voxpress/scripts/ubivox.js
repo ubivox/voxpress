@@ -88,7 +88,34 @@ jQuery(function() {
 
     });
 
-    return;
+    jQuery("form.ubivox_unsubscription").submit(function (event) {
 
+        event.preventDefault();
+
+        var $form = jQuery(this);
+
+        if ($form.find(".ubivox_signout_button").attr("disabled")) {
+            return;
+        }
+
+        $form.find(".ubivox_signout_button").attr("disabled", true);
+
+        var params = {
+            action: "ubivox_unsubscribe",
+            email_address: $form.find("input[name=email_address]").val(),
+            list_id: $form.find("input[name=list_id]").val(),
+        };
+
+        jQuery.post(UbivoxAjax.ajaxurl, params, function(response) {
+            if (response["status"] == "ok") {
+                var $success_text = $form.next();
+                $form.hide();
+                $success_text.show();
+            } else {
+                alert(response["message"]);
+            }
+        });
+
+    });
 
 });

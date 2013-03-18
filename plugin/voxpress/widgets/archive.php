@@ -20,32 +20,31 @@ class Ubivox_Archive_Widget extends WP_Widget {
             echo $args["before_title"].$title.$args["after_title"];
         }
 
-        echo '<ul>';
-        
-        try {
+        $newsletters = ubivox_archived_newsletters($instance["list_id"], $instance["count"]);
 
-            $api = new UbivoxAPI();
+        if (is_array($newsletters)) {
 
-            $newsletters = $api->call("ubivox.maillist_archive", 
-                                      array($instance["list_id"], $instance["count"]));
+            echo '<ul>';
 
-        } catch (UbivoxAPIException $e) {
-            echo "<p>Connection problems. See settings for details.</p>";
-            return;
+            foreach ($newsletters as $newsletter) {
+
+                $sent = strtotime($newsletter["send_time"]);
+                $sent = date("Y-m-d H:i", $sent);
+
+                echo '<li>';
+                echo '<a href="'.home_url("/newsletter/".intval($newsletter["id"]).'-'.esc_attr(sanitize_title($newsletter["subject"])).'/').'" target="_blank">'.esc_html($newsletter["subject"]).'</a><br>';
+                echo '('.$sent.')';
+                echo '</li>';
+
+            }
+
+            echo '</ul>';
+
+        } else {
+
+            echo "Unavailable";
+
         }
-
-        foreach ($newsletters as $newsletter) {
-
-            $sent = strtotime($newsletter["send_time"]);
-            $sent = date("Y-m-d H:i", $sent);
-
-            echo '<li>';
-            echo '<a href="'.esc_attr($newsletter["archive_url"]).'" target="_blank">'.esc_html($newsletter["subject"]).'</a><br>';
-            echo '('.$sent.')';
-            echo '</li>';
-        }
-
-        echo '</ul>';
 
         echo $args["after_widget"];
 

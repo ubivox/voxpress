@@ -34,14 +34,15 @@ class UbivoxAPI {
 
         $c = curl_init(get_option("uvx_api_url"));
 
-        curl_setopt($c, CURLOPT_USERAGENT, "Voxpress 0.1");
+        curl_setopt($c, CURLOPT_USERAGENT, "Voxpress 0.1 (running on ".site_url().")");
         curl_setopt($c, CURLOPT_POST, true);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($c, CURLOPT_USERPWD, $auth); 
-        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($c, CURLOPT_POSTFIELDS, $post);
         curl_setopt($c, CURLOPT_HEADER, true);
+        curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5); 
 
         $http_response = curl_exec($c);
         

@@ -12,6 +12,8 @@ License: GPL2
 require "api.php";                    // Ubivox API
 require "javascript.php";             // Ubivox javascript
 require "ajax.php";                   // Ubivox ajax backend
+require "archive.php";                // Ubivox archive handling
+require "urls.php";                   // Ubivox URLs
 
 require "widgets/subscription.php";   // Ubivox subscription widget
 require "widgets/unsubscription.php"; // Ubivox unsubscription widget

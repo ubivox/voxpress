@@ -1,6 +1,6 @@
 <?php
 
-define("UBIVOX_ARCHIVE_REGEX", "newsletter/(\d+)/?");
+define("UBIVOX_ARCHIVE_REGEX", "newsletter/.*?-(\d+)/?$");
 
 function ubivox_flush_rules() {
 

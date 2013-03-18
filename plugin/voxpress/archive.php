@@ -88,6 +88,16 @@ function ubivox_newsletter($ubivox_id) {
 # Frontend
 ###############################################################################
 
+define(PERMALINKS_ENABLED, get_option("permalink_structure"));
+
+function ubivox_archive_url($newsletter) {
+    if (PERMALINKS_ENABLED) {
+        return home_url("/newsletter/".sanitize_title($newsletter["subject"]).'-'.intval($newsletter["id"]).'/');
+    } else {
+        return home_url("?ubivox_newsletter_id=".intval($newsletter["id"]));
+    }
+}
+
 function ubivox_newsletter_frontend() {
 
     if (get_query_var("ubivox_newsletter_id")) {

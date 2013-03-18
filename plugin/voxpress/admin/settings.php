@@ -16,6 +16,20 @@ foreach ($opts_keys as $key) {
     $opts[$key] = $value;
 }
 
+$bools_keys = array("uvx_wc_integration", "uvx_label");
+$bools = array();
+
+foreach ($bools_keys as $key) {
+    if (isset($_POST["_save"])) {
+        $value = isset($_POST[$key]);
+        update_option($key, $value);
+        $saved = true;
+    } else {
+        $value = get_option($key);
+    }
+    $bools[$key] = $value ? " checked" : "";
+}
+
 ?>
 
 <div class="wrap">
@@ -28,11 +42,22 @@ foreach ($opts_keys as $key) {
  
 <form method="post">
 
+<h3>Ubivox</h3>
+
 <table class="form-table">
 
 <tr valign="top"><th><label for="uvx_api_url">Ubivox API URL</label></th><td><input type="text" id="uvx_api_url" name="uvx_api_url" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_url"]); ?>" size="100"></td></tr>
 <tr valign="top"><th><label for="uvx_api_username">Ubivox API Username</label></th><td><input type="text" id="uvx_api_username" name="uvx_api_username" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_username"]); ?>" size="15"></td></tr>
 <tr valign="top"><th><label for="uvx_api_password">Ubivox API Password</label></th><td><input type="text" id="uvx_api_password" name="uvx_api_password" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_password"]); ?>" size="30"></td></tr>
+
+</table>
+
+<h3>Wordpress</h3>
+
+<table class="form-table">
+
+<tr valign="top"><th><label for="uvx_wc_integration">Woocommerce integration</label></th><td><input type="checkbox" id="uvx_wc_integration" name="uvx_wc_integration"<?php echo $bools["uvx_wc_integration"]; ?>></td></tr>
+<tr valign="top"><th><label for="uvx_label">Show Ubivox labels</label></th><td><input type="checkbox" id="uvx_label" name="uvx_label"<?php echo $bools["uvx_label"]; ?></td></tr>
 
 </table>
 

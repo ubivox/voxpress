@@ -32,7 +32,7 @@ class Ubivox_Archive_Widget extends WP_Widget {
                 $sent = date("Y-m-d H:i", $sent);
 
                 echo '<li>';
-                echo '<a href="'.home_url("/newsletter/".intval($newsletter["id"]).'-'.esc_attr(sanitize_title($newsletter["subject"])).'/').'" target="_blank">'.esc_html($newsletter["subject"]).'</a><br>';
+                echo '<a href="'.esc_attr(ubivox_archive_url($newsletter)).'" target="_blank">'.esc_html($newsletter["subject"]).'</a><br>';
                 echo '('.$sent.')';
                 echo '</li>';
 

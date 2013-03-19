@@ -133,15 +133,4 @@ if ($error) {
 
 <hr />
 
-<pre>
-<?php 
-
-global $current_user;
-get_currentuserinfo();
-
-var_dump(array_keys(get_user_meta($current_user->ID)));
-
-?>
-</pre>
-
 </div>

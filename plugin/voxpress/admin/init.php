@@ -92,11 +92,50 @@ function uvx_woocommerce_page() {
 
 }
 
-function uvx_register_admin_styles() {    
-    wp_register_style("ubivox-admin", plugins_url("voxpress/styles/ubivox.admin.css"));
-    wp_enqueue_style("ubivox-admin");
-}
 
-if (isset($_GET["page"]) && substr($_GET["page"], 0, 8) == "voxpress") {
-    add_action("admin_enqueue_scripts", "uvx_register_admin_styles");
-}
+###############################################################################
+# Admin assets
+###############################################################################
+
+    // Register admin styles
+    // ------------------------------------------------------------------
+    function uvx_register_admin_styles() {    
+        wp_register_style("ubivox-admin", plugins_url("voxpress/styles/ubivox.admin.css"), array(), $voxpress_version, false);
+        wp_enqueue_style("ubivox-admin");
+    }
+
+    if (isset($_GET["page"]) && substr($_GET["page"], 0, 8) == "voxpress") {
+        add_action("admin_enqueue_scripts", "uvx_register_admin_styles");
+    }
+
+
+    // Register admin scripts
+    // ------------------------------------------------------------------
+    function uvx_register_admin_scripts() {    
+        wp_register_script("ubivox-admin", plugins_url("voxpress/scripts/ubivox.admin.js"), array( 'jquery', 'json' ), $voxpress_version, true);
+        wp_enqueue_script("ubivox-admin");
+    }
+
+    if (isset($_GET["page"]) && substr($_GET["page"], 0, 8) == "voxpress") {
+        add_action("admin_enqueue_scripts", "uvx_register_admin_scripts");
+    }
+
+
+
+###############################################################################
+# Public assets
+###############################################################################
+
+    // Register public styles
+    // ------------------------------------------------------------------
+    if (!is_admin()) {
+        wp_register_style("ubivox-public-style", plugins_url("voxpress/styles/ubivox.public.css"), array(), $voxpress_version, false);
+        wp_enqueue_style("ubivox-public-style");
+    }
+
+    // Register public scripts
+    // ------------------------------------------------------------------
+    if (!is_admin()) {
+        wp_register_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array( 'jquery', 'json2'), $voxpress_version, true);
+        wp_enqueue_script("ubivox-public-script");
+    }

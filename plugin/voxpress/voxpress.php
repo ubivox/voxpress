@@ -10,7 +10,8 @@ License: GPL2
 */
 
 require "api.php";                    // Ubivox API
-require "javascript.php";             // Ubivox javascript
+require "javascript.php";             // Ubivox javascripts
+require "styles.php";                 // Ubivox styles
 require "ajax.php";                   // Ubivox ajax backend
 require "archive.php";                // Ubivox archive handling
 require "urls.php";                   // Ubivox URLs

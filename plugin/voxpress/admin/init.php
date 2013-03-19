@@ -16,7 +16,7 @@ function uvx_setup_menu() {
         "uvx_page",
         null,
         30
-    );
+    );    
 
     add_submenu_page(
         "voxpress", 
@@ -62,7 +62,7 @@ function uvx_page() {
         wp_die(__(
             "You do not have sufficient permissions to access this page."
         ));
-    }
+    }    
 
     require "overview.php";
 
@@ -86,7 +86,7 @@ function uvx_woocommerce_page() {
         wp_die(__(
             "You do not have sufficient permissions to access this page."
         ));
-    }
+    }    
 
     require "woocommerce.php";
 

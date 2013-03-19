@@ -39,7 +39,7 @@ class UbivoxAPI {
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($c, CURLOPT_USERPWD, $auth); 
-        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($c, CURLOPT_POSTFIELDS, $post);
         curl_setopt($c, CURLOPT_HEADER, true);
         curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5); 

@@ -6,12 +6,13 @@
 
 function ubivox_archived_newsletters($list_id, $count) {
 
-    $api = new UbivoxAPI();
+    $cache_key = "ubivox_archive_".intval($list_id)."_".intval($count);
 
-    $key_schedule = "ubivox_archive_next_call_".intval($list_id)."_".$count;
-    $key_result = "ubivox_archive_result_".intval($list_id)."_".$count;
+    $newsletters = get_transient($cache_key);
 
-    if (get_option($key_schedule, time()) <= time()) {
+    if ($newsletters === false) {
+
+        $api = new UbivoxAPI();
 
         try {
 
@@ -19,24 +20,14 @@ function ubivox_archived_newsletters($list_id, $count) {
 
         } catch (UbivoxAPIException $e) {
 
-            $newsletters = get_option($key_result);
-
-            if ($newsletters) {
-                return $newsletters;
-            }
-
-            delete_option($key_result);
-            delete_option($key_schedule);
-
-            return null;
+            $newsletters = get_transient($cache_key."_older");
+            return $newsletters ? $newsletters : null;
 
         }
 
-        update_option($key_result, $newsletters);
-        update_option($key_schedule, time() + 1800);
+        set_transient($cache_key, $newsletters, 1800);
+        set_transient($cache_key."_older", $newsletters, 86400);
 
-    } else {
-        $newsletters = get_option($key_result);
     }
 
     return $newsletters;
@@ -45,12 +36,13 @@ function ubivox_archived_newsletters($list_id, $count) {
 
 function ubivox_newsletter($ubivox_id) {
 
-    $api = new UbivoxAPI();
+    $cache_key = "ubivox_newsletter_".intval($ubivox_id);
 
-    $key_schedule = "ubivox_newsletter_next_call_".intval($ubivox_id);
-    $key_result = "ubivox_newsletter_".intval($ubivox_id);
+    $newsletter = get_transient($cache_key);
 
-    if (get_option($key_schedule, time()) <= time()) {
+    if ($newsletter === false) {
+
+        $api = new UbivoxAPI();
 
         try {
 
@@ -58,25 +50,13 @@ function ubivox_newsletter($ubivox_id) {
 
         } catch (UbivoxAPIException $e) {
 
-            $newsletter = get_option($key_result);
-
-            if ($newsletter) {
-                return $newsletter;
-            }
-
-            delete_option($key_result);
-            delete_option($key_schedule);
-
-            return null;
+            $newsletter = get_transient($cache_key."_older");
+            return $newsletter ? $newsletter : null;
 
         }
 
-        update_option($key_result, $newsletter);
-        update_option($key_schedule, time() + 1800);
-
-    } else {
-
-        $newsletter = get_option($key_result);
+        set_transient($cache_key, $newsletter, 3600);
+        set_transient($cache_key."_older", $newsletter, 86400);
 
     }
 

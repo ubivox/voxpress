@@ -1,15 +1,23 @@
+<?php
+
+global $wpdb;
+
+$dbkeys = $wpdb->get_col($wpdb->prepare("SELECT DISTINCT(meta_key) FROM $wpdb->postmeta"));
+$keys = array();
+
+foreach ($dbkeys as $key) {
+    array_push($keys, $key);
+}
+
+?>
+
 <div class="wrap">
 
-<?php screen_icon(); ?>
 <h2>WooCommerce Integration</h2>
 
 <form method="post">
 
-<?php settings_fields("ubivox-woocommerce-group"); ?>
-
-<?php do_settings_fields("ubivox-woocommerce-group", "main"); ?>
-
-<?php submit_button(); ?>
+<?php var_dump($keys) ?>
 
 </form>
 

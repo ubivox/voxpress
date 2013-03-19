@@ -92,3 +92,11 @@ function uvx_woocommerce_page() {
 
 }
 
+function uvx_register_admin_styles() {    
+    wp_register_style("ubivox-admin", plugins_url("voxpress/styles/ubivox.admin.css"));
+    wp_enqueue_style("ubivox-admin");
+}
+
+if (isset($_GET["page"]) && substr($_GET["page"], 0, 8) == "voxpress") {
+    add_action("admin_enqueue_scripts", "uvx_register_admin_styles");
+}

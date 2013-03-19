@@ -9,8 +9,9 @@ Author URI: https://www.ubivox.com
 License: GPL2
 */
 
+$voxpress_version = "0.1";            // Set version for plugin
+
 require "api.php";                    // Ubivox API
-require "javascript.php";             // Ubivox javascripts
 require "ajax.php";                   // Ubivox ajax backend
 require "archive.php";                // Ubivox archive handling
 require "urls.php";                   // Ubivox URLs

@@ -1,6 +1,6 @@
 <?php
 
-$opts_keys = array("uvx_api_url", "uvx_api_username", "uvx_api_password");
+$opts_keys = array("uvx_account_url","uvx_api_url", "uvx_api_username", "uvx_api_password");
 $opts = array();
 
 $saved = false;

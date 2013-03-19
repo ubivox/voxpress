@@ -34,7 +34,7 @@ class UbivoxAPI {
 
         $c = curl_init(get_option("uvx_api_url"));
 
-        curl_setopt($c, CURLOPT_USERAGENT, "Voxpress 0.1 (running on ".site_url().")");
+        curl_setopt($c, CURLOPT_USERAGENT, "Voxpress ". $voxpress_version ." (running on ".site_url().")");
         curl_setopt($c, CURLOPT_POST, true);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);

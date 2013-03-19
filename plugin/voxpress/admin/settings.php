@@ -46,6 +46,7 @@ foreach ($bools_keys as $key) {
 
 <table class="form-table">
 
+<tr valign="top"><th><label for="uvx_api_url">Ubivox Account URL</label></th><td><input type="text" id="uvx_account_url" name="uvx_account_url" class="regular-text" value="<?php echo esc_attr($opts["uvx_account_url"]); ?>" size="100"></td></tr>
 <tr valign="top"><th><label for="uvx_api_url">Ubivox API URL</label></th><td><input type="text" id="uvx_api_url" name="uvx_api_url" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_url"]); ?>" size="100"></td></tr>
 <tr valign="top"><th><label for="uvx_api_username">Ubivox API Username</label></th><td><input type="text" id="uvx_api_username" name="uvx_api_username" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_username"]); ?>" size="15"></td></tr>
 <tr valign="top"><th><label for="uvx_api_password">Ubivox API Password</label></th><td><input type="text" id="uvx_api_password" name="uvx_api_password" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_password"]); ?>" size="30"></td></tr>

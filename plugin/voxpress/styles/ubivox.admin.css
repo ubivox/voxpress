@@ -1,3 +1,38 @@
-body{
-    
+
+.ubivox-widget-field{
+    margin: 0 0 1.5em;
+}
+
+
+.ubivox-background-opacity-slider-container{
+    position: relative;    
+    height: 35px;
+}
+
+.ubivox-background-opacity-counter{
+    width: 65px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    top: 0 ;
+    right: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+.ubivox-background-opacity-slider{
+    width: 60%;
+    position:relative;
+    top: 11px;
+}
+
+.cw-color-picker{
+    margin: 1em 0 1em;
+    text-align: center;
+}
+
+.farbtastic{
+    margin: auto;
 }

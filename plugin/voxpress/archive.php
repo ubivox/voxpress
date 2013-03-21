@@ -17,6 +17,7 @@ function ubivox_archived_newsletters($list_id, $count) {
         try {
 
             $newsletters = $api->call("ubivox.maillist_archive", array($list_id, $count));
+            ubivox_save_newsletters_from_feed($newsletters);
 
         } catch (UbivoxAPIException $e) {
 
@@ -34,6 +35,14 @@ function ubivox_archived_newsletters($list_id, $count) {
 
 }
 
+function ubivox_save_newsletters_from_feed($newsletters) {
+    foreach ($newsletters as $newsletter) {
+        $cache_key = "ubivox_newsletter_".intval($newsletter["id"]);
+        set_transient($cache_key, $newsletter["archive_html"], 3600);
+        set_transient($cache_key."_older", $newsletter["archive_html"], 86400);
+    }
+}
+
 function ubivox_newsletter($ubivox_id) {
 
     $cache_key = "ubivox_newsletter_".intval($ubivox_id);
@@ -47,6 +56,7 @@ function ubivox_newsletter($ubivox_id) {
         try {
 
             $newsletter = $api->call("ubivox.get_delivery", array($ubivox_id));
+            $newsletter = $newsletter["archive_html_body"];
 
         } catch (UbivoxAPIException $e) {
 
@@ -84,8 +94,8 @@ function ubivox_newsletter_frontend() {
         
         $newsletter = ubivox_newsletter(get_query_var("ubivox_newsletter_id"));
 
-        if ($newsletter["archive_html_body"]) {
-            echo $newsletter["archive_html_body"];
+        if ($newsletter) {
+            echo $newsletter;
         } else {
             status_header(404);
             include(get_404_template());

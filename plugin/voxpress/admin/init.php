@@ -38,11 +38,20 @@ function uvx_setup_menu() {
 
     add_submenu_page(
         "voxpress", 
-        "Ubivox WooCommerce Integration",
-        "WooCommerce", 
+        "Ubivox E-Commerce",
+        "E-Commerce", 
         "manage_options", 
-        "voxpress-woocommerce", 
-        "uvx_woocommerce_page"
+        "voxpress-ecommerce", 
+        "uvx_ecommerce_page"
+    );
+
+    add_submenu_page(
+        "voxpress", 
+        "Ubivox data field mapping",
+        "Data mapping", 
+        "manage_options", 
+        "voxpress-data", 
+        "uvx_data_page"
     );
 
     add_submenu_page(
@@ -65,6 +74,8 @@ function uvx_page() {
             "You do not have sufficient permissions to access this page."
         ));
     }    
+
+    if (check_missing_config()) return;
 
     require "overview.php";
 
@@ -104,10 +115,45 @@ function uvx_woocommerce_page() {
         ));
     }    
 
+    if (check_missing_config()) return;
+
     require "woocommerce.php";
 
 }
 
+
+function uvx_data_page() {
+
+    if (!current_user_can("manage_options")) {
+        wp_die(__(
+            "You do not have sufficient permissions to access this page."
+        ));
+    }    
+
+    if (check_missing_config()) return;
+
+    require "data.php";
+
+}
+
+
+function check_missing_config() {
+
+    if (UBIVOX_API_CONFIGURED) {
+        return false;
+    }
+
+    if (!current_user_can("manage_options")) {
+        wp_die(__(
+            "You do not have sufficient permissions to access this page."
+        ));
+    }    
+
+    require "missing_config.php";
+
+    return true;
+
+}
 
 ###############################################################################
 # Admin assets

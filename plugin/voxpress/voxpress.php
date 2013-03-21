@@ -30,6 +30,8 @@ define(
     preg_replace('#/xmlrpc/?$#', "", get_option("uvx_api_url")) : null
 );
 
+define("UBIVOX_API_CONFIGURED", (bool) get_option("uvx_api_url"));
+
 ###############################################################################
 # Widgets
 ###############################################################################
@@ -41,7 +43,9 @@ function ubivox_register_widgets() {
     register_widget("Ubivox_Control_Panel_Widget");    
 }
 
-add_action("widgets_init", "ubivox_register_widgets");
+if (UBIVOX_API_CONFIGURED) {
+    add_action("widgets_init", "ubivox_register_widgets");
+}
 
 
 ###############################################################################

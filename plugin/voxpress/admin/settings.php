@@ -131,6 +131,4 @@ if ($error) {
 
 <?php } ?>
 
-<hr />
-
 </div>

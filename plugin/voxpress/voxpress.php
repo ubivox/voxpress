@@ -38,9 +38,41 @@ function ubivox_register_widgets() {
     register_widget("Ubivox_Subscription_Widget");
     register_widget("Ubivox_Unsubscription_Widget");
     register_widget("Ubivox_Archive_Widget");
-    register_widget("Ubivox_Control_Panel_Widget");
+    register_widget("Ubivox_Control_Panel_Widget");    
 }
 
 add_action("widgets_init", "ubivox_register_widgets");
+
+
+###############################################################################
+# Public assets
+###############################################################################
+
+    // Register public styles
+    // ------------------------------------------------------------------
+    if (!is_admin()) {
+        wp_enqueue_style("ubivox-style-public", plugins_url("voxpress/styles/ubivox.public.css"), array(), $voxpress_version, false);
+        wp_enqueue_style("ubivox-style-public-ie8", plugins_url("voxpress/styles/ubivox.public.ie8.css"), array(), $voxpress_version, false);
+        
+        global $wp_styles;
+        $wp_styles->add_data( 'ubivox-style-public-ie8', 'conditional', 'lte IE 8' );
+    }
+
+    // Register public scripts
+    // ------------------------------------------------------------------
+    if (!is_admin()) {
+        wp_enqueue_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array( 'jquery', 'json2', 'jquery-ui-core', 'jquery-ui-position', 'jquery-effects-core', 'jquery-effects-slide'), $voxpress_version, true);
+        
+
+        wp_localize_script("ubivox-public-script", "ubivox_settings", array( 
+            "ajaxurl" => admin_url("admin-ajax.php"), 
+            "account_url" => get_option("uvx_account_url")
+        ));
+    }
+
+
+
+
+
 
 ?>

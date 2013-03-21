@@ -14,10 +14,11 @@ var ubivox = {
         // Hook inline links
         ubivox.inline_links.init();
 
+        // Make archive links popup inline
         jQuery('a.ubivox_archive_link').click(function(event) {
             var $me = jQuery(this);
 
-            ubivox.popup.open({
+            ubivox.modal.open({
                 url: this.href,
                 width: 800,
                 height: jQuery(window).height() - 50
@@ -26,6 +27,103 @@ var ubivox = {
             event.preventDefault();
 
         });
+
+        // setup subscription widgets
+        jQuery('.widget_ubivox_subscription_widget').each(function(){
+            ubivox.widget.subscription.init(this);
+        });
+
+    },
+
+    widget: {
+
+        subscription: {
+
+            init: function(widget){
+
+                var $widget = jQuery(widget);
+                var data = $widget.find('form.ubivox_subscription').data('ubivox');
+
+                $widget.css({
+                    background: data.bg,
+                    opacity: data.bg_opacity
+                })
+
+                switch(true)
+                {
+                    // Create blocker effect
+                    case (data.effect == "blocker"):
+
+                    break
+
+                    // Create slide effect
+                    case (data.effect.indexOf('slide') != -1):
+
+                    var direction = data.effect.substring(6, data.effect.length);
+                    
+                    $widget.addClass('slide ' + direction);
+
+
+                    switch(direction)
+                    {
+                        case ("top"):
+                        jQuery(window).bind('resize scroll', function(){
+                            $widget.position({
+                                my: "center top",
+                                at: "center top",
+                                of: jQuery(window)
+                            })
+                        });
+                        break
+
+                        case ("right"):
+                        jQuery(window).bind('resize scroll', function(){
+                            $widget.position({
+                                my: "right center",
+                                at: "right center",
+                                of: jQuery(window)
+                            })
+                        });
+                        break
+
+                        case ("bottom"):
+                        jQuery(window).bind('resize scroll', function(){
+                            $widget.position({
+                                my: "center bottom",
+                                at: "center bottom",
+                                of: jQuery(window)
+                            })
+                        });
+                        break
+
+                        case ("left"):
+                        jQuery(window).bind('resize scroll', function(){
+                            $widget.position({
+                                my: "left center",
+                                at: "left center",
+                                of: jQuery(window)
+                            })
+                        });
+                        break
+
+                    }
+
+
+                    jQuery(window).resize();
+
+
+                    break
+
+                    // Present inline if no effext
+                    default: 
+
+                    $widget.show();
+
+                }
+
+            }            
+        }
+
 
     },
 
@@ -38,7 +136,7 @@ var ubivox = {
                 var $me = jQuery(this)
 
                 $me.click(function(event) {
-                    ubivox.popup.open({
+                    ubivox.modal.open({
                         url: $me.attr('href'),
                         width: 600,
                         height: 400
@@ -51,9 +149,39 @@ var ubivox = {
 
     },
 
+    
+    popup: {
+
+        init: function(){
+
+            // Get popups
+            ubivox.popup.$widgets = jQuery('.widget_ubivox_popup_widget');
+            var $widgets = ubivox.popup.$widgets;
+
+            $widgets.each(ubivox.popup.show);
+            
+        },
+
+        show: function(i, element){
+
+            var $element = jQuery(element);
+
+            $element.effect({
+                effect: 'slide',
+                direction: 'up'
+            }, 2000);
+
+        },
+
+        hide: function(){
+
+        }
+
+    },
+
 
     // POPUP HELPER: show content in lightbox
-    popup: {
+    modal: {
 
         open: function(options){
 
@@ -75,11 +203,11 @@ var ubivox = {
             // Append elements
             jQuery('body').append(options.$overlay).append(options.$popup);
 
-            options.$btn_close.click(ubivox.popup.close).appendTo(options.$popup);
+            options.$btn_close.click(ubivox.modal.close).appendTo(options.$popup);
         
             // Attached resize and scroll position
             options.$window.bind('resize scroll', function(){
-                ubivox.popup.position(options);
+                ubivox.modal.position(options);
             })
 
             // Trigger initial position

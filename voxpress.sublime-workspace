@@ -1,0 +1,1040 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font-",
+				"font-family"
+			],
+			[
+				"get",
+				"get_str"
+			],
+			[
+				"str",
+				"get_str"
+			],
+			[
+				"time",
+				"timeout	setTimeout function"
+			],
+			[
+				"border-c",
+				"border-collapse"
+			],
+			[
+				"prev",
+				"preventDefault"
+			],
+			[
+				"toggle",
+				".toggle	.toggle"
+			],
+			[
+				"a",
+				"background-attachment"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 329.0,
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"pac",
+				"Package Control: List Packages"
+			],
+			[
+				"pack",
+				"Package Control: Discover Packages"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pak",
+				"Package Control: Discover Packages"
+			],
+			[
+				"add",
+				"Package Control: Add Repository"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 132.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Volumes/Ubivox Dev/projects/ubivox/enterprise/templates/base_content.html",
+		"/Volumes/Ubivox Dev/.profile",
+		"/Users/oscar/Downloads/wordpress/wp-admin/css/wp-admin.min.css",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/scripts/ubivox.public.js",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/overview.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/help.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/javascript.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles/ubivox.admin.css",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/archive.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/voxpress.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/init.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles/ubivox.client.css",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/styles/page.less",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#5/api.php",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#0/wordpress",
+		"/Volumes/Ubivox Dev/enterprise/templates/base_content.html",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/config.js",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/skin.js",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/panel.css",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/menu.css",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/dialog.css",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/mainui.css",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/toolbar.css",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/richcombo.css",
+		"/Volumes/Ubivox Dev/enterprise/utils/widgets.py",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/ckeditor.minimal.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/ckeditor.webpage.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/libs/ckeditor/config.js",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#4/.htaccess",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#2/wp-config.php",
+		"/Users/oscar/Projects/Ubivox/ckeditor-dev/skins/ubivox/editor.css",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/styles/ckeditor.less",
+		"/Volumes/Ubivox Dev (2)/enterprise/templates/mailer/pages/edit.html",
+		"/Volumes/Ubivox Dev (2)/enterprise/utils/widgets.py",
+		"/Volumes/Ubivox Dev (2)/enterprise/templates/base_content.html",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/styles/page.less",
+		"/Volumes/Ubivox Dev (2)/enterprise/templates/frame.html",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/libs/ckeditor/config.js",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/page.js",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/editor.js",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/frame.js",
+		"/Users/oscar/Library/Caches/Cleanup At Startup/Transmit/B4F53BC7-D121-4DA9-BF27-3B27739B9C2C/style.css",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/global.js",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/styles/frame.less",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#3/postactivate",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#1/postactivate",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#2/postactivate",
+		"/Users/oscar/Library/Caches/com.binarynights.ForkLift2/#0/postactivate",
+		"/Users/oscar/Library/Caches/Cleanup At Startup/Transmit/BB1DDC3B-CD10-4434-B0FC-2F8DDB260F13/style.css",
+		"/Volumes/Ubivox Dev (2)/enterprise/templates/base.html",
+		"/Volumes/Ubivox Dev/enterprise/media/mobile/styles/mixins.less",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/styles/variables.less",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/icons/ux-icons-1/style.css",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/global.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/editor.preview.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/editor.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/styles/editor.less",
+		"/Volumes/Ubivox Dev/enterprise/templates/base.html",
+		"/Volumes/Ubivox Dev/enterprise/templates/mailer/delivery/editor.html",
+		"/Users/oscar/Downloads/ckeditor-1/plugins/link/dialogs/link.js",
+		"/Users/oscar/Downloads/ckeditor/styles.js",
+		"/Volumes/Ubivox Dev/enterprise/templates/mailer/welcome.html",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/document_store.js",
+		"/Volumes/Ubivox Dev/enterprise/mailer/fixtures.py",
+		"/Volumes/Ubivox Dev/enterprise/templates/base_fullsize.html",
+		"/Volumes/Ubivox Dev/enterprise/media/gui/js/gui_editor.js",
+		"/Volumes/Ubivox Dev/enterprise/update.sql",
+		"/Users/oscar/Projects/Ubivox/Code/ubivox/enterprise/update.sql",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/editor.config.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/styles/global.less",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/styles/frame.less",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/editor.content.js",
+		"/Volumes/Ubivox Dev/enterprise/templates/frame.html",
+		"/Volumes/Ubivox Dev/enterprise/templates/mailer/frontpage.html",
+		"/Volumes/Ubivox Dev/enterprise/templates/master_frame.html",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/scripts/page.js",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/libs/bootstrap/less/variables.less",
+		"/Volumes/Ubivox Dev/enterprise/templates/mailer/master/frontpage.html",
+		"/Volumes/Ubivox Dev/enterprise/templates/mailer/statistics/deliveries.html",
+		"/Volumes/Ubivox Dev/enterprise/templates/mailer/newsletters.html",
+		"/Volumes/Ubivox Dev/enterprise/media/v3/libs/bootstrap_old/less/variables.less",
+		"/Volumes/Ubivox Dev (2)/enterprise/templates/mailer/frontpage.html",
+		"/Volumes/Ubivox Dev (2)/enterprise/templates/mailer/delivery/editor.html",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/styles/global.less",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/editor.preview.js",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/editor.config.js",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/styles/editor.less",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/editor.content.js",
+		"/Volumes/Ubivox Dev/ubivox.sublime-project",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/styles/variables.less",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/scripts/editor.toolbar.js",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/helpers.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/column.default.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/newsletter.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/editor/sections.default.json",
+		"/Volumes/Ubivox Dev (2)/enterprise/media/v3/libs/bootstrap/less/variables.less",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/block.image.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/area.content.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/area.footer.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/area.header.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/section.default.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/editor/blocks.image.json",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/areas.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/sections.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.text.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.headline.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/columns.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/udv_standard/macros.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/udv_standard/newsletter.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.button.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/sections.default.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/columns.default.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/areas.default.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.video.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.split.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.share.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.link.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.image.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.content_image.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/blocks.content.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/editor/blocks.text.json",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/editor/columns.default.json",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/section.html",
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/block.content.html",
+		"/Volumes/Ubivox Dev (2)/enterprise/mailer/delivery/templates.py",
+		"/Volumes/Ubivox Dev (2)/enterprise/mailer/views/delivery.py"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"button_exit_editor",
+			"button_e",
+			"ubivox.editor.exit",
+			"button_exit_editor",
+			"quit",
+			"exit",
+			"width",
+			"UbivoxAjax",
+			"local",
+			"admin",
+			"border-ra",
+			"hover",
+			"button",
+			"span.cke_dialog_ui_button",
+			"span.cke_dialog_ui_button ",
+			"button",
+			"footer",
+			"tab",
+			"e0e0e0",
+			"#ccc",
+			"hover",
+			"a.",
+			"tab",
+			"trans",
+			"button",
+			"tabs",
+			"cover",
+			"overla",
+			"474747",
+			"text-sh",
+			"footer",
+			"bottom",
+			"button",
+			"tab",
+			"tb",
+			"text-sha",
+			"text",
+			"select",
+			"skin",
+			"ckedi",
+			"cke",
+			"editor",
+			"user",
+			"iframe",
+			"fadeOut",
+			"unload",
+			"RedactorEditor",
+			"redact",
+			"exit",
+			"editor",
+			"edito",
+			"edi",
+			"editor",
+			".ui-effects-transfer",
+			"dupli",
+			"duplicate",
+			"puz",
+			"caret-r",
+			"content:",
+			"content_",
+			"content",
+			"blocks",
+			"toolb",
+			"fix_col",
+			"fix_colo",
+			"fix_",
+			"update_conte",
+			"content_tree_updated",
+			"activ",
+			"toolbar",
+			"ubivox.editor.elements",
+			"add_c",
+			"ubivox.editor.config.elements",
+			"toolba",
+			"lega",
+			"add_conte",
+			"add",
+			"check",
+			"area_sw",
+			"area_s",
+			"document_store",
+			"local",
+			"template",
+			"label",
+			"on(",
+			"preview()",
+			"ubivox.editor.preview",
+			"new_preview",
+			"preview_pr",
+			"ubivox.editor.update_content_ul",
+			"dialog",
+			"element",
+			"fix_c",
+			"fic_col",
+			"content_tre",
+			"ubivox.editor.preview",
+			"preview",
+			"hidden",
+			"please",
+			"block_headline_link",
+			"content_tree",
+			"editor_area_toolbar",
+			"ubivox.editor.layout_preview",
+			"uniform",
+			"uni",
+			".tabs",
+			"<span class=\"icon\">3</span>",
+			"<span class=\"icon\">d</span>",
+			"<div class=\"icon\">E</div>",
+			"json",
+			"/v2/",
+			"ubivox",
+			"ubivoc",
+			"dropdo",
+			"toolba",
+			"switch",
+			"box-s",
+			".btn",
+			".growl",
+			"growl",
+			".box{",
+			".box",
+			"alert",
+			"dropdow",
+			"ait",
+			"dropdow",
+			".btn",
+			"btn"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"height",
+			"ubivox_settings",
+			"public",
+			"f0f2f2",
+			"#e0e0e0",
+			"323232",
+			"ubivox.editor.elements",
+			"preview",
+			"ubivox.editor.new_preview",
+			"",
+			"/v3/",
+			"elements",
+			"området",
+			"area",
+			"margin",
+			"Margin",
+			"knappen",
+			"the button",
+			"margin",
+			"the section",
+			"sektionen",
+			"kolonnen",
+			"the column",
+			"margin",
+			"padding",
+			"sidehovedet",
+			"header",
+			"sidefoden",
+			"footer",
+			"block",
+			"get_str",
+			"ubivox.editor.config.template_elements",
+			"ubivox.editor.content.area_switch",
+			"ubivox.editor.content.tree.$dom",
+			"ubivox.editor.content.tree",
+			"ubivox.editor.tree",
+			"ubivox.editor.tree.$dom",
+			"ubivox.editor.tree",
+			"block",
+			"column",
+			"block",
+			"column",
+			"ubivox.editor",
+			"icon-reorder",
+			"",
+			"caret-down",
+			"/media/v3/",
+			"",
+			"/media/v2/icons/ux-icons-1/fonts/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 32.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "voxpress.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"editor",
+				"media/v3/styles/editor.less"
+			],
+			[
+				"page.les",
+				"media/v3/styles/page.less"
+			],
+			[
+				"base.",
+				"templates/base.html"
+			],
+			[
+				"base_con",
+				"templates/base_content.html"
+			],
+			[
+				"base_c",
+				"templates/base_content.html"
+			],
+			[
+				"editor.",
+				"templates/mailer/delivery/editor.html"
+			],
+			[
+				"page",
+				"media/v3/scripts/page.js"
+			],
+			[
+				"frame.js",
+				"media/v3/scripts/frame.js"
+			],
+			[
+				"editor.js",
+				"media/v3/scripts/editor.js"
+			],
+			[
+				"ckeditor.we",
+				"media/v3/scripts/ckeditor.webpage.js"
+			],
+			[
+				"base",
+				"templates/base_content.html"
+			],
+			[
+				"frame.le",
+				"media/v3/styles/frame.less"
+			],
+			[
+				"frame",
+				"media/v3/scripts/frame.js"
+			],
+			[
+				"page.",
+				"media/v3/styles/page.less"
+			],
+			[
+				"pageedit",
+				"templates/mailer/pages/edit.html"
+			],
+			[
+				"frame.",
+				"templates/frame.html"
+			],
+			[
+				"global",
+				"media/v3/scripts/global.js"
+			],
+			[
+				"mix",
+				"media/mobile/styles/mixins.less"
+			],
+			[
+				"vari",
+				"media/v3/styles/variables.less"
+			],
+			[
+				"iconsst",
+				"media/v3/icons/ux-icons-1/style.css"
+			],
+			[
+				"document",
+				"media/v3/scripts/document_store.js"
+			],
+			[
+				"basec",
+				"templates/base_content.html"
+			],
+			[
+				"wel",
+				"templates/mailer/welcome.html"
+			],
+			[
+				"fix",
+				"mailer/fixtures.py"
+			],
+			[
+				"page.le",
+				"media/v3/styles/page.less"
+			],
+			[
+				"base.html",
+				"templates/base.html"
+			],
+			[
+				"full",
+				"templates/base_fullsize.html"
+			],
+			[
+				"baseconte",
+				"templates/base_content.html"
+			],
+			[
+				"edit",
+				"media/v3/styles/editor.less"
+			],
+			[
+				"base_f",
+				"templates/base_fullsize.html"
+			],
+			[
+				"gui_ed",
+				"Ubivox Dev/enterprise/media/gui/js/gui_editor.js"
+			],
+			[
+				"editr",
+				"templates/mailer/delivery/editor.html"
+			],
+			[
+				"editor.con",
+				"media/v3/scripts/editor.config.js"
+			],
+			[
+				"glob",
+				"media/v3/styles/global.less"
+			],
+			[
+				"edito",
+				"templates/mailer/delivery/editor.html"
+			],
+			[
+				"masterframe",
+				"templates/master_frame.html"
+			],
+			[
+				"base_content",
+				"templates/base_content.html"
+			],
+			[
+				"frontp",
+				"templates/mailer/frontpage.html"
+			],
+			[
+				"frontpage",
+				"templates/mailer/frontpage.html"
+			],
+			[
+				"variab",
+				"media/v3/libs/bootstrap/less/variables.less"
+			],
+			[
+				"variables",
+				"media/v3/styles/variables.less"
+			],
+			[
+				"editor.le",
+				"media/v3/styles/editor.less"
+			],
+			[
+				"rame.le",
+				"media/v3/styles/frame.less"
+			],
+			[
+				"newsl",
+				"templates/mailer/newsletters.html"
+			],
+			[
+				"statsdelv",
+				"templates/mailer/statistics/deliveries.html"
+			],
+			[
+				"masterfrontpa",
+				"templates/mailer/master/frontpage.html"
+			],
+			[
+				"editor.pre",
+				"media/v3/scripts/editor.preview.js"
+			],
+			[
+				"varia",
+				"media/v3/styles/variables.less"
+			],
+			[
+				"editor.to",
+				"media/v3/scripts/editor.toolbar.js"
+			],
+			[
+				"page.js",
+				"media/v3/scripts/page.js"
+			],
+			[
+				"front",
+				"templates/mailer/frontpage.html"
+			],
+			[
+				"editor.co",
+				"media/v3/scripts/editor.content.js"
+			],
+			[
+				"editor.conte",
+				"media/v3/scripts/editor.content.js"
+			],
+			[
+				"delivery.py",
+				"mailer/views/delivery.py"
+			],
+			[
+				"delivery.",
+				"mailer/templatetags/delivery.py"
+			],
+			[
+				"templ",
+				"mailer/delivery/templates.py"
+			],
+			[
+				"editor.t",
+				"media/v3/scripts/editor.toolbar.js"
+			],
+			[
+				"editor.j",
+				"media/v3/scripts/editor.js"
+			],
+			[
+				"edi",
+				"media/v3/styles/editor.less"
+			],
+			[
+				"editor.l",
+				"media/v3/styles/editor.less"
+			],
+			[
+				"frame.les",
+				"media/v3/styles/frame.less"
+			],
+			[
+				"gui_frame",
+				"media/gui/css/gui_frame.less"
+			],
+			[
+				"themes",
+				"mailer/themes.py"
+			],
+			[
+				"area",
+				"themes/custom/deliveries/default/editor/areas.content.json"
+			],
+			[
+				"editor.cont",
+				"media/v3/scripts/editor.content.js"
+			],
+			[
+				"ed",
+				"templates/mailer/delivery/editor.html"
+			],
+			[
+				"base.h",
+				"templates/base.html"
+			],
+			[
+				"frontpa",
+				"templates/mailer/frontpage.html"
+			],
+			[
+				"editor.c",
+				"media/v3/scripts/editor.content.js"
+			],
+			[
+				"gui_fram",
+				"media/gui/css/gui_frame.less"
+			],
+			[
+				"master",
+				"templates/master_frame.html"
+			],
+			[
+				"urls",
+				"mailer/urls.py"
+			],
+			[
+				"editor.conten",
+				"media/v3/scripts/editor.content.js"
+			],
+			[
+				"globa",
+				"media/v3/styles/global.less"
+			],
+			[
+				"subscribecreate",
+				"templates/mailer/subscriber/create.html"
+			],
+			[
+				"page.j",
+				"media/v3/scripts/page.js"
+			],
+			[
+				"base_conten",
+				"templates/base_content.html"
+			],
+			[
+				"preview.js",
+				"media/v3/scripts/editor.preview.js"
+			],
+			[
+				"iconsyle",
+				"media/v3/icons/ux-icons-1/style.less"
+			],
+			[
+				"icons",
+				"media/v3/icons/ux-icons-1/style.less"
+			],
+			[
+				"splitp",
+				"media/v3/libs/split-pane/split-pane.js"
+			],
+			[
+				"global.",
+				"media/v3/scripts/global.js"
+			],
+			[
+				"base_cont",
+				"templates/base_content.html"
+			],
+			[
+				"config",
+				"templates/mailer/import/configure.html"
+			],
+			[
+				"importover",
+				"templates/mailer/import/overview.html"
+			],
+			[
+				"import.js",
+				"media/v3/scripts/importer.js"
+			],
+			[
+				"app.le",
+				"media/mobile/styles/app.less"
+			],
+			[
+				"iconst",
+				"media/v3/icons/ux-icons-1/style.less"
+			],
+			[
+				"listcreate",
+				"templates/mailer/list/create.html"
+			],
+			[
+				"addres",
+				"templates/mailer/account/addresses.html"
+			],
+			[
+				"createli",
+				"templates/mailer/partner/create_client.html"
+			],
+			[
+				"",
+				"themes/default/newsletters/editor/blocks.contentimage.json"
+			],
+			[
+				"create",
+				"templates/mailer/list/create_delivery.html"
+			],
+			[
+				"page.l",
+				"media/v3/styles/page.less"
+			],
+			[
+				"indus",
+				"templates/mailer/statistics/industry.html"
+			],
+			[
+				"createde",
+				"templates/mailer/list/create_delivery.html"
+			],
+			[
+				"locatio",
+				"templates/mailer/statistics/delivery/locations.html"
+			],
+			[
+				"mixin",
+				"media/mobile/styles/mixins.less"
+			],
+			[
+				"switch",
+				"media/v3/libs/bootstrap-switch/static/stylesheets/bootstrap-switch.less"
+			],
+			[
+				"forms",
+				"mailer/tests/forms.py"
+			],
+			[
+				"accountin",
+				"templates/mailer/account/account_information.html"
+			],
+			[
+				"pagetools",
+				"templates/mailer/page_tools.html"
+			],
+			[
+				"listdetails",
+				"templates/mailer/list/details.html"
+			],
+			[
+				"listoverview",
+				"templates/mailer/list/overview.html"
+			],
+			[
+				"listdet",
+				"templates/mailer/mobile/list_details.html"
+			],
+			[
+				"listove",
+				"templates/mailer/mobile/list_overview.html"
+			],
+			[
+				"grid",
+				"media/v3/libs/bootstrap/less/grid.less"
+			],
+			[
+				"iconsty",
+				"media/v3/icons/ux-icons-1/style.less"
+			],
+			[
+				"accountinf",
+				"templates/mailer/account/account_information.html"
+			],
+			[
+				"base_conte",
+				"templates/base_content.html"
+			],
+			[
+				"navs.",
+				"media/v3/libs/bootstrap/less/navs.less"
+			],
+			[
+				"navs",
+				"media/v3/libs/bootstrap/less/navs.less"
+			],
+			[
+				"momodal.js",
+				"media/v3/libs/bootstrap-modal/js/bootstrap-modal.js"
+			],
+			[
+				"modal.js",
+				"media/v3/libs/bootstrap/js/bootstrap-modal.js"
+			],
+			[
+				"base.ht",
+				"templates/base.html"
+			],
+			[
+				"boots",
+				"media/v3/libs/bootstrap/less/bootstrap.less"
+			],
+			[
+				"variabl",
+				"media/v3/libs/bootstrap/less/variables.less"
+			],
+			[
+				"frame.html",
+				"templates/frame.html"
+			],
+			[
+				"bootstrap.le",
+				"media/v3/libs/bootstrap/less/bootstrap.less"
+			],
+			[
+				"iconstyle",
+				"media/v3/icons/ux-icons-1/style.less"
+			],
+			[
+				"iconsextr",
+				"media/v3/icons/ux-icons-1/icon-extras.less"
+			],
+			[
+				"style2.l",
+				"media/v3/icons/ux-icons-1/style2.less"
+			],
+			[
+				"app.les",
+				"media/mobile/styles/app.less"
+			],
+			[
+				"equa",
+				"media/v2/libs/equalize.min.js"
+			],
+			[
+				"gui_data",
+				"media/gui/js/gui_datatables.js"
+			],
+			[
+				"frame.j",
+				"media/v2/scripts/frame.js"
+			],
+			[
+				"frame.e",
+				"media/v2/styles/frame.less"
+			],
+			[
+				"iconssty",
+				"media/v2/icons/ux-icons-1/style.css"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"navbar",
+				"navbar"
+			],
+			[
+				"gettempl",
+				"get_template_element"
+			]
+		],
+		"width": 532.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 186.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

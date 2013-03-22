@@ -9,19 +9,19 @@ add_action("admin_menu", "uvx_setup_menu");
 function uvx_setup_menu() {
 
     add_menu_page(
-        "Ubivox", 
-        "Ubivox",
+        "Voxpress - Ubivox newsletters", 
+        "Newsletters",
         "manage_options",
         "voxpress",
         "uvx_page",
-        null,
-        30
+        plugins_url("/voxpress/images/icon-admin.png"),
+        3
     );    
 
     add_submenu_page(
         "voxpress", 
-        "Ubivox Overview",
-        "Overview", 
+        "Voxpress - Dashboard",
+        "Dashboard", 
         "manage_options", 
         "voxpress", 
         "uvx_page"
@@ -175,5 +175,3 @@ function check_missing_config() {
     }
 
     add_action("admin_enqueue_scripts", "uvx_register_admin_scripts");
-
-

@@ -68,7 +68,7 @@ if (UBIVOX_API_CONFIGURED) {
         wp_enqueue_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array( 'jquery', 'json2', 'jquery-ui-core', 'jquery-ui-position', 'jquery-effects-core', 'jquery-effects-slide'), $voxpress_version, true);
         
 
-        wp_localize_script("ubivox-public-script", "ubivox_settings", array( 
+        wp_localize_script("ubivox-public-script", "uvx_settings", array( 
             "ajaxurl" => admin_url("admin-ajax.php"), 
             "account_url" => get_option("uvx_account_url")
         ));

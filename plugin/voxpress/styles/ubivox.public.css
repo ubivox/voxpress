@@ -67,16 +67,66 @@
 }
 
 
-.ubivox_subscription_widget{
-    
+.uvx_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    z-index: 999998;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
 }
 
-
-.widget_ubivox_subscription_widget.slide{
-    position: absolute;
-    margin: 0;
-    padding: 40px;
+.widget_ubivox_subscription_widget{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    opacity: 0;
 }
+
+
+.widget_ubivox_subscription_widget.uvx_border,
+.widget_ubivox_subscription_widget.uvx_placement_center,
+.widget_ubivox_subscription_widget.uvx_placement_top,
+.widget_ubivox_subscription_widget.uvx_placement_right,
+.widget_ubivox_subscription_widget.uvx_placement_bottom,
+.widget_ubivox_subscription_widget.uvx_placement_left
+{
+    padding: 15px;
+}
+
+.widget_ubivox_subscription_widget.uvx_placement_center,
+.widget_ubivox_subscription_widget.uvx_placement_top,
+.widget_ubivox_subscription_widget.uvx_placement_right,
+.widget_ubivox_subscription_widget.uvx_placement_bottom,
+.widget_ubivox_subscription_widget.uvx_placement_left
+{
+    z-index: 999999;
+    position: absolute;
+    margin: 0;
+    top: 0px;
+    left: 0px;
+
+}
+
+.uvx_close{
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    border-radius: 100%;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    font: bold 12px arial, sans-serif;
+    text-align: center;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+

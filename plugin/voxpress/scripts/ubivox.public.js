@@ -1,24 +1,24 @@
 
 // Namespace
-var ubivox = {
+var uvx = {
 
     // Initialize plugin
     init: function(){
 
         // Hook subscription form to Ajax
-        jQuery("form.ubivox_subscription").submit(ubivox.subscribe);
+        jQuery("form.uvx_subscription").submit(uvx.subscribe);
 
         // Hook unsubscription form to Ajax
-        jQuery("form.ubivox_unsubscription").submit(ubivox.unsubscribe);
+        jQuery("form.uvx_unsubscription").submit(uvx.unsubscribe);
 
         // Hook inline links
-        ubivox.inline_links.init();
+        uvx.inline_links.init();
 
         // Make archive links popup inline
-        jQuery('a.ubivox_archive_link').click(function(event) {
+        jQuery('a.uvx_archive_link').click(function(event) {
             var $me = jQuery(this);
 
-            ubivox.modal.open({
+            uvx.modal.open({
                 url: this.href,
                 width: 800,
                 height: jQuery(window).height() - 50
@@ -30,7 +30,7 @@ var ubivox = {
 
         // setup subscription widgets
         jQuery('.widget_ubivox_subscription_widget').each(function(){
-            ubivox.widget.subscription.init(this);
+            uvx.widget.subscription.init(this);
         });
 
     },
@@ -44,84 +44,170 @@ var ubivox = {
                 var $widget = jQuery(widget);
                 var data = $widget.find('form.ubivox_subscription').data('ubivox');
 
-                $widget.css({
-                    background: data.bg,
-                    opacity: data.bg_opacity
-                })
+                // Set classes
+                $widget.addClass('uvx_placement_' + data.placement);
+                $widget.addClass('uvx_effect_' + data.effect);
 
-                switch(true)
-                {
-                    // Create blocker effect
-                    case (data.effect == "blocker"):
+                // Set styles
 
-                    break
+                    // Border width & Color
+                    if (data.border_size != 0) {
+                        $widget.css('border', data.border_size + "px solid " + data.border_color);
+                        $widget.addClass('uvx_border');
+                    };
 
-                    // Create slide effect
-                    case (data.effect.indexOf('slide') != -1):
+                    // Background Color
+                    $widget.css('background', data.background_color);
 
-                    var direction = data.effect.substring(6, data.effect.length);
+
+
+                // Handle placement position if not inline
+                if (data.placement != "inline") {
                     
-                    $widget.addClass('slide ' + direction);
-
-
-                    switch(direction)
+                    // Set position
+                    switch(true)
                     {
-                        case ("top"):
-                        jQuery(window).bind('resize scroll', function(){
-                            $widget.position({
-                                my: "center top",
-                                at: "center top",
-                                of: jQuery(window)
-                            })
-                        });
-                        break
+                        case (data.placement == 'top' ):
+                            var my = "center top";
+                            var at = "center top";
+                        break;
 
-                        case ("right"):
-                        jQuery(window).bind('resize scroll', function(){
-                            $widget.position({
-                                my: "right center",
-                                at: "right center",
-                                of: jQuery(window)
-                            })
-                        });
-                        break
+                        case (data.placement == 'right' ):
+                            var my = "right center";
+                            var at = "right center";
+                        break;
 
-                        case ("bottom"):
-                        jQuery(window).bind('resize scroll', function(){
-                            $widget.position({
-                                my: "center bottom",
-                                at: "center bottom",
-                                of: jQuery(window)
-                            })
-                        });
-                        break
+                        case (data.placement == 'bottom' ):
+                            var my = "center bottom";
+                            var at = "center bottom";
+                        break;
 
-                        case ("left"):
-                        jQuery(window).bind('resize scroll', function(){
-                            $widget.position({
-                                my: "left center",
-                                at: "left center",
-                                of: jQuery(window)
-                            })
-                        });
-                        break
+                        case (data.placement == 'left' ):
+                            var my = "left center";
+                            var at = "left center";
+                        break;
+
+                        case (data.placement == 'center' ):
+                            var my = "center center";
+                            var at = "center center";
+                        break;
 
                     }
 
 
+                    // Attach close button
+                    var $btn_close = jQuery('<div class="uvx_close">X</div>');
+                    $widget.append($btn_close);
+
+                    $btn_close.click(function(event) {
+                        uvx.widget.subscription.close(widget);
+                    });
+
+                    // Activate position on scroll and resize
+                    jQuery(window).bind('resize scroll', function(){
+                        $widget.position({
+                            my: my,
+                            at: at,
+                            of: jQuery(window)
+                        })
+                    });
+
+                    // Do initial placement
                     jQuery(window).resize();
+                
+                };
 
 
-                    break
+                // Show widget after selected delay
+                setTimeout(function() {
+                    uvx.widget.subscription.show(widget);
+                }, data.delay * 1000);
 
-                    // Present inline if no effext
-                    default: 
 
-                    $widget.show();
+            },
+
+            show: function(widget){
+
+                var $widget = jQuery(widget);
+                var data = $widget.find('form.ubivox_subscription').data('ubivox');
+
+                // Attach and activate overlay
+                if (data.overlay_opacity != 0 && data.placement != 'inline') {
+
+                    var $overlay = jQuery('<div class="uvx_overlay"></div>');
+
+                    $overlay.css({
+                        background: data.overlay_color
+                    });
+
+                    jQuery('body').append($overlay);
+
+                    jQuery(window).bind('resize', function(){
+                        $overlay.css({
+                            height: jQuery(document).outerHeight()
+                        })
+                    });
+
+                    jQuery(window).resize();
+                };
+
+
+                switch(data.effect)
+                {
+                    case("fade"):
+
+                        // Overlay
+                        if ($overlay != null) {
+                            $overlay.fadeTo(800, data.overlay_opacity);
+                        };
+
+                        // Show widget
+                        $widget.fadeTo(800, 1);
+
+                    break;
+
+                    case("slide"):
+
+                        // Overlay
+                        if ($overlay != null) {
+                            $overlay.fadeTo(800, data.overlay_opacity);
+                        };
+
+                        // Show widget
+                        $widget.fadeTo(800, 1);
+
+                    break;
+
+                    default:
+
+                        // Overlay
+                        if ($overlay != null) {
+                            $overlay.css('opacity', data.overlay_opacity);
+                        };
+
+                        // Show widget
+                        $widget.show();
+                    
 
                 }
 
-            }            
+
+            },
+
+            close: function(widget){
+
+                var $widget = jQuery(widget);
+
+                $widget.fadeTo(800, 0);
+
+                // Remove overlay
+                jQuery('.uvx_overlay').fadeTo(800, 0, function(){
+                    jQuery(this).remove();
+                });
+
+
+
+            }
         }
 
 
@@ -132,11 +218,11 @@ var ubivox = {
 
         init: function(){
 
-            jQuery('a[href*="'+ ubivox_settings.account_url +'"]').each(function(){
+            jQuery('a[href*="'+ uvx_settings.account_url +'"]').each(function(){
                 var $me = jQuery(this)
 
                 $me.click(function(event) {
-                    ubivox.modal.open({
+                    uvx.modal.open({
                         url: $me.attr('href'),
                         width: 600,
                         height: 400
@@ -155,10 +241,10 @@ var ubivox = {
         init: function(){
 
             // Get popups
-            ubivox.popup.$widgets = jQuery('.widget_ubivox_popup_widget');
-            var $widgets = ubivox.popup.$widgets;
+            uvx.popup.$widgets = jQuery('.widget_uvx_popup_widget');
+            var $widgets = uvx.popup.$widgets;
 
-            $widgets.each(ubivox.popup.show);
+            $widgets.each(uvx.popup.show);
             
         },
 
@@ -189,9 +275,9 @@ var ubivox = {
                 url: "about:blank",
                 height: 500,
                 width: 700,
-                $overlay: jQuery('<div id="ubivox_overlay"></div>'),
-                $popup: jQuery('<div id="ubivox_popup"><iframe src="about:blank" frameborder="0" scrolling="auto" allowtransparency="true" width="100%" height="100%"></iframe></div>'),
-                $btn_close: jQuery('<div id="ubivox_popup_close">x</div>'),
+                $overlay: jQuery('<div id="uvx_overlay"></div>'),
+                $popup: jQuery('<div id="uvx_popup"><iframe src="about:blank" frameborder="0" scrolling="auto" allowtransparency="true" width="100%" height="100%"></iframe></div>'),
+                $btn_close: jQuery('<div id="uvx_popup_close">x</div>'),
                 $window: jQuery(window),
                 window_padding: 50
             }            
@@ -203,11 +289,11 @@ var ubivox = {
             // Append elements
             jQuery('body').append(options.$overlay).append(options.$popup);
 
-            options.$btn_close.click(ubivox.modal.close).appendTo(options.$popup);
+            options.$btn_close.click(uvx.modal.close).appendTo(options.$popup);
         
             // Attached resize and scroll position
             options.$window.bind('resize scroll', function(){
-                ubivox.modal.position(options);
+                uvx.modal.position(options);
             })
 
             // Trigger initial position
@@ -218,8 +304,8 @@ var ubivox = {
         },
 
         close: function(event){
-            var $popup = jQuery('#ubivox_popup');
-            var $overlay = jQuery('#ubivox_overlay');
+            var $popup = jQuery('#uvx_popup');
+            var $overlay = jQuery('#uvx_overlay');
 
             $popup.add($overlay).fadeOut(800, function(){
                 $popup.add($overlay).remove();
@@ -259,60 +345,60 @@ var ubivox = {
 
         var $form = jQuery(this);
 
-        if ($form.find(".ubivox_signup_button").attr("disabled")) {
+        if ($form.find(".uvx_signup_button").attr("disabled")) {
             return;
         }
 
-        $form.find(".ubivox_signup_button").attr("disabled", true);
+        $form.find(".uvx_signup_button").attr("disabled", true);
 
         var params = {
-            action: "ubivox_subscribe",
+            action: "uvx_subscribe",
             email_address: $form.find("input[name=email_address]").val(),
             list_id: $form.find("input[name=list_id]").val(),
         };
 
         var data = {};
 
-        $form.find(".ubivox_input").each(function () {
+        $form.find(".uvx_input").each(function () {
 
             var $p = jQuery(this);
             var $input = $p.find("input");
 
-            if ($p.hasClass("ubivox_text")) {
+            if ($p.hasClass("uvx_text")) {
                 data[$input.attr("name")] = $input.val();
                 return;
             }
 
-            if ($p.hasClass("ubivox_textarea")) {
+            if ($p.hasClass("uvx_textarea")) {
                 var $textarea = $p.find("textarea");
                 data[$textarea.attr("name")] = $textarea.val();
                 return;
             }
 
-            if ($p.hasClass("ubivox_checkbox") && $p.find("input:checked").length > 0) {
+            if ($p.hasClass("uvx_checkbox") && $p.find("input:checked").length > 0) {
                 data[$input.attr("name")] = "True";
                 return;
             }
 
-            if ($p.hasClass("ubivox_select")) {
+            if ($p.hasClass("uvx_select")) {
                 var $select = $p.find("select");
                 data[$select.attr("name")] = $select.val();
                 return;
             }
 
-            if ($p.hasClass("ubivox_select_multiple")) {
+            if ($p.hasClass("uvx_select_multiple")) {
                 var $select = $p.find("select");
                 data[$select.attr("name")] = $select.val().join(",");
                 return;
             }
 
-            if ($p.hasClass("ubivox_select_radio")) {
+            if ($p.hasClass("uvx_select_radio")) {
                 var $input = $p.find("input:checked");
                 data[$input.attr("name")] = $input.val();
                 return;
             }
 
-            if ($p.hasClass("ubivox_select_checkbox")) {
+            if ($p.hasClass("uvx_select_checkbox")) {
 
                 var checked = []
 
@@ -329,7 +415,7 @@ var ubivox = {
 
         params["data"] = JSON.stringify(data);
 
-        jQuery.post(ubivox_settings.ajaxurl, params, function(response) {
+        jQuery.post(uvx_settings.ajaxurl, params, function(response) {
             if (response["status"] == "ok") {
                 var $success_text = $form.next();
                 $form.hide();
@@ -348,19 +434,19 @@ var ubivox = {
 
         var $form = jQuery(this);
 
-        if ($form.find(".ubivox_signout_button").attr("disabled")) {
+        if ($form.find(".uvx_signout_button").attr("disabled")) {
             return;
         }
 
-        $form.find(".ubivox_signout_button").attr("disabled", true);
+        $form.find(".uvx_signout_button").attr("disabled", true);
 
         var params = {
-            action: "ubivox_unsubscribe",
+            action: "uvx_unsubscribe",
             email_address: $form.find("input[name=email_address]").val(),
             list_id: $form.find("input[name=list_id]").val(),
         };
 
-        jQuery.post(ubivox_settings.ajaxurl, params, function(response) {
+        jQuery.post(uvx_settings.ajaxurl, params, function(response) {
             if (response["status"] == "ok") {
                 var $success_text = $form.next();
                 $form.hide();
@@ -377,5 +463,5 @@ var ubivox = {
 
 // Initialize plugin
 jQuery(function() {
-    ubivox.init();
+    uvx.init();
 });

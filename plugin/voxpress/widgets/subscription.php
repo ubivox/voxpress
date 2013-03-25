@@ -24,7 +24,19 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         echo $instance["description"];
         echo '</p>';
 
-        echo '<form method="POST" class="ubivox_subscription" data-ubivox=\'{"placement":"'.$instance["placement"].'", "bg":"'.$instance["background_color"].'", "bg_opacity":"'. ($instance["overlay_opacity"] / 100) .'"}\'>';
+        echo '<form method="POST" class="ubivox_subscription" data-ubivox=\'{        
+            "block_text":"'.esc_html($instance["block_text"]).'",
+            "placement":"'.$instance["placement"].'",
+            "effect":"'.$instance["effect"].'",
+            "background_color":"'.$instance["background_color"].'",
+            "text_color":"'.$instance["text_color"].'",
+            "border_color":"'.$instance["border_color"].'",
+            "border_size":"'.$instance["border_size"].'",
+            "overlay_color":"'.$instance["overlay_color"].'",
+            "overlay_opacity":"'. (intval($instance["overlay_opacity"]) / 100) .'",
+            "delay":"'.$instance["delay"].'",
+            "repetition":"'.$instance["repetition"].'"
+        }\'>';
 
         echo '<input type="hidden" name="list_id" value="'.intval($instance["list_id"]).'">';
 
@@ -140,6 +152,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         $instance["success_text"] = strip_tags($new_instance["success_text"]);
         $instance["placement"] = $new_instance["placement"];
         $instance["effect"] = $new_instance["effect"];
+        $instance["border_radius"] = $new_instance["border_radius"];
         $instance["background_color"] = $new_instance["background_color"];        
         $instance["text_color"] = $new_instance["text_color"];
         $instance["border_color"] = $new_instance["border_color"];
@@ -147,7 +160,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         $instance["overlay_color"] = $new_instance["overlay_color"];
         $instance["overlay_opacity"] = intval($new_instance["overlay_opacity"]);
         $instance["delay"] = intval($new_instance["delay"]);
-        $instance["repetition"] = intval($new_instance["repetition"]);
+        $instance["repetition"] = $new_instance["repetition"];
 
 
         try {
@@ -239,6 +252,12 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $effect = $instance["effect"];
         } else {
             $effect = "slide";
+        }        
+
+        if (isset($instance["border_radius"])) {
+            $border_radius = $instance["border_radius"];
+        } else {
+            $border_radius = "3";
         }        
 
         if (isset($instance["background_color"])) {
@@ -380,7 +399,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
 
 
-        ## Settings
+        ## Design Settings
 
         echo '<h3 style="margin-top: 30px" class="ubivox_design_settings_toggle">'. __("Design Settings", "voxpress") .'</h3>';
 
@@ -436,18 +455,8 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         echo '</select></label>';
         echo '</div>';
 
-        ?>
 
-        <script type="text/javascript">
-            //<![CDATA[
-                jQuery(document).ready(function(){
-                });
-            //]]>   
-          </script>
-
-        <?php 
-
-        # Overlay opacity        
+        # Delay
         echo '<div class="ubivox-widget-field">';
         echo '<label for="'.$this->get_field_id("delay").'">Delay: <div style="float:right;margin-left:5px;margin-top:5px">sek</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('delay').'" name="'.$this->get_field_name('delay').'" value="'.esc_attr($delay).'"></label>';
         echo '</div>';
@@ -472,6 +481,10 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         echo '<label for="'.$this->get_field_id("border_size").'">Border Size: <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_size').'" name="'.$this->get_field_name('border_size').'" value="'.esc_attr($border_size).'"></label>';
         echo '</div>';
 
+        # Border Radius
+        echo '<div class="ubivox-widget-field">';
+        echo '<label for="'.$this->get_field_id("border_radius").'">Border Radius: <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_radius').'" name="'.$this->get_field_name('border_radius').'" value="'.esc_attr($border_radius).'"></label>';
+        echo '</div>';
 
         # Overlay active
         echo '<div class="ubivox-widget-field">';

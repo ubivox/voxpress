@@ -89,3 +89,6 @@
     font-family: sans-serif;
 }
 
+.wrap.voxpress tr:hover td{
+    background: #dbf5bc;
+}

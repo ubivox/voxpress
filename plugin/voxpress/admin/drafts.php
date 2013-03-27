@@ -3,7 +3,7 @@
   <div id="icon-edit-pages" class="icon32"><br></div>
 
   <h2><?php echo __('Drafts','voxpress') ?>
-    <a href="" class="button-primary">Create new newsletter</a>
+    <a href="https://<?php echo get_option("uvx_account_url"); ?>/admin/delivery/create/" target="_blank" class="button-primary">Create new newsletter</a>
   </h2>
 
   <br>

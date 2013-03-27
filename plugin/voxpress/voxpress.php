@@ -65,7 +65,7 @@ if (UBIVOX_API_CONFIGURED) {
     // Register public scripts
     // ------------------------------------------------------------------
     if (!is_admin()) {
-        wp_enqueue_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array( 'jquery', 'json2', 'jquery-ui-core', 'jquery-ui-position', 'jquery-effects-core', 'jquery-effects-slide'), $voxpress_version, true);
+        wp_enqueue_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array( 'jquery', 'json2', 'jquery-ui-core', 'jquery-ui-position', 'jquery-effects-core', 'jquery-effects-drop'), $voxpress_version, true);
         
 
         wp_localize_script("ubivox-public-script", "uvx_settings", array( 

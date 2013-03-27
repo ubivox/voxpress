@@ -9,23 +9,42 @@ add_action("admin_menu", "uvx_setup_menu");
 function uvx_setup_menu() {
 
     add_menu_page(
-        "Voxpress - Ubivox newsletters", 
+        "Newsletters", 
         "Newsletters",
         "manage_options",
         "voxpress",
-        "uvx_page",
+        "uvx_lists_page",
         plugins_url("/voxpress/images/icon-admin.png"),
         3
     );    
 
     add_submenu_page(
         "voxpress", 
-        "Voxpress - Dashboard",
-        "Dashboard", 
+        "Lists",
+        "Lists", 
         "manage_options", 
         "voxpress", 
-        "uvx_page"
+        "uvx_lists_page"
     );
+
+    add_submenu_page(
+        "voxpress", 
+        "Drafts",
+        "Drafts", 
+        "manage_options", 
+        "voxpress_drafts", 
+        "uvx_drafts_page"
+    );
+
+    add_submenu_page(
+        "voxpress", 
+        "Latest newsletters",
+        "Latest newsletters", 
+        "manage_options", 
+        "voxpress_latest", 
+        "uvx_latest_page"
+    );
+
 
     add_submenu_page(
         "voxpress", 
@@ -67,7 +86,7 @@ function uvx_setup_menu() {
 
 }
 
-function uvx_page() {
+function uvx_lists_page() {
 
     if (!current_user_can("manage_options")) {
         wp_die(__(
@@ -77,9 +96,38 @@ function uvx_page() {
 
     if (check_missing_config()) return;
 
-    require "overview.php";
+    require "lists.php";
 
 }
+
+function uvx_drafts_page() {
+
+    if (!current_user_can("manage_options")) {
+        wp_die(__(
+            "You do not have sufficient permissions to access this page."
+        ));
+    }    
+
+    if (check_missing_config()) return;
+
+    require "drafts.php";
+
+}
+
+function uvx_latest_page() {
+
+    if (!current_user_can("manage_options")) {
+        wp_die(__(
+            "You do not have sufficient permissions to access this page."
+        ));
+    }    
+
+    if (check_missing_config()) return;
+
+    require "latest.php";
+
+}
+
 
 function uvx_options_page() {
 
@@ -162,6 +210,7 @@ function check_missing_config() {
     // Register admin styles
     // ------------------------------------------------------------------
     function uvx_register_admin_styles() {    
+        wp_enqueue_style("simple-grid", plugins_url("voxpress/libs/simplegrid.css"), array(), $voxpress_version, false);
         wp_enqueue_style("ubivox-style-admin", plugins_url("voxpress/styles/ubivox.admin.css"), array(), $voxpress_version, false);
     }
 

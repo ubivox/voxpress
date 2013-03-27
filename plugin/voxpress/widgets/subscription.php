@@ -263,7 +263,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         if (isset($instance["background_color"])) {
             $background_color = $instance["background_color"];
         } else {
-            $background_color = "#f2f2f2";
+            $background_color = "transparent";
         }
 
         if (isset($instance["text_color"])) {
@@ -281,7 +281,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         if (isset($instance["border_size"])) {
             $border_size = $instance["border_size"];
         } else {
-            $border_size = "3";
+            $border_size = "0";
         }
 
         if (isset($instance["overlay_color"])) {
@@ -299,7 +299,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         if (isset($instance["delay"])) {
             $delay = $instance["delay"];
         } else {
-            $delay = "3";
+            $delay = "0";
         }
 
         if (isset($instance["repetition"])) {

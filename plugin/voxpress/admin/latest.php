@@ -47,8 +47,9 @@ try {
 
         <td class="right"><?php echo esc_html($d["clicks"]); ?></td>
 
-        <td class="right">
-          <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">View details</a>
+        <td class="right" style="white-space: nowrap">
+          <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">Details</a>
+          <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">Preview</a>
         </td>
 
       </tr>

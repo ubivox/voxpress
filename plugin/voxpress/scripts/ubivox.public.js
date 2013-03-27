@@ -47,13 +47,14 @@ var uvx = {
                 // Set classes
                 $widget.addClass('uvx_placement_' + data.placement);
                 $widget.addClass('uvx_effect_' + data.effect);
+                $widget.wrapInner('<div class="uvx_padding"></div>');
 
                 // Set styles
 
                     // Border width & Color
                     if (data.border_size != 0) {
                         $widget.css('border', data.border_size + "px solid " + data.border_color);
-                        $widget.addClass('uvx_border');
+                        $widget.addClass('uvx_border');                        
                     };
 
                     // Background Color
@@ -62,8 +63,8 @@ var uvx = {
 
 
                 // Handle placement position if not inline
-                if (data.placement != "inline") {
-                    
+                if (data.placement != "inline") {                
+
                     // Set position
                     switch(true)
                     {
@@ -94,7 +95,6 @@ var uvx = {
 
                     }
 
-
                     // Attach close button
                     var $btn_close = jQuery('<div class="uvx_close">X</div>');
                     $widget.append($btn_close);
@@ -104,7 +104,7 @@ var uvx = {
                     });
 
                     // Activate position on scroll and resize
-                    jQuery(window).bind('resize scroll', function(){
+                    jQuery(window).bind('resize', function(){
                         $widget.position({
                             my: my,
                             at: at,
@@ -170,11 +170,31 @@ var uvx = {
 
                         // Overlay
                         if ($overlay != null) {
-                            $overlay.fadeTo(800, data.overlay_opacity);
-                        };
+                            $overlay.fadeTo(800, data.overlay_opacity, function(){
 
-                        // Show widget
-                        $widget.fadeTo(800, 1);
+                                $widget.css({
+                                    opacity: 1,
+                                    display: "block",
+                                    visibility: "hidden"
+                                });
+
+                                jQuery(window).resize();
+
+                                $widget.css({
+                                    display: "none",
+                                    visibility: "visible"
+                                });
+
+                                // Show widget
+                                $widget.show('drop',{
+                                    direction: "up",
+                                    distance: 60
+                                }, 800);
+
+                            });
+                        };                        
+
+
 
                     break;
 

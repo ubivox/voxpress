@@ -82,16 +82,11 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    opacity: 0;
+    display: none;    
 }
 
 
-.widget_ubivox_subscription_widget.uvx_border,
-.widget_ubivox_subscription_widget.uvx_placement_center,
-.widget_ubivox_subscription_widget.uvx_placement_top,
-.widget_ubivox_subscription_widget.uvx_placement_right,
-.widget_ubivox_subscription_widget.uvx_placement_bottom,
-.widget_ubivox_subscription_widget.uvx_placement_left
+.uvx_padding
 {
     padding: 15px;
 }
@@ -103,10 +98,14 @@
 .widget_ubivox_subscription_widget.uvx_placement_left
 {
     z-index: 999999;
-    position: absolute;
+    position: fixed;
     margin: 0;
+    padding: 0;
     top: 0px;
     left: 0px;
+    min-width: 100px;
+    min-height: 100px;
+
 
 }
 

@@ -36,3 +36,56 @@
 .farbtastic{
     margin: auto;
 }
+
+.grid{
+    max-width: none;
+}
+
+.js .wrap.voxpress .postbox h3{
+    cursor: default;
+}
+
+
+.no-margin{
+    margin: 0 !important;
+}
+
+.no-margin-top{
+    margin-top: 0 !important;
+}
+
+.no-margin-bottom{
+    margin-bottom: 0 !important;
+}
+
+.no-margin-left{
+    margin-left: 0 !important;
+}
+
+.no-margin-right{
+    margin-right: 0 !important;
+}
+
+.center{
+    text-align: center !important;
+}
+
+.right{
+    text-align: right !important;
+}
+
+.left{
+    text-align: left !important;
+}
+
+.js .wrap.voxpress .widefat td{
+    vertical-align: middle;
+}
+
+.wrap.voxpress h2 a{
+    float:right; 
+    margin: 3px -15px 0 0;
+    color: #fff !important;
+    font-family: sans-serif;
+}
+

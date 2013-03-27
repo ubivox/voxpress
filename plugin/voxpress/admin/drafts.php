@@ -40,8 +40,9 @@ try {
     <td valign="center">
       <?php echo date("Y-m-d H:i:s", strtotime($d["edit_time"])); ?>
     </td>
-    <td class="right">
+    <td class="right" style="white-space: nowrap">
       <a href="<?php echo esc_attr($d["url"]); ?>" target="_blank" class="button-secondary">Edit newsletter</a>
+      <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">Preview</a>
     </td>
   </tr>
 

@@ -32,6 +32,8 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             "text_color":"'.$instance["text_color"].'",
             "border_color":"'.$instance["border_color"].'",
             "border_size":"'.$instance["border_size"].'",
+            "border_radius": '.$instance["border_radius"].',
+            "shadow": "'.$instance["shadow"].'",
             "overlay_color":"'.$instance["overlay_color"].'",
             "overlay_opacity":"'. (intval($instance["overlay_opacity"]) / 100) .'",
             "delay":"'.$instance["delay"].'",
@@ -157,6 +159,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         $instance["text_color"] = $new_instance["text_color"];
         $instance["border_color"] = $new_instance["border_color"];
         $instance["border_size"] = intval($new_instance["border_size"]);
+        $instance["shadow"] = $new_instance["shadow"];
         $instance["overlay_color"] = $new_instance["overlay_color"];
         $instance["overlay_opacity"] = intval($new_instance["overlay_opacity"]);
         $instance["delay"] = intval($new_instance["delay"]);
@@ -282,6 +285,12 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $border_size = $instance["border_size"];
         } else {
             $border_size = "0";
+        }
+
+        if (isset($instance["shadow"])) {
+            $shadow = $instance["shadow"];
+        } else {
+            $shadow = "yes";
         }
 
         if (isset($instance["overlay_color"])) {
@@ -411,7 +420,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         echo '<select style="width:90px; float:right" id="'.$this->get_field_id('placement').'" name="'.$this->get_field_name('placement').'">';
         
         $placement_options = array(
-            "inline" => __("Inline", voxpress),
+            "inline" => __("Inline", "voxpress"),
             "top" => __("Top", "voxpress"),
             "bottom" => __("Bottom", "voxpress"),
             "right" => __("Right", "voxpress"),
@@ -486,18 +495,18 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         echo '<label for="'.$this->get_field_id("border_radius").'">Border Radius: <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_radius').'" name="'.$this->get_field_name('border_radius').'" value="'.esc_attr($border_radius).'"></label>';
         echo '</div>';
 
-        # Overlay active
+        # shadow
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("overlay_active").'">Use Overlay:';
-        echo '<select style="width:60px; float:right" id="'.$this->get_field_id('overlay_active').'" name="'.$this->get_field_name('overlay_active').'">';
+        echo '<label for="'.$this->get_field_id("shadow").'">Shadow:';
+        echo '<select style="width:90px; float:right" id="'.$this->get_field_id('shadow').'" name="'.$this->get_field_name('shadow').'">';
         
-        $overlay_active_options = array(            
+        $shadow_options = array(
             "yes" => __("Yes", "voxpress"),
             "no" => __("No", "voxpress"),
         );
 
-        foreach ($overlay_active_options as $key => $label) {
-            if ($key == $overlay_active) {
+        foreach ($shadow_options as $key => $label) {
+            if ($key == $shadow) {
                 $default = ' selected="selected"';
             } else {
                 $default = "";
@@ -507,7 +516,6 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         echo '</select></label>';
         echo '</div>';
-
 
         # Overlay color
         echo '<div class="ubivox-widget-field">';
@@ -521,6 +529,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
 
         echo '</div>';
+        echo '<br />';
 
     }
 

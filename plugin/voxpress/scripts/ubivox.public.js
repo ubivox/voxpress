@@ -42,86 +42,96 @@ var uvx = {
             init: function(widget){
 
                 var $widget = jQuery(widget);
-                var data = $widget.find('form.ubivox_subscription').data('ubivox');
+                var settings = $widget.find('form.ubivox_subscription').data('ubivox');
 
                 // Set classes
-                $widget.addClass('uvx_placement_' + data.placement);
-                $widget.addClass('uvx_effect_' + data.effect);
+                $widget.addClass('uvx_placement_' + settings.placement);
+                $widget.addClass('uvx_effect_' + settings.effect);
                 $widget.wrapInner('<div class="uvx_padding"></div>');
 
                 // Set styles
 
                     // Border width & Color
-                    if (data.border_size != 0) {
-                        $widget.css('border', data.border_size + "px solid " + data.border_color);
+                    if (settings.border_size != 0) {
+                        $widget.css('border', settings.border_size + "px solid " + settings.border_color);
                         $widget.addClass('uvx_border');                        
                     };
 
+                    // Border radius
+                    if (settings.border_radius != 0) {
+                        $widget.css('border-radius', settings.border_radius);
+                        $widget.addClass('uvx_border_rounded');
+                    };
+
+                    // Shadow class
+                    if (settings.shadow == "yes" ) {                        
+                        $widget.addClass('uvx_shadow');                        
+                    };
+
                     // Background Color
-                    $widget.css('background', data.background_color);
-
-
+                    $widget.css('background', settings.background_color);
 
                 // Handle placement position if not inline
-                if (data.placement != "inline") {                
+                if (settings.placement != "inline") {                
 
                     // Set position
                     switch(true)
                     {
-                        case (data.placement == 'top' ):
+                        case (settings.placement == 'top' ):
                             var my = "center top";
                             var at = "center top";
+                            var direction = "up";
                         break;
 
-                        case (data.placement == 'right' ):
+                        case (settings.placement == 'right' ):
                             var my = "right center";
                             var at = "right center";
+                            var direction = "right";
                         break;
 
-                        case (data.placement == 'bottom' ):
+                        case (settings.placement == 'bottom' ):
                             var my = "center bottom";
                             var at = "center bottom";
+                            var direction = "down";
                         break;
 
-                        case (data.placement == 'left' ):
+                        case (settings.placement == 'left' ):
                             var my = "left center";
                             var at = "left center";
+                            var direction = "left";
                         break;
 
-                        case (data.placement == 'center' ):
+                        case (settings.placement == 'center' ):
                             var my = "center center";
                             var at = "center center";
+                            var direction = "up";
                         break;
 
                     }
 
-                    // Attach close button
-                    var $btn_close = jQuery('<div class="uvx_close">X</div>');
-                    $widget.append($btn_close);
-
-                    $btn_close.click(function(event) {
-                        uvx.widget.subscription.close(widget);
-                    });
-
-                    // Activate position on scroll and resize
-                    jQuery(window).bind('resize', function(){
-                        $widget.position({
-                            my: my,
-                            at: at,
-                            of: jQuery(window)
-                        })
-                    });
-
+                    $widget.data('ubivox_placement', {my: my, at: at, direction: direction});
+                
                     // Do initial placement
                     jQuery(window).resize();
                 
                 };
 
+                if (settings.block_text != "") {
+                    // Attach close button
+                    var $btn_close = jQuery('<a href="#" class="uvx_dont_show">'+ settings.block_text +'</a>');
+                    $widget.find('.ubivox_signup_button').after($btn_close);
+
+                    $btn_close.click(function(event) {
+                        uvx.widget.subscription.close(widget);
+                        event.preventDefault();
+                    });
+
+                };
 
                 // Show widget after selected delay
                 setTimeout(function() {
                     uvx.widget.subscription.show(widget);
-                }, data.delay * 1000);
+                }, settings.delay * 1000);
 
 
             },
@@ -129,15 +139,16 @@ var uvx = {
             show: function(widget){
 
                 var $widget = jQuery(widget);
-                var data = $widget.find('form.ubivox_subscription').data('ubivox');
+                var settings = $widget.find('form.ubivox_subscription').data('ubivox');
+                var placement = $widget.data('ubivox_placement');
 
                 // Attach and activate overlay
-                if (data.overlay_opacity != 0 && data.placement != 'inline') {
+                if (settings.overlay_opacity != 0 && settings.placement != 'inline') {
 
                     var $overlay = jQuery('<div class="uvx_overlay"></div>');
 
                     $overlay.css({
-                        background: data.overlay_color
+                        background: settings.overlay_color
                     });
 
                     jQuery('body').append($overlay);
@@ -152,13 +163,28 @@ var uvx = {
                 };
 
 
-                switch(data.effect)
+                if (settings.placement != "inline") {
+                    // Activate position on scroll and resize
+                    jQuery(window).bind('resize', function(){
+                        $widget.position({
+                            my: placement.my,
+                            at: placement.at,
+                            of: jQuery(window)
+                        })
+                    });
+
+                    jQuery(window).resize();                    
+                };
+
+
+                // Choose effect
+                switch(settings.effect)
                 {
                     case("fade"):
 
                         // Overlay
                         if ($overlay != null) {
-                            $overlay.fadeTo(800, data.overlay_opacity);
+                            $overlay.fadeTo(800, settings.overlay_opacity);
                         };
 
                         // Show widget
@@ -168,33 +194,35 @@ var uvx = {
 
                     case("slide"):
 
+                        if (typeof(placement) == 'undefined') {
+                            var placement = {
+                                direction : "up"
+                            };
+                        };
+
                         // Overlay
                         if ($overlay != null) {
-                            $overlay.fadeTo(800, data.overlay_opacity, function(){
+                            $overlay.fadeTo(800, settings.overlay_opacity);                            
+                        };
 
-                                $widget.css({
-                                    opacity: 1,
-                                    display: "block",
-                                    visibility: "hidden"
-                                });
+                        $widget.css({
+                            opacity: 1,
+                            display: "block",
+                            visibility: "hidden"
+                        });
 
-                                jQuery(window).resize();
+                        jQuery(window).resize();
 
-                                $widget.css({
-                                    display: "none",
-                                    visibility: "visible"
-                                });
+                        $widget.css({
+                            display: "none",
+                            visibility: "visible"
+                        });
 
-                                // Show widget
-                                $widget.show('drop',{
-                                    direction: "up",
-                                    distance: 60
-                                }, 800);
-
-                            });
-                        };                        
-
-
+                        // Show widget
+                        $widget.show('drop',{
+                            direction: placement.direction,
+                            distance: 60
+                        }, 800);
 
                     break;
 
@@ -202,7 +230,7 @@ var uvx = {
 
                         // Overlay
                         if ($overlay != null) {
-                            $overlay.css('opacity', data.overlay_opacity);
+                            $overlay.css('opacity', settings.overlay_opacity);
                         };
 
                         // Show widget
@@ -377,7 +405,7 @@ var uvx = {
             list_id: $form.find("input[name=list_id]").val(),
         };
 
-        var data = {};
+        var settings = {};
 
         $form.find(".uvx_input").each(function () {
 
@@ -385,36 +413,36 @@ var uvx = {
             var $input = $p.find("input");
 
             if ($p.hasClass("uvx_text")) {
-                data[$input.attr("name")] = $input.val();
+                settings[$input.attr("name")] = $input.val();
                 return;
             }
 
             if ($p.hasClass("uvx_textarea")) {
                 var $textarea = $p.find("textarea");
-                data[$textarea.attr("name")] = $textarea.val();
+                settings[$textarea.attr("name")] = $textarea.val();
                 return;
             }
 
             if ($p.hasClass("uvx_checkbox") && $p.find("input:checked").length > 0) {
-                data[$input.attr("name")] = "True";
+                settings[$input.attr("name")] = "True";
                 return;
             }
 
             if ($p.hasClass("uvx_select")) {
                 var $select = $p.find("select");
-                data[$select.attr("name")] = $select.val();
+                settings[$select.attr("name")] = $select.val();
                 return;
             }
 
             if ($p.hasClass("uvx_select_multiple")) {
                 var $select = $p.find("select");
-                data[$select.attr("name")] = $select.val().join(",");
+                settings[$select.attr("name")] = $select.val().join(",");
                 return;
             }
 
             if ($p.hasClass("uvx_select_radio")) {
                 var $input = $p.find("input:checked");
-                data[$input.attr("name")] = $input.val();
+                settings[$input.attr("name")] = $input.val();
                 return;
             }
 
@@ -426,14 +454,14 @@ var uvx = {
                     checked.push(jQuery(e).val());
                 });
 
-                data[$input.attr("name")] = checked.join(",");
+                settings[$input.attr("name")] = checked.join(",");
 
                 return;
             }
 
         });
 
-        params["data"] = JSON.stringify(data);
+        params["settings"] = JSON.stringify(settings);
 
         jQuery.post(uvx_settings.ajaxurl, params, function(response) {
             if (response["status"] == "ok") {

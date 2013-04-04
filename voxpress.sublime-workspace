@@ -44,34 +44,58 @@
 	"buffers":
 	[
 		{
-			"file": "plugin/voxpress/widgets/subscription.php",
-			"settings":
-			{
-				"buffer_size": 21297,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "plugin/voxpress/scripts/ubivox.public.js",
 			"settings":
 			{
-				"buffer_size": 12963,
+				"buffer_size": 13766,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "plugin/voxpress/styles/ubivox.public.css",
+			"file": "plugin/voxpress/admin/init.php",
 			"settings":
 			{
-				"buffer_size": 2734,
+				"buffer_size": 4874,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "plugin/voxpress/voxpress.php",
+			"file": "plugin/voxpress/admin/drafts.php",
 			"settings":
 			{
-				"buffer_size": 2898,
+				"buffer_size": 1354,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "plugin/voxpress/admin/latest.php",
+			"settings":
+			{
+				"buffer_size": 1484,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "plugin/voxpress/admin/lists.php",
+			"settings":
+			{
+				"buffer_size": 1375,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "plugin/voxpress/widgets/subscription.php",
+			"settings":
+			{
+				"buffer_size": 21301,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "plugin/voxpress/styles/ubivox.admin.css",
+			"settings":
+			{
+				"buffer_size": 1301,
 				"line_ending": "Unix"
 			}
 		}
@@ -79,16 +103,16 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 329.0,
+		"height": 392.0,
 		"selected_items":
 		[
 			[
-				"packa",
-				"Package Control: Upgrade Package"
-			],
-			[
 				"pac",
 				"Package Control: List Packages"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
 			],
 			[
 				"pack",
@@ -115,7 +139,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 575.0
 	},
 	"console":
 	{
@@ -132,16 +156,18 @@
 	},
 	"file_history":
 	[
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/overview.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/lists.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/voxpress.php",
+		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles/ubivox.public.css",
 		"/Volumes/Ubivox Dev/projects/ubivox/enterprise/templates/base_content.html",
 		"/Volumes/Ubivox Dev/.profile",
 		"/Users/oscar/Downloads/wordpress/wp-admin/css/wp-admin.min.css",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/scripts/ubivox.public.js",
-		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/overview.php",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/help.php",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/javascript.php",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles/ubivox.admin.css",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/archive.php",
-		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/voxpress.php",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/admin/init.php",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles.php",
 		"/Volumes/Ubivox Dev/projects/voxpress/plugin/voxpress/styles/ubivox.client.css",
@@ -257,9 +283,7 @@
 		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/editor/blocks.text.json",
 		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/editor/columns.default.json",
 		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/section.html",
-		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/block.content.html",
-		"/Volumes/Ubivox Dev (2)/enterprise/mailer/delivery/templates.py",
-		"/Volumes/Ubivox Dev (2)/enterprise/mailer/views/delivery.py"
+		"/Volumes/Ubivox Dev (2)/themes/default/deliveries/default/macros/block.content.html"
 	],
 	"find":
 	{
@@ -278,6 +302,7 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"padding",
 			"delay",
 			"uvx.widget.data.",
 			"ubivox.",
@@ -404,11 +429,10 @@
 			".growl",
 			"growl",
 			".box{",
-			".box",
-			"alert"
+			".box"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -476,23 +500,185 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "plugin/voxpress/widgets/subscription.php",
+					"file": "plugin/voxpress/scripts/ubivox.public.js",
 					"settings":
 					{
-						"buffer_size": 21297,
+						"buffer_size": 13766,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								17661,
-								17661
+								3857,
+								3857
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/jQuery/Syntaxes/jQueryJavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 23.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "plugin/voxpress/admin/init.php",
+					"settings":
+					{
+						"buffer_size": 4874,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								532
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "plugin/voxpress/admin/drafts.php",
+					"settings":
+					{
+						"buffer_size": 1354,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1039,
+								1085
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "plugin/voxpress/admin/latest.php",
+					"settings":
+					{
+						"buffer_size": 1484,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								202,
+								202
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "plugin/voxpress/admin/lists.php",
+					"settings":
+					{
+						"buffer_size": 1375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								172,
+								172
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "plugin/voxpress/widgets/subscription.php",
+					"settings":
+					{
+						"buffer_size": 21301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1986,
+								1987
 							]
 						],
 						"settings":
@@ -505,56 +691,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 6266.0,
+						"translation.y": 4156.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "plugin/voxpress/scripts/ubivox.public.js",
+					"buffer": 6,
+					"file": "plugin/voxpress/styles/ubivox.admin.css",
 					"settings":
 					{
-						"buffer_size": 12963,
+						"buffer_size": 1301,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5981,
-								5981
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2494.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "plugin/voxpress/styles/ubivox.public.css",
-					"settings":
-					{
-						"buffer_size": 2734,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2492,
-								2492
+								781,
+								781
 							]
 						],
 						"settings":
@@ -567,47 +722,11 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 884.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "plugin/voxpress/voxpress.php",
-					"settings":
-					{
-						"buffer_size": 2898,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2812,
-								2812
-							]
-						],
-						"settings":
-						{
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML5/Syntaxes/HTML 5.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 499.0,
+						"translation.y": 615.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				}
-			]
-		},
-		{
-			"sheets":
-			[
 			]
 		}
 	],
@@ -639,7 +758,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.350058583241,
 			1.0
 		],
 		"rows":

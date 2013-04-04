@@ -1,9 +1,5 @@
 
 
-#ubivox_overlay{
-    background: transparent url(/wp-content/plugins/voxpress/images/overlay_black.png) repeat top left;
-}
-
 #ubivox_popup{
     position: absolute;
     top: 0;

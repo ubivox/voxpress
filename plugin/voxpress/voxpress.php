@@ -32,6 +32,8 @@ define(
 
 define("UBIVOX_API_CONFIGURED", (bool) get_option("uvx_api_url"));
 
+define("UBIVOX_HAS_WOOCOMMERCE", in_array("woocommerce/woocommerce.php", apply_filters("active_plugins", get_option("active_plugins"))));
+
 ###############################################################################
 # Widgets
 ###############################################################################

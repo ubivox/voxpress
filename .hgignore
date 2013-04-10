@@ -1,5 +1,7 @@
 syntax: glob
 
+public_html
+
 *.pyc
 *.esproj
 *.o

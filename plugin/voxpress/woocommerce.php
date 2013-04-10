@@ -1,14 +1,102 @@
 <?php
 
 function ubivox_wc_subscription_checkbox() {
-    
-    echo '<p class="form-row">';
-    echo '<input class="input-checkbox" id="subscription-box" type="checkbox" name="subscribe_newsletter" value="1"> <label for="subscribe_newsletter" class="checkbox">Want to sign up for our newsletter?</label>';
-    echo '</p>';
+
+    $maillist_id = get_option("ubivox_ecommerce_maillist_id", 0);
+    if (!$maillist_id) return;
+
+    woocommerce_form_field(
+        "ux_subscribe", 
+        array("type" => "checkbox", "class" => array("form-row-wide"), "label" => "Want to signup for our newsletter?"), 
+        0
+    );
+
+    echo "<div class=\"clear\"></div>";
+
+}
+
+function ubivox_wc_subscription_process($order_id, $data) {
+
+    $maillist_id = get_option("ubivox_ecommerce_maillist_id", 0);
+    if (!$maillist_id) return;
+
+    if (!isset($_POST["ux_subscribe"])) {
+        return;
+    }
+
+    try {
+        $api = new UbivoxAPI();
+        $api->call("ubivox.create_subscription", array($data["billing_email"], array($maillist_id), true));
+    } catch (UbivoxAPIException $e) {
+        return;
+    }
+
+}
+
+function ubivox_wc_subscription_process_ppe($order) {
+
+    $maillist_id = get_option("ubivox_ecommerce_maillist_id", 0);
+    if (!$maillist_id) return;
+
+    if (!isset($_POST["ux_subscribe"])) {
+        return;
+    }
+
+    try {
+        $api = new UbivoxAPI();
+        $api->call("ubivox.create_subscription", array($order->billing_email, array($maillist_id), true));
+    } catch (UbivoxAPIException $e) {
+        return;
+    }
+
+    $order->add_order_note(__("Subscription created for user through PayPal Express page.", "voxpress"));
+
+}
+
+function ubivox_wc_subscription_process_register($user_login, $user_email, $errors) {
+
+    $maillist_id = get_option("ubivox_ecommerce_maillist_id", 0);
+    if (!$maillist_id) return;
+
+    if (!isset($_POST["ux_subscribe"])) {
+        return;
+    }
+
+    try {
+        $api = new UbivoxAPI();
+        $api->call("ubivox.create_subscription", array($user_email, array($maillist_id), true));
+    } catch (UbivoxAPIException $e) {
+        return;
+    }
+
+}
+
+function ubivox_wc_sales_tracking($order_id) {
+
+    $target_id = get_option("ubivox_ecommerce_target_id", 0);
+    if (!$target_id) return;
+
+    $order = new WC_Order($order_id);
+
+    echo '<img src="'.UBIVOX_BASE_URL.'/target/'.$target_id.'/?'.
+        'st_revenue='.$order->get_total().'&amp;'.
+        'st_quantity='.$order->get_item_count().'&amp;'.
+        'st_currency='.strtoupper(get_woocommerce_currency()).'&amp;'.
+        'st_reference='.$order_id.'" height="1" width="1">';
 
 }
 
 if (get_option("uvx_wc_integration")) {
-    add_action("woocommerce_checkout_after_customer_details", "ubivox_wc_subscription_checkbox");
+
+    add_action("woocommerce_checkout_after_customer_details", "ubivox_wc_subscription_checkbox", 5);
+    add_action("woocommerce_ppe_checkout_order_review", "ubivox_wc_subscription_checkbox", 5);
+    add_action("register_form", "ubivox_wc_subscription_checkbox");
+
+    add_action("woocommerce_checkout_order_processed", "ubivox_wc_subscription_process", 5, 2 );
+    add_action("woocommerce_ppe_do_payaction", "ubivox_wc_subscription_process_ppe", 5, 1 );
+    add_action("register_post", "ubivox_wc_subscription_process_register", 5, 3);
+
+    add_action("woocommerce_thankyou", "ubivox_wc_sales_tracking");
+
 }
 

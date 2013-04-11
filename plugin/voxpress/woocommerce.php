@@ -1,5 +1,45 @@
 <?php
 
+function ubivox_wc_user_data($user_id) {
+
+    $data = array();
+    $mapping = get_option("ubivox_data_field_mapping", array());
+    $meta = get_user_meta($user_id);
+
+    foreach ($mapping as $ubivox_key => $wc_key) {
+        $data[$ubivox_key] = $meta[$wc_key][0];
+    }
+
+    return $data;
+
+}
+
+function ubivox_create_subscription($email, $maillist_id) {
+
+    $data = ubivox_wc_user_data(get_current_user_id());
+
+    $api = new UbivoxAPI();
+
+    try {
+        $api->call("ubivox.create_subscription", array($email, array($maillist_id), true));
+    } catch (UbivoxAPIError $e) {
+        # invalid e-mail address
+        # already subscribed
+        # invalid mailing list
+        # opt-in not configured
+        return;
+    }
+
+    try {
+        $api->call("ubivox.set_subscriber_data", array($email, $data));
+    } catch (UbivoxAPIError $e) {
+        # invalid e-mail address
+        # invalid data field
+        return;
+    }
+
+}
+
 function ubivox_wc_subscription_checkbox() {
 
     $maillist_id = get_option("ubivox_ecommerce_maillist_id", 0);
@@ -24,12 +64,7 @@ function ubivox_wc_subscription_process($order_id, $data) {
         return;
     }
 
-    try {
-        $api = new UbivoxAPI();
-        $api->call("ubivox.create_subscription", array($data["billing_email"], array($maillist_id), true));
-    } catch (UbivoxAPIException $e) {
-        return;
-    }
+    ubivox_create_subscription($data["billing_email"], $maillist_id);
 
 }
 
@@ -42,12 +77,7 @@ function ubivox_wc_subscription_process_ppe($order) {
         return;
     }
 
-    try {
-        $api = new UbivoxAPI();
-        $api->call("ubivox.create_subscription", array($order->billing_email, array($maillist_id), true));
-    } catch (UbivoxAPIException $e) {
-        return;
-    }
+    ubivox_create_subscription($order->billing_email, $maillist_id);
 
     $order->add_order_note(__("Subscription created for user through PayPal Express page.", "voxpress"));
 
@@ -62,12 +92,7 @@ function ubivox_wc_subscription_process_register($user_login, $user_email, $erro
         return;
     }
 
-    try {
-        $api = new UbivoxAPI();
-        $api->call("ubivox.create_subscription", array($user_email, array($maillist_id), true));
-    } catch (UbivoxAPIException $e) {
-        return;
-    }
+    ubivox_create_subscription($user_email, $maillist_id);
 
 }
 

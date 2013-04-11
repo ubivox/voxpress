@@ -7,8 +7,8 @@ function ubivox_wc_subscription_checkbox() {
 
     woocommerce_form_field(
         "ux_subscribe", 
-        array("type" => "checkbox", "class" => array("form-row-wide"), "label" => "Want to signup for our newsletter?"), 
-        0
+        array("type" => "checkbox", "class" => array("form-row-wide"), "label" => get_option("ubivox_ecommerce_subscribe_label", "Subscribe to our newsletter?")), 
+        get_option("ubivox_ecommerce_subscribe_initial", 0)
     );
 
     echo "<div class=\"clear\"></div>";

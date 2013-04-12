@@ -155,21 +155,6 @@ function uvx_help_page() {
 }
 
 
-function uvx_woocommerce_page() {
-
-    if (!current_user_can("manage_options")) {
-        wp_die(__(
-            "You do not have sufficient permissions to access this page."
-        ));
-    }    
-
-    if (check_missing_config()) return;
-
-    require "woocommerce.php";
-
-}
-
-
 function uvx_ecommerce_page() {
 
     if (!current_user_can("manage_options")) {

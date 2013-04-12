@@ -28,7 +28,7 @@ $subscribe_initial = get_option("ubivox_ecommerce_subscribe_initial", 0);
 
 <div class="wrap">
 
-<h2>E-Commerce Integration</h2>
+<h2>E-commerce Integration</h2>
 
 <?php if ($saved) { ?>
 <div class="updated"><p><strong>Options Saved</strong></p></div>
@@ -97,5 +97,16 @@ $subscribe_initial = get_option("ubivox_ecommerce_subscribe_initial", 0);
 </p>
 
 </form>
+
+<hr />
+
+<h3>Supported e-commerce platforms</h3>
+
+<table style="border: 1px solid #ddd;">
+  <tr>
+    <th style="border-right: 1px solid #ddd; padding: 10px;">WooCommerce</th>
+    <th style="padding: 10px;"><?php echo UBIVOX_HAS_WOOCOMMERCE ? "<span style='color: darkgreen'>Detected</span>" : "<span style='color: grey'>Not found</span>"; ?></th>
+  </tr>
+</table>
 
 </div>

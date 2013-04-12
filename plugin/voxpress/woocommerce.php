@@ -111,7 +111,7 @@ function ubivox_wc_sales_tracking($order_id) {
 
 }
 
-if (get_option("uvx_wc_integration")) {
+if (UBIVOX_HAS_WOOCOMMERCE) {
 
     add_action("woocommerce_checkout_after_customer_details", "ubivox_wc_subscription_checkbox", 5);
     add_action("woocommerce_ppe_checkout_order_review", "ubivox_wc_subscription_checkbox", 5);

@@ -5,9 +5,6 @@ var uvx = {
     // Initialize plugin
     init: function(){
 
-        // Hook subscription form to Ajax
-        jQuery("form.uvx_subscription").submit(uvx.subscribe);
-
         // Hook unsubscription form to Ajax
         jQuery("form.uvx_unsubscription").submit(uvx.unsubscribe);
 
@@ -74,6 +71,12 @@ var uvx = {
                 // Handle placement position if not inline
                 if (settings.placement != "inline") {                
 
+                    // Set class
+                    $widget.addClass('uvx_not_inline');
+
+                    // Set width
+                    $widget.css('width', settings.width);
+
                     // Set position
                     switch(true)
                     {
@@ -116,22 +119,19 @@ var uvx = {
                 
                 };
 
-                if (settings.block_text != "") {
-                    // Attach close button
-                    var $btn_close = jQuery('<a href="#" class="uvx_dont_show">'+ settings.block_text +'</a>');
-                    $widget.find('.ubivox_signup_button').after($btn_close);
-
-                    $btn_close.click(function(event) {
+                $widget.find('.uvx_link_hide').click(function(event) {
                         uvx.widget.subscription.close(widget);
                         event.preventDefault();
                     });
-
-                };
 
                 // Show widget after selected delay
                 setTimeout(function() {
                     uvx.widget.subscription.show(widget);
                 }, settings.delay * 1000);
+
+                // Hook subscription form to Ajax
+                $widget.find('form').submit(uvx.subscribe);
+
 
 
             },
@@ -245,13 +245,46 @@ var uvx = {
             close: function(widget){
 
                 var $widget = jQuery(widget);
+                var settings = $widget.find('form.ubivox_subscription').data('ubivox');
 
-                $widget.fadeTo(800, 0);
+                switch(settings.effect)
+                {
+                    case("fade"):
+                        $widget.fadeTo(800, 0, function(){
+                            jQuery(this).remove();
+                        });
 
-                // Remove overlay
-                jQuery('.uvx_overlay').fadeTo(800, 0, function(){
-                    jQuery(this).remove();
-                });
+                        // Remove overlay
+                        jQuery('.uvx_overlay').fadeTo(800, 0, function(){
+                            jQuery(this).remove();
+                        });
+                    break;
+
+                    case("slide"):
+
+                        // Show widget
+                        $widget.hide('drop',{
+                            direction: 'down',
+                            distance: 60
+                        }, 800, function(){
+                            $widget.remove();
+                        });
+
+                        // Remove overlay
+                        jQuery('.uvx_overlay').fadeTo(800, 0, function(){
+                            jQuery(this).remove();
+                        });
+                    break;
+
+                    default:
+                        $widget.hide();
+                        $widget.remove();
+
+                        jQuery('.uvx_overlay').hide();
+                        jQuery('.uvx_overlay').remove();
+
+                }
+
 
 
 
@@ -387,11 +420,12 @@ var uvx = {
     },
 
     // Handle ajax subscription
-    subscribe: function(){
+    subscribe: function(event){
 
         event.preventDefault();
 
         var $form = jQuery(this);
+        var $widget = $form.parents('.widget_ubivox_subscription_widget');        
 
         if ($form.find(".uvx_signup_button").attr("disabled")) {
             return;
@@ -400,7 +434,7 @@ var uvx = {
         $form.find(".uvx_signup_button").attr("disabled", true);
 
         var params = {
-            action: "uvx_subscribe",
+            action: "ubivox_subscribe",
             email_address: $form.find("input[name=email_address]").val(),
             list_id: $form.find("input[name=list_id]").val(),
         };
@@ -465,13 +499,18 @@ var uvx = {
 
         jQuery.post(uvx_settings.ajaxurl, params, function(response) {
             if (response["status"] == "ok") {
-                var $success_text = $form.next();
-                $form.hide();
+                var $success_text = $widget.find('.uvx_success_text')
+                $widget.find('.uvx_signup_button').add($widget.find('.uvx_link_block')).add($widget.find('.uvx_description')).add($widget.find('.uvx_form_fields')).hide();
                 $success_text.show();
+                $widget.addClass('uvx_submit_success');
             } else {
                 alert(response["message"]);
+                $form.find(".uvx_signup_button").attr("disabled", false);
             }
-        });
+
+
+
+        }, 'json');
 
     },
 
@@ -489,7 +528,7 @@ var uvx = {
         $form.find(".uvx_signout_button").attr("disabled", true);
 
         var params = {
-            action: "uvx_unsubscribe",
+            action: "ubivox_unsubscribe",
             email_address: $form.find("input[name=email_address]").val(),
             list_id: $form.find("input[name=list_id]").val(),
         };

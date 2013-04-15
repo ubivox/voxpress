@@ -37,6 +37,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             "border_size":"'.$instance["border_size"].'",
             "border_radius": '.$instance["border_radius"].',
             "width": "'.$instance["width"].'",
+            "padding": "'.$instance["padding"].'",
             "shadow": "'.$instance["shadow"].'",
             "overlay_color":"'.$instance["overlay_color"].'",
             "overlay_opacity":"'. (intval($instance["overlay_opacity"]) / 100) .'",
@@ -170,6 +171,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         $instance["placement"] = $new_instance["placement"];
         $instance["effect"] = $new_instance["effect"];
         $instance["width"] = $new_instance["width"];
+        $instance["padding"] = $new_instance["padding"];
         $instance["border_radius"] = $new_instance["border_radius"];
         $instance["background_color"] = $new_instance["background_color"];        
         $instance["text_color"] = $new_instance["text_color"];
@@ -291,6 +293,11 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $width = "400px";
         }        
 
+        if (isset($instance["padding"])) {
+            $padding = $instance["padding"];
+        } else {
+            $padding = "0";
+        }        
 
         if (isset($instance["background_color"])) {
             $background_color = $instance["background_color"];
@@ -532,6 +539,11 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         # Width
         echo '<div class="ubivox-widget-field">';
         echo '<label for="'.$this->get_field_id("width").'">'. __("Width (when not inline)", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px"></div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('width').'" name="'.$this->get_field_name('width').'" value="'.esc_attr($width).'"></label>';
+        echo '</div>';
+
+        # Padding
+        echo '<div class="ubivox-widget-field">';
+        echo '<label for="'.$this->get_field_id("padding").'">'. __("Padding", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('padding').'" name="'.$this->get_field_name('padding').'" value="'.esc_attr($padding).'"></label>';
         echo '</div>';
 
         # shadow

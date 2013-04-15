@@ -60,6 +60,11 @@ var uvx = {
                         $widget.addClass('uvx_border_rounded');
                     };
 
+                    // Padding
+                    if (settings.padding != 0) {
+                        $widget.find('.uvx_padding').css('padding', settings.padding);
+                    };
+
                     // Shadow class
                     if (settings.shadow == "yes" ) {                        
                         $widget.addClass('uvx_shadow');                        
@@ -75,8 +80,10 @@ var uvx = {
                     $widget.addClass('uvx_not_inline');
 
                     // Set width
-                    $widget.css('width', settings.width);
-
+                    if (settings.width != "") {
+                        $widget.css('width', settings.width);    
+                    };
+                    
                     // Set position
                     switch(true)
                     {
@@ -500,9 +507,15 @@ var uvx = {
         jQuery.post(uvx_settings.ajaxurl, params, function(response) {
             if (response["status"] == "ok") {
                 var $success_text = $widget.find('.uvx_success_text')
-                $widget.find('.uvx_signup_button').add($widget.find('.uvx_link_block')).add($widget.find('.uvx_description')).add($widget.find('.uvx_form_fields')).hide();
-                $success_text.show();
-                $widget.addClass('uvx_submit_success');
+                $widget.find('.uvx_signup_button').add($widget.find('.uvx_link_block')).add($widget.find('.uvx_description')).add($widget.find('.uvx_form_fields')).fadeOut(500, function(){
+                    $widget.addClass('uvx_submit_success');
+                    $success_text.show();
+
+                    if ($widget.hasClass('uvx_placement_inline')) {
+                        $widget.find('.uvx_button_row').hide();
+                    };
+                });
+
             } else {
                 alert(response["message"]);
                 $form.find(".uvx_signup_button").attr("disabled", false);

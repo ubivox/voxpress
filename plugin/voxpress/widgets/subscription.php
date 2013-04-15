@@ -20,12 +20,15 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             echo $args["before_title"].$title.$args["after_title"];
         }
 
-        echo '<p>';
+        echo '<p class="uvx_description">';
         echo $instance["description"];
         echo '</p>';
 
+        echo '<p class="uvx_success_text" style="display: none;">';
+        echo esc_html($instance["success_text"]);
+        echo '</p>';
+
         echo '<form method="POST" class="ubivox_subscription" data-ubivox=\'{        
-            "block_text":"'.esc_html($instance["block_text"]).'",
             "placement":"'.$instance["placement"].'",
             "effect":"'.$instance["effect"].'",
             "background_color":"'.$instance["background_color"].'",
@@ -33,6 +36,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             "border_color":"'.$instance["border_color"].'",
             "border_size":"'.$instance["border_size"].'",
             "border_radius": '.$instance["border_radius"].',
+            "width": "'.$instance["width"].'",
             "shadow": "'.$instance["shadow"].'",
             "overlay_color":"'.$instance["overlay_color"].'",
             "overlay_opacity":"'. (intval($instance["overlay_opacity"]) / 100) .'",
@@ -41,6 +45,8 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         }\'>';
 
         echo '<input type="hidden" name="list_id" value="'.intval($instance["list_id"]).'">';
+
+        echo '<div class="uvx_form_fields">';
 
         echo '<p>';
         echo '<label for="'.$this->get_field_id("email_address").'">E-mail:</label><br>';
@@ -53,7 +59,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
                 continue;
             }
 
-            echo '<p class="ubivox_input ubivox_'.$field["datatype"].'">';
+            echo '<p class="uvx_input uvx_'.$field["datatype"].'">';
 
             switch ($field["datatype"]) {
 
@@ -129,15 +135,23 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         }
 
-        echo '<p>';
-        echo '<button class="ubivox_signup_button">'.$instance["button_text"].'</button>';
-        echo '</p>';
+        echo '</div>';
+
+        echo '<div class="uvx_button_row">';
+        echo '<button class="uvx_signup_button">'.$instance["button_text"].'</button>';
+
+        if ($instance["hide_text"]) {
+            echo '<a href="#" class="uvx_link_hide">'. $instance["hide_text"] .'</a>';
+        };
+
+        if ($instance["block_text"]) {
+            echo '<a href="#" class="uvx_link_block">'. $instance["block_text"] .'</a>';
+        };
+        
+
+        echo '</div>';
 
         echo '</form>';
-
-        echo '<p class="success_text" style="display: none;">';
-        echo esc_html($instance["success_text"]);
-        echo '</p>';
 
         echo $args["after_widget"];
     }
@@ -148,12 +162,14 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         $instance["description"] = strip_tags($new_instance["description"]);
         $instance["list_id"] = intval($new_instance["list_id"]);
+        $instance["title"] = strip_tags($new_instance["title"]);
+        $instance["hide_text"] = strip_tags($new_instance["hide_text"]);
         $instance["block_text"] = strip_tags($new_instance["block_text"]);
         $instance["button_text"] = strip_tags($new_instance["button_text"]);
-        $instance["title"] = strip_tags($new_instance["title"]);
         $instance["success_text"] = strip_tags($new_instance["success_text"]);
         $instance["placement"] = $new_instance["placement"];
         $instance["effect"] = $new_instance["effect"];
+        $instance["width"] = $new_instance["width"];
         $instance["border_radius"] = $new_instance["border_radius"];
         $instance["background_color"] = $new_instance["background_color"];        
         $instance["text_color"] = $new_instance["text_color"];
@@ -221,6 +237,12 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $block_text = __("Don't show this again", "voxpress");
         }
 
+        if (isset($instance["hide_text"])) {
+            $hide_text = $instance["hide_text"];
+        } else {
+            $hide_text = __("Hide", "voxpress");
+        }
+
         if (isset($instance["button_text"])) {
             $button_text = $instance["button_text"];
         } else {
@@ -263,6 +285,13 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $border_radius = "3";
         }        
 
+        if (isset($instance["width"])) {
+            $width = $instance["width"];
+        } else {
+            $width = "400px";
+        }        
+
+
         if (isset($instance["background_color"])) {
             $background_color = $instance["background_color"];
         } else {
@@ -290,7 +319,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         if (isset($instance["shadow"])) {
             $shadow = $instance["shadow"];
         } else {
-            $shadow = "yes";
+            $shadow = "no";
         }
 
         if (isset($instance["overlay_color"])) {
@@ -320,19 +349,19 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         // Title
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("title").'">Title:</label>';
+        echo '<label for="'.$this->get_field_id("title").'">'. __("Title", "voxpress") .':</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.esc_attr($title).'">';
         echo '</div>';
 
         // Description
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("description").'">Description:</label>';
+        echo '<label for="'.$this->get_field_id("description").'">'. __("Description", "voxpress") .':</label>';
         echo '<textarea class="widefat" style="height:100px" id="'.$this->get_field_id('description').'" name="'.$this->get_field_name('description').'">'.esc_html($description).'</textarea>';
         echo '</div>';
 
         // Select list
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("list_id").'">List:';
+        echo '<label for="'.$this->get_field_id("list_id").'">'. __("List", "voxpress") .':';
         echo '<select class="widefat" style="width:150px;float:right" id="'.$this->get_field_id('list_id').'" name="'.$this->get_field_name('list_id').'">';
         
         foreach ($lists as $l) {
@@ -364,26 +393,31 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         // Button text
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("button_text").'">Button text:</label>';
+        echo '<label for="'.$this->get_field_id("button_text").'">'. __("Subscribe text", "voxpress") .':</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('button_text').'" name="'.$this->get_field_name('button_text').'" value="'.esc_attr($button_text).'">';
+        echo '</div>';
+
+        // Hide text
+        echo '<div class="ubivox-widget-field">';
+        echo '<label for="'.$this->get_field_id("hide_text").'">'. __("Hide button text", "voxpress") .':</label>';
+        echo '<input type="text" class="widefat" id="'.$this->get_field_id('hide_text').'" name="'.$this->get_field_name('hide_text').'" value="'.esc_attr($hide_text).'">';
         echo '</div>';
 
         // Block text
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("block_text").'">Block text:</label>';
+        echo '<label for="'.$this->get_field_id("block_text").'">'. __("Block button text", "voxpress") .':</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('block_text').'" name="'.$this->get_field_name('block_text').'" value="'.esc_attr($block_text).'">';
         echo '</div>';
 
-
         // Success text
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("success_text").'">Success text:</label>';
+        echo '<label for="'.$this->get_field_id("success_text").'">'. __("Success text", "voxpress") .':</label>';
         echo '<textarea class="widefat" style="height:100px" id="'.$this->get_field_id('success_text').'" name="'.$this->get_field_name('success_text').'">'.esc_html($success_text).'</textarea>';
         echo '</div>';
 
         # Repetition
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("repetition").'">Repetition:';
+        echo '<label for="'.$this->get_field_id("repetition").'">'. __("Repetition", "voxpress") .':';
         echo '<select style="width:120px; float:right" id="'.$this->get_field_id('repetition').'" name="'.$this->get_field_name('repetition').'">';
         
         $repetition_options = array(            
@@ -416,7 +450,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         # Placement
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("placement").'">Placement:';
+        echo '<label for="'.$this->get_field_id("placement").'">'. __("Placement", "voxpress") .':';
         echo '<select style="width:90px; float:right" id="'.$this->get_field_id('placement').'" name="'.$this->get_field_name('placement').'">';
         
         $placement_options = array(
@@ -443,7 +477,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         # Effect
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("effect").'">Effect:';
+        echo '<label for="'.$this->get_field_id("effect").'">'. __("Effect", "voxpress") .':';
         echo '<select style="width:90px; float:right" id="'.$this->get_field_id('effect').'" name="'.$this->get_field_name('effect').'">';
         
         $effect_options = array(
@@ -467,37 +501,42 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         # Delay
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("delay").'">Delay: <div style="float:right;margin-left:5px;margin-top:5px">sek</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('delay').'" name="'.$this->get_field_name('delay').'" value="'.esc_attr($delay).'"></label>';
+        echo '<label for="'.$this->get_field_id("delay").'">'. __("Delay", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px">sek</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('delay').'" name="'.$this->get_field_name('delay').'" value="'.esc_attr($delay).'"></label>';
         echo '</div>';
 
         # Background color
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("background_color").'">Background Color: <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('background_color').'" name="'.$this->get_field_name('background_color').'" value="'.esc_attr($background_color).'"></label>';
+        echo '<label for="'.$this->get_field_id("background_color").'">'. __("Background color", "voxpress") .': <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('background_color').'" name="'.$this->get_field_name('background_color').'" value="'.esc_attr($background_color).'"></label>';
         echo '</div>';
 
         # Text color
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("text_color").'">Text Color: <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('text_color').'" name="'.$this->get_field_name('text_color').'" value="'.esc_attr($text_color).'"></label>';
+        echo '<label for="'.$this->get_field_id("text_color").'">'. __("Text color", "voxpress") .': <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('text_color').'" name="'.$this->get_field_name('text_color').'" value="'.esc_attr($text_color).'"></label>';
         echo '</div>';
 
         # Border color
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("border_color").'">Border Color: <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('border_color').'" name="'.$this->get_field_name('border_color').'" value="'.esc_attr($border_color).'"></label>';
+        echo '<label for="'.$this->get_field_id("border_color").'">'. __("Border color", "voxpress") .': <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('border_color').'" name="'.$this->get_field_name('border_color').'" value="'.esc_attr($border_color).'"></label>';
         echo '</div>';
 
         # Border size
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("border_size").'">Border Size: <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_size').'" name="'.$this->get_field_name('border_size').'" value="'.esc_attr($border_size).'"></label>';
+        echo '<label for="'.$this->get_field_id("border_size").'">'. __("Border size", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_size').'" name="'.$this->get_field_name('border_size').'" value="'.esc_attr($border_size).'"></label>';
         echo '</div>';
 
         # Border Radius
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("border_radius").'">Border Radius: <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_radius').'" name="'.$this->get_field_name('border_radius').'" value="'.esc_attr($border_radius).'"></label>';
+        echo '<label for="'.$this->get_field_id("border_radius").'">'. __("Border radius", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px">px</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('border_radius').'" name="'.$this->get_field_name('border_radius').'" value="'.esc_attr($border_radius).'"></label>';
+        echo '</div>';
+
+        # Width
+        echo '<div class="ubivox-widget-field">';
+        echo '<label for="'.$this->get_field_id("width").'">'. __("Width (when not inline)", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px"></div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('width').'" name="'.$this->get_field_name('width').'" value="'.esc_attr($width).'"></label>';
         echo '</div>';
 
         # shadow
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("shadow").'">Shadow:';
+        echo '<label for="'.$this->get_field_id("shadow").'">'. __("Use shadow", "voxpress") .':';
         echo '<select style="width:90px; float:right" id="'.$this->get_field_id('shadow').'" name="'.$this->get_field_name('shadow').'">';
         
         $shadow_options = array(
@@ -519,12 +558,12 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         # Overlay color
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("overlay_color").'">Overlay Color: <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('overlay_color').'" name="'.$this->get_field_name('overlay_color').'" value="'.esc_attr($overlay_color).'"></label>';
+        echo '<label for="'.$this->get_field_id("overlay_color").'">'. __("Overlay color", "voxpress") .': <input type="text" style="width: 75px; float:right; text-align:center" id="'.$this->get_field_id('overlay_color').'" name="'.$this->get_field_name('overlay_color').'" value="'.esc_attr($overlay_color).'"></label>';
         echo '</div>';
 
         # Overlay opacity        
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("overlay_opacity").'">Overlay Opacity: <div style="float:right;margin-left:5px;margin-top:5px">%</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('overlay_opacity').'" name="'.$this->get_field_name('overlay_opacity').'" value="'.esc_attr($overlay_opacity).'"></label>';
+        echo '<label for="'.$this->get_field_id("overlay_opacity").'">'. __("Overlay opacity", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px">%</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('overlay_opacity').'" name="'.$this->get_field_name('overlay_opacity').'" value="'.esc_attr($overlay_opacity).'"></label>';
         echo '</div>';
 
 

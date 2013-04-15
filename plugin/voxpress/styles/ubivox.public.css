@@ -82,12 +82,6 @@
     display: none;    
 }
 
-
-.uvx_padding
-{
-    padding: 15px;
-}
-
 .widget_ubivox_subscription_widget.uvx_placement_center,
 .widget_ubivox_subscription_widget.uvx_placement_top,
 .widget_ubivox_subscription_widget.uvx_placement_right,
@@ -166,6 +160,8 @@
 .widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_hide{
     margin: 0 15px;
 }
+
+
 
 .widget_ubivox_subscription_widget.uvx_submit_success .uvx_button_row a.uvx_link_hide{
     margin: 0;

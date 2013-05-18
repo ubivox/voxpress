@@ -28,9 +28,13 @@ var uvx = {
         // setup subscription widgets
         jQuery('.widget_ubivox_subscription_widget').each(function(){
             uvx.widget.subscription.init(this);
+            uvx.widgets.push(this);
         });
 
     },
+
+    // Container for initialized widgets
+    widgets: [],
 
     widget: {
 
@@ -40,6 +44,7 @@ var uvx = {
 
                 var $widget = jQuery(widget);
                 var settings = $widget.find('form.ubivox_subscription').data('ubivox');
+                var cookie = uvx.widget.subscription.cookie.get(widget);
 
                 // Set classes
                 $widget.addClass('uvx_placement_' + settings.placement);
@@ -124,22 +129,25 @@ var uvx = {
                     // Do initial placement
                     jQuery(window).resize();
                 
+
                 };
 
-                $widget.find('.uvx_link_hide').click(function(event) {
-                        uvx.widget.subscription.close(widget);
-                        event.preventDefault();
-                    });
+                // block button
+                $widget.find('.uvx_link_block').click(function(event) {
+                    uvx.widget.subscription.close(widget, true);
+                    event.preventDefault();
+                });
 
-                // Show widget after selected delay
-                setTimeout(function() {
-                    uvx.widget.subscription.show(widget);
-                }, settings.delay * 1000);
+
+                // Show widget after selected delay if not blocked
+                if (cookie.block != "y" || settings.cookie_life < 0) {
+                    setTimeout(function() {
+                        uvx.widget.subscription.show(widget);
+                    }, settings.delay * 1000);                    
+                };
 
                 // Hook subscription form to Ajax
                 $widget.find('form').submit(uvx.subscribe);
-
-
 
             },
 
@@ -254,6 +262,8 @@ var uvx = {
                 var $widget = jQuery(widget);
                 var settings = $widget.find('form.ubivox_subscription').data('ubivox');
 
+                uvx.widget.subscription.cookie.set(widget, {block: 'y'});
+
                 switch(settings.effect)
                 {
                     case("fade"):
@@ -292,8 +302,54 @@ var uvx = {
 
                 }
 
+            },
 
+            cookie: {
 
+                set: function(widget, data){
+                    var $widget = jQuery(widget);
+                    var settings = $widget.find('form.ubivox_subscription').data('ubivox');
+                    var list_id = $widget.find('.uvx_list_id').val();
+
+                    var defaults = {
+                        block: "n",
+                    }
+                    var data = jQuery.extend(defaults, data);
+
+                    // Set data to cookie, then return new cookie
+                    var cookie_settings = {
+                        path: "/"
+                    }
+
+                    if (parseInt(settings.cookie_life) > 0) {
+                        cookie_settings.expires = parseInt(settings.cookie_life);
+                    };
+
+                    if (settings.cookie_life > -1) {
+                        jQuery.cookie("uvx_sub_widget_lid_" + $widget.attr('id') + "_" + list_id, JSON.stringify(data), cookie_settings);    
+                    } else {
+                        jQuery.removeCookie("uvx_sub_widget_lid_" + $widget.attr('id') + "_" + list_id);
+                    };
+                    
+                    return uvx.widget.subscription.cookie.get(widget);
+                },
+
+                get: function(widget) {
+                    var $widget = jQuery(widget);
+                    var list_id = $widget.find('.uvx_list_id').val();
+                    var cookie = jQuery.cookie("uvx_sub_widget_lid_" + $widget.attr('id') + "_" + list_id);
+
+                    try
+                    {
+                       var json = JSON.parse(cookie);
+                    }
+                    catch(e)
+                    {
+                       return false;                       
+                    }
+
+                    return JSON.parse(cookie);
+                }
 
             }
         }

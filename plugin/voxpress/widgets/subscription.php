@@ -41,11 +41,11 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             "shadow": "'.$instance["shadow"].'",
             "overlay_color":"'.$instance["overlay_color"].'",
             "overlay_opacity":"'. (intval($instance["overlay_opacity"]) / 100) .'",
-            "delay":"'.$instance["delay"].'",
-            "repetition":"'.$instance["repetition"].'"
+            "cookie_life":"'.$instance["cookie_life"].'",
+            "delay":"'.$instance["delay"].'"
         }\'>';
 
-        echo '<input type="hidden" name="list_id" value="'.intval($instance["list_id"]).'">';
+        echo '<input type="hidden" name="list_id" class="uvx_list_id" value="'.intval($instance["list_id"]).'">';
 
         echo '<div class="uvx_form_fields">';
 
@@ -141,14 +141,9 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         echo '<div class="uvx_button_row">';
         echo '<button class="uvx_signup_button">'.$instance["button_text"].'</button>';
 
-        if ($instance["hide_text"]) {
-            echo '<a href="#" class="uvx_link_hide">'. $instance["hide_text"] .'</a>';
-        };
-
         if ($instance["block_text"]) {
             echo '<a href="#" class="uvx_link_block">'. $instance["block_text"] .'</a>';
         };
-        
 
         echo '</div>';
 
@@ -164,7 +159,6 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         $instance["description"] = strip_tags($new_instance["description"]);
         $instance["list_id"] = intval($new_instance["list_id"]);
         $instance["title"] = strip_tags($new_instance["title"]);
-        $instance["hide_text"] = strip_tags($new_instance["hide_text"]);
         $instance["block_text"] = strip_tags($new_instance["block_text"]);
         $instance["button_text"] = strip_tags($new_instance["button_text"]);
         $instance["success_text"] = strip_tags($new_instance["success_text"]);
@@ -181,7 +175,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         $instance["overlay_color"] = $new_instance["overlay_color"];
         $instance["overlay_opacity"] = intval($new_instance["overlay_opacity"]);
         $instance["delay"] = intval($new_instance["delay"]);
-        $instance["repetition"] = $new_instance["repetition"];
+        $instance["cookie_life"] = intval($new_instance["cookie_life"]);
 
 
         try {
@@ -239,12 +233,6 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $block_text = __("Don't show this again", "voxpress");
         }
 
-        if (isset($instance["hide_text"])) {
-            $hide_text = $instance["hide_text"];
-        } else {
-            $hide_text = __("Hide", "voxpress");
-        }
-
         if (isset($instance["button_text"])) {
             $button_text = $instance["button_text"];
         } else {
@@ -266,7 +254,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         if (isset($instance["success_text"])) {
             $success_text = $instance["success_text"];
         } else {
-            $success_text = __("Thank you.", "voxpress");
+            $success_text = __("Thank you for your subscription. We've send you an e-mail with a confirmation link.", "voxpress");
         }
 
         if (isset($instance["placement"])) {
@@ -347,10 +335,10 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             $delay = "0";
         }
 
-        if (isset($instance["repetition"])) {
-            $repetition = $instance["repetition"];
+        if (isset($instance["cookie_life"])) {
+            $cookie_life = $instance["cookie_life"];
         } else {
-            $repetition = "first";
+            $cookie_life = 30;
         }
 
 
@@ -400,58 +388,43 @@ class Ubivox_Subscription_Widget extends WP_Widget {
 
         // Button text
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("button_text").'">'. __("Subscribe text", "voxpress") .':</label>';
+        echo '<label for="'.$this->get_field_id("button_text").'">'. __("Subscribe button text", "voxpress") .':</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('button_text').'" name="'.$this->get_field_name('button_text').'" value="'.esc_attr($button_text).'">';
-        echo '</div>';
-
-        // Hide text
-        echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("hide_text").'">'. __("Hide button text", "voxpress") .':</label>';
-        echo '<input type="text" class="widefat" id="'.$this->get_field_id('hide_text').'" name="'.$this->get_field_name('hide_text').'" value="'.esc_attr($hide_text).'">';
         echo '</div>';
 
         // Block text
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("block_text").'">'. __("Block button text", "voxpress") .':</label>';
+        echo '<label for="'.$this->get_field_id("block_text").'">'. __("Close button text", "voxpress") .':<div style="font-size:10px">'. __("Hide form until cookie expires (based on list ID).", "voxpress") .'</div></label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('block_text').'" name="'.$this->get_field_name('block_text').'" value="'.esc_attr($block_text).'">';
+        echo '<div style="font-size:10px;color:#888">'. __("Doesn't show if text is empty.", "voxpress") .'</div>';
         echo '</div>';
 
         // Success text
         echo '<div class="ubivox-widget-field">';
         echo '<label for="'.$this->get_field_id("success_text").'">'. __("Success text", "voxpress") .':</label>';
         echo '<textarea class="widefat" style="height:100px" id="'.$this->get_field_id('success_text').'" name="'.$this->get_field_name('success_text').'">'.esc_html($success_text).'</textarea>';
+        echo '<div style="font-size:10px;color:#888">'. __("Shown when a subscriber has successfully subscribed to the list.", "voxpress") .'</div>';
         echo '</div>';
 
-        # Repetition
+
+        ## Memory Settings
+
+        echo '<hr />';
+        echo '<h3>'. __("Memory", "voxpress") .'</h3>';
+
+        # Cookie lifetime
         echo '<div class="ubivox-widget-field">';
-        echo '<label for="'.$this->get_field_id("repetition").'">'. __("Repetition", "voxpress") .':';
-        echo '<select style="width:120px; float:right" id="'.$this->get_field_id('repetition').'" name="'.$this->get_field_name('repetition').'">';
-        
-        $repetition_options = array(            
-            "first" => __("First visit, then until subscribed or blocked", "voxpress"),
-            "second" => __("Second visit, then until subscribed or blocked", "voxpress"),
-            "third" => __("Third visit, then until subscribed or blocked", "voxpress"),
-            "always" => __("Every visit", "voxpress")
-        );
-
-        foreach ($repetition_options as $key => $label) {
-            if ($key == $repetition) {
-                $default = ' selected="selected"';
-            } else {
-                $default = "";
-            }
-            echo '<option value="'. $key .'"'.$default.'>'. $label  .'</option>';
-        }
-
-        echo '</select></label>';
+        echo '<label for="'.$this->get_field_id("cookie_life").'">'. __("Cookie lifetime", "voxpress") .': <div style="float:right;margin-left:5px;margin-top:5px">days</div><input type="text" style="width: 45px; float:right; text-align:center" id="'.$this->get_field_id('cookie_life').'" name="'.$this->get_field_name('cookie_life').'" value="'.esc_attr($cookie_life).'"></label>';
+        echo '<div style="font-size:10px;color:#888;clear:both;margin-top:10px">'. __("The cookie decides how many days should expire before the same visitor sees the form again, after it has been closed", "voxpress") .'</div>';
+        echo '<div style="font-size:10px;color:#888;clear:both;margin-top:10px">'. __("Use 0 to make it a session cookie and show the form again on the next visit after the browser has been closed.", "voxpress") .'</div>';
+        echo '<div style="font-size:10px;color:#888;clear:both;margin-top:10px">'. __("Use -1 or lower to ignore any cookies and always show the form, even if previous cookies has been set for the user.", "voxpress") .'</div>';
         echo '</div>';
-
-
 
 
         ## Design Settings
 
-        echo '<h3 style="margin-top: 30px" class="ubivox_design_settings_toggle">'. __("Design Settings", "voxpress") .'</h3>';
+        echo '<hr />';
+        echo '<h3>'. __("Design Settings", "voxpress") .'</h3>';
 
         echo '<div class="ubivox_design_settings">';
 

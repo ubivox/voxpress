@@ -157,8 +157,12 @@
     font-size: 11px;
 }
 
+.widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_block{
+    margin-left: 15px;
+}
+
 .widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_hide{
-    margin: 0 15px;
+    margin-left: 15px;
 }
 
 

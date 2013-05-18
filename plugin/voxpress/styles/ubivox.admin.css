@@ -92,3 +92,13 @@
 .wrap.voxpress tr:hover td{
     background: #dbf5bc;
 }
+
+.widget hr{
+    margin: 30px 0 15px;
+    border: none;
+    height: 1px;
+    font-size: 1px;
+    line-height: 1px;
+    overflow: hidden;
+    background: #ccc;
+}

@@ -3,7 +3,7 @@
   <div id="icon-edit-pages" class="icon32"><br></div>
 
   <h2><?php echo __('Drafts','voxpress') ?>
-    <a href="https://<?php echo get_option("uvx_account_url"); ?>/admin/delivery/create/" target="_blank" class="button-primary">Create new newsletter</a>
+    <a href="https://<?php echo get_option("uvx_account_url"); ?>/admin/delivery/create/" target="_blank" class="button-primary"><?php echo __("Create new newsletter", "voxpress") ?></a>
   </h2>
 
   <br>
@@ -25,8 +25,8 @@ try {
 
   <table class="widefat">
     <thead>
-      <th>Newsletter</th>
-      <th>Last edited</th>
+      <th><?php echo __("Newsletter", "voxpress") ?></th>
+      <th><?php echo __("Last edited", "voxpress") ?></th>
       <th>&nbsp;</th>
     </thead>
 
@@ -41,8 +41,7 @@ try {
       <?php echo date("Y-m-d H:i:s", strtotime($d["edit_time"])); ?>
     </td>
     <td class="right" style="white-space: nowrap">
-      <a href="<?php echo esc_attr($d["url"]); ?>" target="_blank" class="button-secondary">Edit newsletter</a>
-      <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">Preview</a>
+      <a href="<?php echo esc_attr($d["url"]); ?>" target="_blank" class="button-secondary"><?php echo __("Edit newsletter", "voxpress") ?></a>
     </td>
   </tr>
 

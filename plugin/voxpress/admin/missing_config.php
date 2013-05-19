@@ -1,9 +1,9 @@
 <div class="wrap">
 
-     <h2>The Ubivox plugin is not configured yet</h2>
+     <h2><?php echo __("The Ubivox plugin is not configured yet", "voxpresss") ?></h2>
 
      <p>
-         <a href="<?php echo admin_url("/admin.php?page=voxpress-options"); ?>">Configure the Ubivox plugin</a>
+         <a href="<?php echo admin_url("/admin.php?page=voxpress-options"); ?>"><?php echo __("Configure the Ubivox plugin", "voxpress") ?></a>
      </p>
 
 </div>

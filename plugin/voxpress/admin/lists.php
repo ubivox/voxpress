@@ -19,16 +19,16 @@ try {
 
           <?php foreach ($status["lists"] as $ml): ?>
 
-            <h2><?php echo esc_html($ml["title"]); ?> <a href="<?php echo esc_attr($ml["url"]); ?>" class="button-primary" target="_blank">Go to list</a></h2>
+            <h2><?php echo esc_html($ml["title"]); ?> <a href="<?php echo esc_attr($ml["url"]); ?>" class="button-primary" target="_blank"><?php echo __("Go to list in Ubivox", "voxpress") ?></a></h2>
             
             <table class="widefat">
               <thead>
-                <th>Date</th>
-                <th class="right">Subscribed</th>
-                <th class="right">Unsubscribed</th>
-                <th class="right">Suspended</th>
-                <th class="right">Growth</th>
-                <th class="right">Total on list</th>
+                <th><?php echo __("Date") ?></th>
+                <th class="right"><?php echo __("Subscribed", "voxpress") ?></th>
+                <th class="right"><?php echo __("Unsubscribed", "voxpress") ?></th>
+                <th class="right"><?php echo __("Suspended", "voxpress") ?></th>
+                <th class="right"><?php echo __("Growth", "voxpress") ?></th>
+                <th class="right"><?php echo __("Total on list", "voxpress") ?></th>
               </thead>
 
               <?php foreach ($ml["stats"] as $day): ?>

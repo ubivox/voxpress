@@ -230,7 +230,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
         if (isset($instance["block_text"])) {
             $block_text = $instance["block_text"];
         } else {
-            $block_text = __("Don't show this again", "voxpress");
+            $block_text = __("Hide this", "voxpress");
         }
 
         if (isset($instance["button_text"])) {

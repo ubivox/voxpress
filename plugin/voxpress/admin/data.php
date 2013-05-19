@@ -49,10 +49,10 @@ if (isset($_POST["_save"])) {
 
 <div class="wrap">
 
-<h2>Ubivox data field / Wordpress user profile mapping</h2>
+<h2><?php echo __("Ubivox data field / Wordpress user profile mapping", "voxpress") ?></h2>
 
 <?php if ($saved) { ?>
-<div class="updated"><p><strong>Options Saved</strong></p></div>
+<div class="updated"><p><strong><?php __("Options Saved", "voxpress") ?></strong></p></div>
 <?php } ?>
 
 <form method="post">
@@ -67,7 +67,7 @@ if (isset($_POST["_save"])) {
   </th>
   <td>
     <select id="id_data_field_<?php echo $field["id"]; ?>" name="data_field_<?php echo $field["id"]; ?>">
-    <option value="">- Do not set -</option>
+    <option value="">- <?php echo __("Do not set", "voxpress") ?> -</option>
       <?php foreach ($keys as $key): ?>
       <option value="<?php echo esc_attr($key); ?>"<?php echo isset($mapping[$field["key"]]) && $mapping[$field["key"]] == $key ? " selected" : ""?>><?php echo esc_html($key); ?></option>
       <?php endforeach; ?>

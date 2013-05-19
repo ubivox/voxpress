@@ -23,10 +23,12 @@ try {
 
     <table class="widefat">
       <thead>
-        <th>Newsletter</th>
-        <th>Sent</th>
-        <th class="right">Views</th>
-        <th class="right">Clicks</th>
+        <th><?php echo __("Newsletter", "voxpress") ?></th>
+        <th class="center"><?php echo __("Sent", "voxpress") ?></th>
+        <th class="right"><?php echo __("Recipients", "voxpress") ?></th>
+        <th class="right"><?php echo __("Successfull", "voxpress") ?></th>
+        <th class="right"><?php echo __("Views", "voxpress") ?></th>
+        <th class="right"><?php echo __("Clicks", "voxpress") ?></th>
         <th class="right">&nbsp;</th>
       </thead>
 
@@ -39,17 +41,29 @@ try {
           <div><small><a href="<?php echo esc_attr($d["list_url"]); ?>" target="_blank"><?php echo esc_html($d["list_title"]); ?></a></small></div>
         </td>
 
-        <td><?php echo date("Y-m-d H:i:s", strtotime($d["send_time"])); ?></td>
+        <td class="center"><?php echo date("Y-m-d H:i:s", strtotime($d["send_time"])); ?></td>
 
         <td class="right">
-          <?php echo esc_html($d["views"]); ?>
+          <?php echo esc_html($d["recipients"]); ?>
         </td>
 
-        <td class="right"><?php echo esc_html($d["clicks"]); ?></td>
+        <td class="right">
+          <?php echo esc_html($d["delivered"]); ?>
+          <div style="font-size: 10px"><?php echo number_format((esc_html($d["delivered"]) / esc_html($d["recipients"]) * 100), 1); ?>%</div>
+        </td>
+
+        <td class="right">
+          <?php echo esc_html($d["views"]); ?> 
+          <div style="font-size: 10px"><?php echo number_format((esc_html($d["views"]) / esc_html($d["delivered"]) * 100), 1); ?>%</div>
+        </td>
+
+        <td class="right">
+          <?php echo esc_html($d["clicks"]); ?>
+          <div style="font-size: 10px"><?php echo number_format((esc_html($d["clicks"]) / esc_html($d["views"]) * 100), 1); ?>%</div>
+        </td>
 
         <td class="right" style="white-space: nowrap">
-          <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">Details</a>
-          <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank">Preview</a>
+          <a href="<?php echo esc_attr($d["url"]); ?>" class="button-secondary" target="_blank"><?php echo __("Details", "voxpress") ?></a>
         </td>
 
       </tr>

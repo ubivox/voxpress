@@ -16,7 +16,7 @@ foreach ($opts_keys as $key) {
     $opts[$key] = $value;
 }
 
-$bools_keys = array("uvx_wc_integration", "uvx_label");
+$bools_keys = array("uvx_modal_links");
 $bools = array();
 
 foreach ($bools_keys as $key) {
@@ -34,7 +34,7 @@ foreach ($bools_keys as $key) {
 
 <div class="wrap">
 
-<h2><?php echo __("Voxpress Options", "voxpress") ?></h2>
+<h2><?php echo __("Voxpress Settings", "voxpress") ?></h2>
 
 <?php if ($saved) { ?>
 <div class="updated"><p><strong><?php echo __("Options Saved", "voxpress") ?></strong></p></div>
@@ -46,23 +46,26 @@ foreach ($bools_keys as $key) {
 
 <table class="form-table">
 
-<tr valign="top"><th><label for="uvx_api_url"><?php echo __("Ubivox Account URL", "voxpress") ?></label></th><td><input type="text" id="uvx_account_url" name="uvx_account_url" class="regular-text" value="<?php echo esc_attr($opts["uvx_account_url"]); ?>" size="100"></td></tr>
+<tr valign="top"><th style="width:300px"><label for="uvx_api_url"><?php echo __("Ubivox Account URL", "voxpress") ?></label></th><td><input type="text" id="uvx_account_url" name="uvx_account_url" class="regular-text" value="<?php echo esc_attr($opts["uvx_account_url"]); ?>" size="100"></td></tr>
 <tr valign="top"><th><label for="uvx_api_url"><?php echo __("Ubivox API URL", "voxpress") ?></label></th><td><input type="text" id="uvx_api_url" name="uvx_api_url" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_url"]); ?>" size="100"></td></tr>
 <tr valign="top"><th><label for="uvx_api_username"><?php echo __("Ubivox API Username", "voxpress") ?></label></th><td><input type="text" id="uvx_api_username" name="uvx_api_username" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_username"]); ?>" size="15"></td></tr>
 <tr valign="top"><th><label for="uvx_api_password"><?php echo __("Ubivox API Password", "voxpress") ?></label></th><td><input type="text" id="uvx_api_password" name="uvx_api_password" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_password"]); ?>" size="30"></td></tr>
 
 </table>
 
+<br><br>
+
 <h3><?php echo __("Wordpress", "voxpress") ?></h3>
 
 <table class="form-table">
 
-<tr valign="top"><th><label for="uvx_wc_integration"><?php echo __("Woocommerce integration", "voxpress") ?></label></th><td><input type="checkbox" id="uvx_wc_integration" name="uvx_wc_integration"<?php echo $bools["uvx_wc_integration"]; ?>></td></tr>
-<tr valign="top"><th><label for="uvx_label"><?php echo __("Show Ubivox labels", "voxpress") ?></label></th><td><input type="checkbox" id="uvx_label" name="uvx_label"<?php echo $bools["uvx_label"]; ?></td></tr>
+<tr valign="top"><th style="width:300px"><label for="uvx_modal_links"><?php echo __("Open links to newsletters in lightbox", "voxpress") ?></label></th><td><input type="checkbox" id="uvx_modal_links" name="uvx_modal_links"<?php echo $bools["uvx_modal_links"]; ?></td></tr>
 
 </table>
 
-<p class="submit">
+<br><br>
+
+<p class="submit" style="padding-left:310px">
 <input type="submit" class="button-primary" name="_save" value="Save Changes" />
 </p>
 

@@ -20,6 +20,8 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
             echo $args["before_title"].$title.$args["after_title"];
         }
 
+        echo '<div class="description">'.esc_html($instance["description"]).'</div>';
+
         echo '<form method="POST" class="ubivox_unsubscription">';
 
         echo '<input type="hidden" name="list_id" value="'.esc_attr($instance["list_id"]).'">';
@@ -54,6 +56,7 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
 
         $instance["button_text"] = strip_tags($new_instance["button_text"]);
         $instance["title"] = strip_tags($new_instance["title"]);
+        $instance["description"] = strip_tags($new_instance["description"]);
         $instance["success_text"] = strip_tags($new_instance["success_text"]);
 
         return $instance;
@@ -69,7 +72,7 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
             $lists = $api->call("ubivox.get_maillists");
 
         } catch (UbivoxAPIException $e) {
-            echo "<p>Connection problems. See settings for details.</p>";
+            echo "<p>". __("Connection problems. See settings for details.", "voxpress") ."</p>";
             return;
         }
 
@@ -82,13 +85,19 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
         if (isset($instance["button_text"])) {
             $button_text = $instance["button_text"];
         } else {
-            $button_text = __("Unsubscribe", "ubivox");
+            $button_text = __("Unsubscribe", "voxpress");
         }
 
         if (isset($instance["title"])) {
             $title = $instance["title"];
         } else {
-            $title = __("Newsletter", "ubivox");
+            $title = __("Newsletter", "voxpress");
+        }
+
+        if (isset($instance["description"])) {
+            $description = $instance["description"];
+        } else {
+            $description = __("", "voxpress");
         }
 
         if (isset($instance["success_text"])) {
@@ -97,11 +106,19 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
             $success_text = __("Thank you.", "ubivox");
         }
 
+        // Title
         echo '<p>';
         echo '<label for="'.$this->get_field_id("title").'">Title:</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.esc_attr($title).'">';
         echo '</p>';
 
+        // Description
+        echo '<p>';
+        echo '<label for="'.$this->get_field_id("description").'">Description:</label>';
+        echo '<textarea class="widefat" style="height:100px" id="'.$this->get_field_id('description').'" name="'.$this->get_field_name('description').'">'.esc_html($description).'</textarea>';
+        echo '</p>';
+
+        // List
         echo '<p>';
         echo '<label for="'.$this->get_field_id("list_id").'">List:</label>';
         echo '<select class="widefat" style="width:100%;" id="'.$this->get_field_id('list_id').'" name="'.$this->get_field_name('list_id').'">';
@@ -118,11 +135,13 @@ class Ubivox_Unsubscription_Widget extends WP_Widget {
 
         echo '</select></p>';
 
+        // Button text
         echo '<p>';
         echo '<label for="'.$this->get_field_id("button_text").'">Button text:</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('button_text').'" name="'.$this->get_field_name('button_text').'" value="'.esc_attr($button_text).'">';
         echo '</p>';
 
+        // Success text
         echo '<p>';
         echo '<label for="'.$this->get_field_id("success_text").'">Success text:</label>';
         echo '<textarea class="widefat" id="'.$this->get_field_id('success_text').'" name="'.$this->get_field_name('success_text').'">'.esc_html($success_text).'</textarea>';

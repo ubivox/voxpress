@@ -13,17 +13,26 @@ function uvx_setup_menu() {
         "Newsletters",
         "manage_options",
         "voxpress",
-        "uvx_lists_page",
+        "uvx_latest_page",
         plugins_url("/voxpress/images/icon-admin.png"),
         3
     );    
 
     add_submenu_page(
         "voxpress", 
+        "Published",
+        "Published", 
+        "manage_options", 
+        "voxpress", 
+        "uvx_latest_page"
+    );
+
+    add_submenu_page(
+        "voxpress", 
         "Lists",
         "Lists", 
         "manage_options", 
-        "voxpress", 
+        "voxpress_list", 
         "uvx_lists_page"
     );
 
@@ -34,25 +43,6 @@ function uvx_setup_menu() {
         "manage_options", 
         "voxpress_drafts", 
         "uvx_drafts_page"
-    );
-
-    add_submenu_page(
-        "voxpress", 
-        "Latest newsletters",
-        "Latest newsletters", 
-        "manage_options", 
-        "voxpress_latest", 
-        "uvx_latest_page"
-    );
-
-
-    add_submenu_page(
-        "voxpress", 
-        "Ubivox Settings",
-        "Settings", 
-        "manage_options", 
-        "voxpress-options", 
-        "uvx_options_page"
     );
 
     add_submenu_page(
@@ -75,13 +65,12 @@ function uvx_setup_menu() {
 
     add_submenu_page(
         "voxpress", 
-        "Ubivox Help & Support",
-        "Help &amp; Support", 
+        "Ubivox Settings",
+        "Settings", 
         "manage_options", 
-        "voxpress-help", 
-        "uvx_help_page"
+        "voxpress-options", 
+        "uvx_options_page"
     );
-
 
 
 }
@@ -142,17 +131,6 @@ function uvx_options_page() {
 }
 
 
-function uvx_help_page() {
-
-    if (!current_user_can("manage_options")) {
-        wp_die(__(
-            "You do not have sufficient permissions to access this page."
-        ));
-    }
-
-    require "help.php";
-
-}
 
 
 function uvx_ecommerce_page() {

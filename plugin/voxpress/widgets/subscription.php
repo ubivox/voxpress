@@ -20,9 +20,7 @@ class Ubivox_Subscription_Widget extends WP_Widget {
             echo $args["before_title"].$title.$args["after_title"];
         }
 
-        echo '<p class="uvx_description">';
-        echo $instance["description"];
-        echo '</p>';
+        echo '<div class="description">'.esc_html($instance["description"]).'</div>';
 
         echo '<p class="uvx_success_text" style="display: none;">';
         echo esc_html($instance["success_text"]);

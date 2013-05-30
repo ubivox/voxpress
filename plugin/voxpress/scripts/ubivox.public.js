@@ -8,9 +8,6 @@ var uvx = {
         // Hook unsubscription form to Ajax
         jQuery("form.uvx_unsubscription").submit(uvx.unsubscribe);
 
-        // Hook inline links
-        uvx.inline_links.init();
-
         // Make archive links popup inline
         jQuery('a.uvx_archive_link').click(function(event) {
             var $me = jQuery(this);
@@ -28,14 +25,17 @@ var uvx = {
         // setup subscription widgets
         jQuery('.widget_ubivox_subscription_widget').each(function(){
             uvx.widget.subscription.init(this);
-            uvx.widgets.push(this);
         });
+
+        // setup archive widgets
+        jQuery('.widget_ubivox_archive_widget').each(function(){
+            uvx.widget.archive.init(this);
+        });
+
 
     },
 
-    // Container for initialized widgets
-    widgets: [],
-
+    // Widget handling
     widget: {
 
         subscription: {
@@ -352,63 +352,40 @@ var uvx = {
                 }
 
             }
-        }
+        },
 
+        archive: {
 
-    },
+            init: function(widget){
+                $widget = jQuery(widget);
 
-    // INLINE SIGNUP LINKS
-    inline_links: {
+                $widget.find('ul li a').click(function(event) {
 
-        init: function(){
+                    $me = jQuery(this);
 
-            jQuery('a[href*="'+ uvx_settings.account_url +'"]').each(function(){
-                var $me = jQuery(this)
+                    if ($me.hasClass('open_lightbox')) {
+                        
+                        uvx.modal.open({
+                            url: $me.attr('href')
+                        })
 
-                $me.click(function(event) {
-                    uvx.modal.open({
-                        url: $me.attr('href'),
-                        width: 600,
-                        height: 400
-                    });
-                    event.preventDefault();
+                        return false;
+                    } else if ($me.hasClass('open_new_window')) {                        
+                        window.open($me.attr('href'), "_blank");
+                        return false;
+                    } else {
+
+                    };
+                    
                 });
-            });
+
+            }
 
         }
 
     },
 
     
-    popup: {
-
-        init: function(){
-
-            // Get popups
-            uvx.popup.$widgets = jQuery('.widget_uvx_popup_widget');
-            var $widgets = uvx.popup.$widgets;
-
-            $widgets.each(uvx.popup.show);
-            
-        },
-
-        show: function(i, element){
-
-            var $element = jQuery(element);
-
-            $element.effect({
-                effect: 'slide',
-                direction: 'up'
-            }, 2000);
-
-        },
-
-        hide: function(){
-
-        }
-
-    },
-
 
     // POPUP HELPER: show content in lightbox
     modal: {

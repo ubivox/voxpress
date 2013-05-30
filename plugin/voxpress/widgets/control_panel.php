@@ -20,9 +20,9 @@ class Ubivox_Control_Panel_Widget extends WP_Widget {
             echo $args["before_title"].$title.$args["after_title"];
         }
 
-        echo '<p>'.esc_html($instance["description"]).'</p>';
+        echo '<div class="description">'.esc_html($instance["description"]).'</div>';
 
-        echo '<p align="center">';
+        echo '<p>';
         echo '<a class="ubivox_control_panel_button" href="'.UBIVOX_BASE_URL.'/control-panel/" target="_blank">'.$instance["button_text"].'</a>';
         echo '</p>';
 
@@ -62,20 +62,25 @@ class Ubivox_Control_Panel_Widget extends WP_Widget {
             $description = __("Access your data and newsletters at Ubivox", "ubivox");
         }
 
+        // Title
         echo '<p>';
         echo '<label for="'.$this->get_field_id("title").'">Title:</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('title').'" name="'.$this->get_field_name('title').'" value="'.esc_attr($title).'">';
         echo '</p>';
 
+        // Description
+        echo '<p>';
+        echo '<label for="'.$this->get_field_id("description").'">Description:</label>';
+        echo '<textarea class="widefat" style="height:100px" id="'.$this->get_field_id('description').'" name="'.$this->get_field_name('description').'">'.esc_html($description).'</textarea>';
+        echo '</p>';
+
+
+        // Button Text
         echo '<p>';
         echo '<label for="'.$this->get_field_id("button_text").'">Button text:</label>';
         echo '<input type="text" class="widefat" id="'.$this->get_field_id('button_text').'" name="'.$this->get_field_name('button_text').'" value="'.esc_attr($button_text).'">';
         echo '</p>';
 
-        echo '<p>';
-        echo '<label for="'.$this->get_field_id("description").'">Description:</label>';
-        echo '<textarea class="widefat" id="'.$this->get_field_id('description').'" name="'.$this->get_field_name('description').'">'.esc_html($description).'</textarea>';
-        echo '</p>';
 
     }
 

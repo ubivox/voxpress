@@ -1,5 +1,5 @@
 
-#ubivox_overlay{
+#uvx_overlay{
     position: absolute;
     top: 0;
     left: 0;    
@@ -10,7 +10,7 @@
     opacity: 0;
 }
 
-#ubivox_popup{
+#uvx_popup{
     position: absolute;
     top: 0;
     left: 0;    
@@ -26,13 +26,13 @@
     box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
 }
 
-#ubivox_popup iframe{
+#uvx_popup iframe{
     border: none;
     height: 100%;
     width: 100%;
 }
 
-#ubivox_popup_close{
+#uvx_popup_close{
     position: absolute;
     top: -12px;
     right: -12px;
@@ -49,19 +49,6 @@
 }
 
 
-#ubivox_popup{
-    background: rgba(0,0,0,0.3);
-    display: none;
-    position: fixed;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-    margin: 0;
-    padding: 40px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
 
 
 .uvx_overlay{
@@ -125,6 +112,38 @@
 }
 
 
+/* General widget styles */
+.widget_ubivox_subscription_widget .description,
+.widget_ubivox_unsubscription_widget .description,
+.widget_ubivox_control_panel_widget .description,
+.widget_ubivox_archive_widget .description{
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+
+/* WIDGET: Archive */
+.widget_ubivox_archive_widget ul{
+    margin: 10px 0;
+    padding: 0;
+}
+
+.widget_ubivox_archive_widget ul li{
+    margin: 15px 0;
+    padding: 0;
+}
+
+.widget_ubivox_archive_widget ul li small{
+    margin: 0 0 0px 0;
+    padding: 0;
+    display: block;
+}
+
+
+
+
+
+
 .widget_ubivox_subscription_widget form label{
     font-weight: bold;
 }
@@ -172,9 +191,6 @@
     font-size: 14px;
     font-weight: bold;
 }
-
-
-
 
 .widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_block{
     

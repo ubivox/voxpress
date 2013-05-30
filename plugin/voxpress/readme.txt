@@ -11,7 +11,9 @@ Voxpress integrates your wordpress site with the Ubivox newsletter service. Subs
 
 == Description ==
 
-Voxpress is the official plugin for integrating the Ubivox newsletter service with your wordpress site. Voxpress makes it possible to subscribe, unsubscribe, view archives of your newsletters.
+Voxpress is the official plugin for integrating the Ubivox newsletter service with your wordpress site. Voxpress makes it possible to subscribe, unsubscribe and view archives of your newsletters.
+
+= Widgets =
 
 When Voxpress is installed you will get access to the following widgets:
 
@@ -20,7 +22,29 @@ When Voxpress is installed you will get access to the following widgets:
 *   Ubivox Archive
 *   Ubivox Control Panel
 
-You'll also be able to latest sent newsletters, drafts and statistics directly in you wordpress admin interface.
+*Widget: Subscription*
+This widget will let you insert a subscription form into any of your widget areas. The widget can either be an inline widget but can also be a pop up widget. 
+
+The pop up widget will let you create a modal box when the page is loaded (or after a given delay) to prompt the visitor to subscribe. The modal box can be styled individual through the widget and you can have multiple subscription widgets on a page.
+
+*Widget: Unsubscription*
+The ubsubscribe widget will insert a form for unsubscribing a mail list on Ubivox. You can have multiple unsubscribe widgets on a page.
+
+*Widget: Archive*
+The archive widget will show a list of links to the most recent archived newsletters on a selected list. The archived newsletters will open in a new window and show the newsletter archive view from Ubivox
+
+*Widget: Control Panel*
+The control panel widget will provide a link to your Ubivox Subscriber control panel, where your subscribers can login and manage their subscriptions and data given to your.
+
+= Modal view of firect links to archived newsletters =
+
+When the plugin is activated you will be able to link to a raw version of an archived newsletter and it will be displayed in a modal popup, avoiding that your users leave your site.
+
+
+= Administrative features =
+
+You'll also be able to view latest sent newsletters, drafts and statistics directly in you wordpress admin interface.
+
 
 == Installation ==
 
@@ -49,6 +73,13 @@ The Voxpress support is charged the same way as the support for your Ubivox acco
 
 We might provide consultancy install service of the plugin, depending on how complex the site is and time available. Please [contact our support](https://www.ubivox.com/support) to discuss options and possibilities.
 
+== How to get an Ubivox account ==
+
+Ubivox is a service for designing, writing, sending and evaluating newsletters. To use the Voxpress plugin you must have 
+an Ubivox account to connect the plugin to.
+
+You can sign up for an Ubivox account at *[www.ubivox.com](https://www.ubivox.om)*
+
 == Screenshots ==
 
 1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
@@ -62,10 +93,7 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 1.0 =
 * Initial release
 
-== How to get an Ubivox account ==
+== Upgrade Notice ==
 
-Ubivox is a service for designing, writing, sending and evaluating newsletters. To use the Voxpress plugin you must have 
-an Ubivox account to connect the plugin to.
-
-You can sign up for an Ubivox account at *[www.ubivox.com](https://www.ubivox.om)*
+This is the first initial version. Nothing special is needed.
 

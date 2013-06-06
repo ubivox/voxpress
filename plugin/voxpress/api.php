@@ -26,7 +26,7 @@ class UbivoxAPI {
         $auth = get_option("uvx_api_username").":".
             get_option("uvx_api_password");
 
-        $request = new IXR_Request($method, $args);
+        $request = new IXR_Request($method, $params);
         $post = $request->xml;
 
         $c = curl_init(get_option("uvx_api_url"));

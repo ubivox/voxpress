@@ -1,5 +1,7 @@
 <?php
 
+require_once "../wp-includes/class-IXR.php";
+
 class UbivoxAPIException extends Exception { }
 class UbivoxAPIUnavailable extends UbivoxAPIException { }
 class UbivoxAPIError extends UbivoxAPIException { }
@@ -21,16 +23,11 @@ class UbivoxAPI {
 
     public function call($method, $params = null) {
 
-        if (!function_exists("xmlrpc_encode_request")) {
-            throw new UbivoxAPIException(
-                "The Ubivox plugin requires the <a href='http://php.net/xmlrpc' target='_blank'>PHP XML-RPC extension</a> to be enabled."
-            );
-        }
-
         $auth = get_option("uvx_api_username").":".
             get_option("uvx_api_password");
 
-        $post = xmlrpc_encode_request($method, $params);
+        $request = new IXR_Request($method, $args);
+        $post = $request->xml;
 
         $c = curl_init(get_option("uvx_api_url"));
 
@@ -38,27 +35,28 @@ class UbivoxAPI {
         curl_setopt($c, CURLOPT_POST, true);
         curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        curl_setopt($c, CURLOPT_USERPWD, $auth); 
+        curl_setopt($c, CURLOPT_USERPWD, $auth);
         curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($c, CURLOPT_POSTFIELDS, $post);
         curl_setopt($c, CURLOPT_HEADER, true);
-        curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5); 
+        curl_setopt($c, CURLOPT_CONNECTTIMEOUT, 5);
 
         $http_response = curl_exec($c);
-        
+
         $info = curl_getinfo($c);
 
         list($header, $data) = explode("\r\n\r\n", $http_response, 2);
 
         if ($info["http_code"] == 200) {
 
-            $response = xmlrpc_decode($data, "utf-8");
+            $message = new IXR_Message($data);
+            $message->parse();
 
-            if (is_array($response) && xmlrpc_is_fault($response)) {
-                throw new UbivoxAPIError($response["faultString"], $response["faultCode"]);
+            if ($message->messageType == "fault") {
+                throw new UbivoxAPIError($message->faultCode, $message->faultString);
             }
-            
-            return $response;
+
+            return $message->params[0];
 
         }
 

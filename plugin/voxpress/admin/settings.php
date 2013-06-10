@@ -61,7 +61,7 @@ foreach ($bools_keys as $key) {
 <br><br>
 
 <p class="submit" style="padding-left:310px">
-<input type="submit" class="button-primary" name="_save" value="Save Changes" />
+<input type="submit" class="button-primary" name="_save" value="<?php echo __("Save Changes", "voxpress") ?>" />
 </p>
 
 </form>

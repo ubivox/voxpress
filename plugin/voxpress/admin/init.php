@@ -188,17 +188,9 @@ function check_missing_config() {
     // Register admin styles
     // ------------------------------------------------------------------
     function uvx_register_admin_styles() {    
-        wp_enqueue_style("simple-grid", plugins_url("voxpress/libs/simplegrid.css"), array(), $voxpress_version, false);
-        wp_enqueue_style("ubivox-style-admin", plugins_url("voxpress/styles/ubivox.admin.css"), array(), $voxpress_version, false);
+        wp_enqueue_style("simple-grid", plugins_url("voxpress/libs/simplegrid.css"), array(), VOXPRESS_VERSION, false);
+        wp_enqueue_style("ubivox-style-admin", plugins_url("voxpress/styles/ubivox.admin.css"), array(), VOXPRESS_VERSION, false);
     }
 
     add_action("admin_enqueue_scripts", "uvx_register_admin_styles");
 
-
-    // Register admin scripts
-    // ------------------------------------------------------------------
-    function uvx_register_admin_scripts() {    
-        wp_enqueue_script("ubivox-admin", plugins_url("voxpress/scripts/ubivox.admin.js"), array( 'jquery', 'json' ), $voxpress_version, true);
-    }
-
-    add_action("admin_enqueue_scripts", "uvx_register_admin_scripts");

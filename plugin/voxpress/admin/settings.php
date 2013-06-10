@@ -51,15 +51,10 @@ foreach ($bools_keys as $key) {
 <tr valign="top"><th><label for="uvx_api_username"><?php echo __("Ubivox API Username", "voxpress") ?></label></th><td><input type="text" id="uvx_api_username" name="uvx_api_username" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_username"]); ?>" size="15"></td></tr>
 <tr valign="top"><th><label for="uvx_api_password"><?php echo __("Ubivox API Password", "voxpress") ?></label></th><td><input type="text" id="uvx_api_password" name="uvx_api_password" class="regular-text" value="<?php echo esc_attr($opts["uvx_api_password"]); ?>" size="30"></td></tr>
 
-</table>
-
-<br><br>
-
-<h3><?php echo __("Wordpress", "voxpress") ?></h3>
-
-<table class="form-table">
-
-<tr valign="top"><th style="width:300px"><label for="uvx_modal_links"><?php echo __("Open links to newsletters in lightbox", "voxpress") ?></label></th><td><input type="checkbox" id="uvx_modal_links" name="uvx_modal_links"<?php echo $bools["uvx_modal_links"]; ?></td></tr>
+<tr valign="top">
+<th>&nbsp;</th>
+<td><a href="https://docs.ubivox.com/guide/finding-your-api-info/" target="_blank"><?php echo __("View guide to find your API credentials", "voxpress") ?></a></td>
+</tr>
 
 </table>
 

@@ -1,0 +1,463 @@
+# Copyright (C) 2013 Voxpress
+# This file is distributed under the same license as the Voxpress package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Voxpress 1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/voxpress\n"
+"POT-Creation-Date: 2013-06-10 14:04:28+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: admin/data.php:52
+msgid "Ubivox data field / Wordpress user profile mapping"
+msgstr ""
+
+#: admin/data.php:55 admin/ecommerce.php:34 admin/settings.php:40
+msgid "Options Saved"
+msgstr ""
+
+#: admin/data.php:70
+msgid "Do not set"
+msgstr ""
+
+#: admin/drafts.php:5
+msgid "Drafts"
+msgstr ""
+
+#: admin/drafts.php:6
+msgid "Create new newsletter"
+msgstr ""
+
+#: admin/drafts.php:28 admin/latest.php:26 widgets/subscription.php:243
+#: widgets/unsubscription.php:94
+msgid "Newsletter"
+msgstr ""
+
+#: admin/drafts.php:29
+msgid "Last edited"
+msgstr ""
+
+#: admin/drafts.php:44
+msgid "Edit newsletter"
+msgstr ""
+
+#: admin/ecommerce.php:31
+msgid "E-commerce Integration"
+msgstr ""
+
+#: admin/ecommerce.php:39
+msgid "Checkout subscription"
+msgstr ""
+
+#: admin/ecommerce.php:45
+msgid "Add checkbox for"
+msgstr ""
+
+#: admin/ecommerce.php:49 admin/ecommerce.php:85
+msgid "Do not use"
+msgstr ""
+
+#: admin/ecommerce.php:58
+msgid "Checkbox label"
+msgstr ""
+
+#: admin/ecommerce.php:66
+msgid "Initial state"
+msgstr ""
+
+#: admin/ecommerce.php:69
+msgid "Unhecked"
+msgstr ""
+
+#: admin/ecommerce.php:70
+msgid "Checked"
+msgstr ""
+
+#: admin/ecommerce.php:76
+msgid "Sales tracking"
+msgstr ""
+
+#: admin/ecommerce.php:81
+msgid "Add sales tracking target"
+msgstr ""
+
+#: admin/ecommerce.php:103
+msgid "Supported e-commerce platforms"
+msgstr ""
+
+#: admin/ecommerce.php:107
+msgid "WooCommerce"
+msgstr ""
+
+#: admin/init.php:81 admin/init.php:95 admin/init.php:109 admin/init.php:124
+#: admin/init.php:139 admin/init.php:154 admin/init.php:173
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: admin/latest.php:5
+msgid "Latest Published Newsletters"
+msgstr ""
+
+#: admin/latest.php:27
+msgid "Sent"
+msgstr ""
+
+#: admin/latest.php:28
+msgid "Recipients"
+msgstr ""
+
+#: admin/latest.php:29
+msgid "Successfull"
+msgstr ""
+
+#: admin/latest.php:30
+msgid "Views"
+msgstr ""
+
+#: admin/latest.php:31
+msgid "Clicks"
+msgstr ""
+
+#: admin/latest.php:66
+msgid "Details"
+msgstr ""
+
+#: admin/lists.php:3
+msgid "Lists"
+msgstr ""
+
+#: admin/lists.php:22
+msgid "Go to list in Ubivox"
+msgstr ""
+
+#: admin/lists.php:26
+msgid "Date"
+msgstr ""
+
+#: admin/lists.php:27
+msgid "Subscribed"
+msgstr ""
+
+#: admin/lists.php:28
+msgid "Unsubscribed"
+msgstr ""
+
+#: admin/lists.php:29
+msgid "Suspended"
+msgstr ""
+
+#: admin/lists.php:30
+msgid "Growth"
+msgstr ""
+
+#: admin/lists.php:31
+msgid "Total on list"
+msgstr ""
+
+#: admin/missing_config.php:3
+msgid "The Ubivox plugin is not configured yet"
+msgstr ""
+
+#: admin/missing_config.php:6
+msgid "Configure the Ubivox plugin"
+msgstr ""
+
+#: admin/settings.php:37
+msgid "Voxpress Settings"
+msgstr ""
+
+#: admin/settings.php:45
+msgid "Ubivox"
+msgstr ""
+
+#: admin/settings.php:49
+msgid "Ubivox Account URL"
+msgstr ""
+
+#: admin/settings.php:50
+msgid "Ubivox API URL"
+msgstr ""
+
+#: admin/settings.php:51
+msgid "Ubivox API Username"
+msgstr ""
+
+#: admin/settings.php:52
+msgid "Ubivox API Password"
+msgstr ""
+
+#: admin/settings.php:56
+msgid "View guide to find your API credentials"
+msgstr ""
+
+#: admin/settings.php:93 admin/settings.php:113
+msgid "Connection test"
+msgstr ""
+
+#: admin/settings.php:113
+msgid "ERROR"
+msgstr ""
+
+#: widgets/archive.php:9
+msgid "Show your most recent archived newsletters"
+msgstr ""
+
+#: widgets/archive.php:50
+msgid "Archive Unavailable"
+msgstr ""
+
+#: widgets/archive.php:96
+msgid "Newsletter archive"
+msgstr ""
+
+#: widgets/archive.php:120 widgets/subscription.php:345
+msgid "Title"
+msgstr ""
+
+#: widgets/archive.php:126 widgets/subscription.php:351
+msgid "Description"
+msgstr ""
+
+#: widgets/archive.php:132 widgets/subscription.php:357
+msgid "List"
+msgstr ""
+
+#: widgets/archive.php:147
+msgid "Open action"
+msgstr ""
+
+#: widgets/archive.php:151
+msgid "Lightbox"
+msgstr ""
+
+#: widgets/archive.php:152
+msgid "In a new window"
+msgstr ""
+
+#: widgets/archive.php:153
+msgid "In the same window"
+msgstr ""
+
+#: widgets/archive.php:170
+msgid "Show maximum"
+msgstr ""
+
+#: widgets/control_panel.php:50
+msgid "Subscriber data"
+msgstr ""
+
+#: widgets/control_panel.php:56
+msgid "Access my data"
+msgstr ""
+
+#: widgets/control_panel.php:62
+msgid "Access your data and newsletters at Ubivox"
+msgstr ""
+
+#: widgets/subscription.php:205
+msgid "Join our mailing list to keep up with news and interesting stories"
+msgstr ""
+
+#: widgets/subscription.php:231
+msgid "Hide this"
+msgstr ""
+
+#: widgets/subscription.php:237
+msgid "Subscribe"
+msgstr ""
+
+#: widgets/subscription.php:255
+msgid ""
+"Thank you for your subscription. We've send you an e-mail with a "
+"confirmation link."
+msgstr ""
+
+#: widgets/subscription.php:389
+msgid "Subscribe button text"
+msgstr ""
+
+#: widgets/subscription.php:395
+msgid "Close button text"
+msgstr ""
+
+#: widgets/subscription.php:395
+msgid "Hide form until cookie expires (based on list ID)."
+msgstr ""
+
+#: widgets/subscription.php:397
+msgid "Doesn't show if text is empty."
+msgstr ""
+
+#: widgets/subscription.php:402
+msgid "Success text"
+msgstr ""
+
+#: widgets/subscription.php:404
+msgid "Shown when a subscriber has successfully subscribed to the list."
+msgstr ""
+
+#: widgets/subscription.php:411
+msgid "Memory"
+msgstr ""
+
+#: widgets/subscription.php:415
+msgid "Cookie lifetime"
+msgstr ""
+
+#: widgets/subscription.php:416
+msgid ""
+"The cookie decides how many days should expire before the same visitor sees "
+"the form again, after it has been closed"
+msgstr ""
+
+#: widgets/subscription.php:417
+msgid ""
+"Use 0 to make it a session cookie and show the form again on the next visit "
+"after the browser has been closed."
+msgstr ""
+
+#: widgets/subscription.php:418
+msgid ""
+"Use -1 or lower to ignore any cookies and always show the form, even if "
+"previous cookies has been set for the user."
+msgstr ""
+
+#: widgets/subscription.php:425
+msgid "Design Settings"
+msgstr ""
+
+#: widgets/subscription.php:431
+msgid "Placement"
+msgstr ""
+
+#: widgets/subscription.php:435
+msgid "Inline"
+msgstr ""
+
+#: widgets/subscription.php:436
+msgid "Top"
+msgstr ""
+
+#: widgets/subscription.php:437
+msgid "Bottom"
+msgstr ""
+
+#: widgets/subscription.php:438
+msgid "Right"
+msgstr ""
+
+#: widgets/subscription.php:439
+msgid "Left"
+msgstr ""
+
+#: widgets/subscription.php:440
+msgid "Center"
+msgstr ""
+
+#: widgets/subscription.php:458
+msgid "Effect"
+msgstr ""
+
+#: widgets/subscription.php:462
+msgid "Slide"
+msgstr ""
+
+#: widgets/subscription.php:463
+msgid "Fade"
+msgstr ""
+
+#: widgets/subscription.php:464
+msgid "None"
+msgstr ""
+
+#: widgets/subscription.php:482
+msgid "Delay"
+msgstr ""
+
+#: widgets/subscription.php:487
+msgid "Background color"
+msgstr ""
+
+#: widgets/subscription.php:492
+msgid "Text color"
+msgstr ""
+
+#: widgets/subscription.php:497
+msgid "Border color"
+msgstr ""
+
+#: widgets/subscription.php:502
+msgid "Border size"
+msgstr ""
+
+#: widgets/subscription.php:507
+msgid "Border radius"
+msgstr ""
+
+#: widgets/subscription.php:512
+msgid "Width (when not inline)"
+msgstr ""
+
+#: widgets/subscription.php:517
+msgid "Padding"
+msgstr ""
+
+#: widgets/subscription.php:522
+msgid "Use shadow"
+msgstr ""
+
+#: widgets/subscription.php:526
+msgid "Yes"
+msgstr ""
+
+#: widgets/subscription.php:527
+msgid "No"
+msgstr ""
+
+#: widgets/subscription.php:544
+msgid "Overlay color"
+msgstr ""
+
+#: widgets/subscription.php:549
+msgid "Overlay opacity"
+msgstr ""
+
+#: widgets/unsubscription.php:75
+msgid "Connection problems. See settings for details."
+msgstr ""
+
+#: widgets/unsubscription.php:88
+msgid "Unsubscribe"
+msgstr ""
+
+#: widgets/unsubscription.php:106
+msgid "Thank you."
+msgstr ""
+
+#: woocommerce.php:82
+msgid "Subscription created for user through PayPal Express page."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Voxpress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://bitbucket.org/ubivox/voxpress"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Integrates your Wordpress with Ubivox"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ubivox Developers"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.ubivox.com"
+msgstr ""

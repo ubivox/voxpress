@@ -420,7 +420,9 @@ var uvx = {
             // Trigger initial position
             jQuery(window).resize();
 
-            options.$popup.add(options.$overlay).fadeTo(800, 1)
+            options.$popup.add(options.$overlay);
+            options.$popup.fadeTo(800, 1);
+            options.$overlay.fadeTo(800, 0.7);
 
         },
 
@@ -428,7 +430,7 @@ var uvx = {
             var $popup = jQuery('#uvx_popup');
             var $overlay = jQuery('#uvx_overlay');
 
-            $popup.add($overlay).fadeOut(800, function(){
+            $overlay.add($overlay).fadeOut(800, function(){
                 $popup.add($overlay).remove();
                 jQuery(window).unbind('resize, scroll');
             });

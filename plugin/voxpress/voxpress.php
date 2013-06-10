@@ -9,7 +9,7 @@ Author URI: https://www.ubivox.com
 License: GPL2
 */
 
-$voxpress_version = "1.0";            // Set version for plugin
+define("VOXPRESS_VERSION", "1.0");    // Set version for plugin
 
 require "api.php";                    // Ubivox API
 require "ajax.php";                   // Ubivox ajax backend
@@ -57,8 +57,8 @@ if (UBIVOX_API_CONFIGURED) {
     // Register public styles
     // ------------------------------------------------------------------
     if (!is_admin()) {
-        wp_enqueue_style("ubivox-style-public", plugins_url("voxpress/styles/ubivox.public.css"), array(), $voxpress_version, false);
-        wp_enqueue_style("ubivox-style-public-ie8", plugins_url("voxpress/styles/ubivox.public.ie8.css"), array(), $voxpress_version, false);
+        wp_enqueue_style("ubivox-style-public", plugins_url("voxpress/styles/ubivox.public.css"), array(), VOXPRESS_VERSION, false);
+        wp_enqueue_style("ubivox-style-public-ie8", plugins_url("voxpress/styles/ubivox.public.ie8.css"), array(), VOXPRESS_VERSION, false);
         
         global $wp_styles;
         $wp_styles->add_data( 'ubivox-style-public-ie8', 'conditional', 'lte IE 8' );
@@ -67,14 +67,33 @@ if (UBIVOX_API_CONFIGURED) {
     // Register public scripts
     // ------------------------------------------------------------------
     if (!is_admin()) {
-        wp_enqueue_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array('jquery', 'json2', 'jquery-ui-core', 'jquery-ui-position', 'jquery-effects-core', 'jquery-effects-drop'), $voxpress_version, true);
-        wp_enqueue_script("jquery-cookie", plugins_url("voxpress/libs/jquery.cookie.js"), array('jquery'), $voxpress_version, true);
+        wp_enqueue_script("ubivox-public-script", plugins_url("voxpress/scripts/ubivox.public.js"), array('jquery', 'json2', 'jquery-ui-core', 'jquery-ui-position', 'jquery-effects-core', 'jquery-effects-drop'), VOXPRESS_VERSION, true);
+        wp_enqueue_script("jquery-cookie", plugins_url("voxpress/libs/jquery.cookie.js"), array('jquery'), VOXPRESS_VERSION, true);
         
 
         wp_localize_script("ubivox-public-script", "uvx_settings", array( 
             "ajaxurl" => admin_url("admin-ajax.php"), 
             "account_url" => get_option("uvx_account_url")
         ));
+    }
+
+
+
+###############################################################################
+# i18n
+###############################################################################
+
+    class voxpress {
+
+        public function __construct()
+        {
+            add_action('init', array($this, 'load_plugin_textdomain'));
+        }
+
+        public function load_plugin_textdomain()
+        {
+            load_plugin_textdomain('voxpress', FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
+        }
     }
 
 

@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 29
+/!svn/ver/19937/tools/trunk/t
+END
+run.sh
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/!svn/ver/4129/tools/trunk/t/run.sh
+END
+test_not-gettexted.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/!svn/ver/19937/tools/trunk/t/test_not-gettexted.php
+END

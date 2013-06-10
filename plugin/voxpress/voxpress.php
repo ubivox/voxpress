@@ -4,6 +4,7 @@ Plugin Name: Voxpress
 Plugin URI: https://bitbucket.org/ubivox/voxpress
 Description: Integrates your Wordpress with Ubivox
 Version: 1.0
+Text Domain: voxpress
 Author: Ubivox Developers
 Author URI: https://www.ubivox.com
 License: GPL2
@@ -33,6 +34,7 @@ define(
 define("UBIVOX_API_CONFIGURED", (bool) get_option("uvx_api_url"));
 
 define("UBIVOX_HAS_WOOCOMMERCE", in_array("woocommerce/woocommerce.php", apply_filters("active_plugins", get_option("active_plugins"))));
+
 
 ###############################################################################
 # Widgets
@@ -78,25 +80,16 @@ if (UBIVOX_API_CONFIGURED) {
     }
 
 
-
 ###############################################################################
 # i18n
 ###############################################################################
 
-    class voxpress {
 
-        public function __construct()
-        {
-            add_action('init', array($this, 'load_plugin_textdomain'));
-        }
-
-        public function load_plugin_textdomain()
-        {
-            load_plugin_textdomain('voxpress', FALSE, dirname(plugin_basename(__FILE__)).'/languages/');
-        }
-    }
-
-
+function voxpress_i18n_init() {
+     $plugin_dir = basename(dirname(__FILE__)) . "/languages/";
+     load_plugin_textdomain( 'voxpress', false, $plugin_dir );
+}
+add_action('plugins_loaded', 'voxpress_i18n_init');
 
 
 

@@ -1,0 +1,342 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: VERSION\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE TEAM <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Ubivox data field / Wordpress user profile mapping"
+msgstr "Ubivox data field / Wordpress user profile mapping"
+
+msgid "Options Saved"
+msgstr "Options Saved"
+
+msgid "Do not set"
+msgstr "Do not set"
+
+msgid "Drafts"
+msgstr "Drafts"
+
+msgid "Create new newsletter"
+msgstr "Create new newsletter"
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Last edited"
+msgstr "Last edited"
+
+msgid "Edit newsletter"
+msgstr "Edit newsletter"
+
+msgid "E-commerce Integration"
+msgstr "E-commerce Integration"
+
+msgid "Checkout subscription"
+msgstr "Checkout subscription"
+
+msgid "Add checkbox for"
+msgstr "Add checkbox for"
+
+msgid "Do not use"
+msgstr "Do not use"
+
+msgid "Checkbox label"
+msgstr "Checkbox label"
+
+msgid "Initial state"
+msgstr "Initial state"
+
+msgid "Unhecked"
+msgstr "Unhecked"
+
+msgid "Checked"
+msgstr "Checked"
+
+msgid "Sales tracking"
+msgstr "Sales tracking"
+
+msgid "Add sales tracking target"
+msgstr "Add sales tracking target"
+
+msgid "Supported e-commerce platforms"
+msgstr "Supported e-commerce platforms"
+
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+msgid "You do not have sufficient permissions to access this page."
+msgstr "You do not have sufficient permissions to access this page."
+
+msgid "Latest Published Newsletters"
+msgstr "Latest Published Newsletters"
+
+msgid "Sent"
+msgstr "Sent"
+
+msgid "Recipients"
+msgstr "Recipients"
+
+msgid "Successfull"
+msgstr "Successfull"
+
+msgid "Views"
+msgstr "Views"
+
+msgid "Clicks"
+msgstr "Clicks"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "Lists"
+msgstr "Lists"
+
+msgid "Go to list in Ubivox"
+msgstr "Go to list in Ubivox"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Subscribed"
+msgstr "Subscribed"
+
+msgid "Unsubscribed"
+msgstr "Unsubscribed"
+
+msgid "Suspended"
+msgstr "Suspended"
+
+msgid "Growth"
+msgstr "Growth"
+
+msgid "Total on list"
+msgstr "Total on list"
+
+msgid "The Ubivox plugin is not configured yet"
+msgstr "The Ubivox plugin is not configured yet"
+
+msgid "Configure the Ubivox plugin"
+msgstr "Configure the Ubivox plugin"
+
+msgid "Voxpress Settings"
+msgstr "Voxpress Settings"
+
+msgid "Ubivox"
+msgstr "Ubivox"
+
+msgid "Ubivox Account URL"
+msgstr "Ubivox Account URL"
+
+msgid "Ubivox API URL"
+msgstr "Ubivox API URL"
+
+msgid "Ubivox API Username"
+msgstr "Ubivox API Username"
+
+msgid "Ubivox API Password"
+msgstr "Ubivox API Password"
+
+msgid "View guide to find your API credentials"
+msgstr "View guide to find your API credentials"
+
+msgid "Connection test"
+msgstr "Connection test"
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Show your most recent archived newsletters"
+msgstr "Show your most recent archived newsletters"
+
+msgid "Archive Unavailable"
+msgstr "Archive Unavailable"
+
+msgid "Newsletter archive"
+msgstr "Newsletter archive"
+
+msgid "Title"
+msgstr "Title"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "List"
+msgstr "List"
+
+msgid "Open action"
+msgstr "Open action"
+
+msgid "Lightbox"
+msgstr "Lightbox"
+
+msgid "In a new window"
+msgstr "In a new window"
+
+msgid "In the same window"
+msgstr "In the same window"
+
+msgid "Show maximum"
+msgstr "Show maximum"
+
+msgid "Subscriber data"
+msgstr "Subscriber data"
+
+msgid "Access my data"
+msgstr "Access my data"
+
+msgid "Access your data and newsletters at Ubivox"
+msgstr "Access your data and newsletters at Ubivox"
+
+msgid "Join our mailing list to keep up with news and interesting stories"
+msgstr "Join our mailing list to keep up with news and interesting stories"
+
+msgid "Hide this"
+msgstr "Hide this"
+
+msgid "Subscribe"
+msgstr "Subscribe"
+
+msgid "Thank you for your subscription. We've send you an e-mail with a confirmation link."
+msgstr "Thank you for your subscription. We've send you an e-mail with a confirmation link."
+
+msgid "Subscribe button text"
+msgstr "Subscribe button text"
+
+msgid "Close button text"
+msgstr "Close button text"
+
+msgid "Hide form until cookie expires (based on list ID)."
+msgstr "Hide form until cookie expires (based on list ID)."
+
+msgid "Doesn't show if text is empty."
+msgstr "Doesn't show if text is empty."
+
+msgid "Success text"
+msgstr "Success text"
+
+msgid "Shown when a subscriber has successfully subscribed to the list."
+msgstr "Shown when a subscriber has successfully subscribed to the list."
+
+msgid "Memory"
+msgstr "Memory"
+
+msgid "Cookie lifetime"
+msgstr "Cookie lifetime"
+
+msgid "The cookie decides how many days should expire before the same visitor sees the form again, after it has been closed"
+msgstr "The cookie decides how many days should expire before the same visitor sees the form again, after it has been closed"
+
+msgid "Use 0 to make it a session cookie and show the form again on the next visit after the browser has been closed."
+msgstr "Use 0 to make it a session cookie and show the form again on the next visit after the browser has been closed."
+
+msgid "Use -1 or lower to ignore any cookies and always show the form, even if previous cookies has been set for the user."
+msgstr "Use -1 or lower to ignore any cookies and always show the form, even if previous cookies has been set for the user."
+
+msgid "Design Settings"
+msgstr "Design Settings"
+
+msgid "Placement"
+msgstr "Placement"
+
+msgid "Inline"
+msgstr "Inline"
+
+msgid "Top"
+msgstr "Top"
+
+msgid "Bottom"
+msgstr "Bottom"
+
+msgid "Right"
+msgstr "Right"
+
+msgid "Left"
+msgstr "Left"
+
+msgid "Center"
+msgstr "Center"
+
+msgid "Effect"
+msgstr "Effect"
+
+msgid "Slide"
+msgstr "Slide"
+
+msgid "Fade"
+msgstr "Fade"
+
+msgid "None"
+msgstr "None"
+
+msgid "Delay"
+msgstr "Delay"
+
+msgid "Background color"
+msgstr "Background color"
+
+msgid "Text color"
+msgstr "Text color"
+
+msgid "Border color"
+msgstr "Border color"
+
+msgid "Border size"
+msgstr "Border size"
+
+msgid "Border radius"
+msgstr "Border radius"
+
+msgid "Width (when not inline)"
+msgstr "Width (when not inline)"
+
+msgid "Padding"
+msgstr "Padding"
+
+msgid "Use shadow"
+msgstr "Use shadow"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
+
+msgid "Overlay color"
+msgstr "Overlay color"
+
+msgid "Overlay opacity"
+msgstr "Overlay opacity"
+
+msgid "Connection problems. See settings for details."
+msgstr "Connection problems. See settings for details."
+
+msgid "Unsubscribe"
+msgstr "Unsubscribe"
+
+msgid "Thank you."
+msgstr "Thank you."
+
+msgid "Subscription created for user through PayPal Express page."
+msgstr "Subscription created for user through PayPal Express page."
+
+msgid "Voxpress"
+msgstr "Voxpress"
+
+msgid "https://bitbucket.org/ubivox/voxpress"
+msgstr "https://bitbucket.org/ubivox/voxpress"
+
+msgid "Integrates your Wordpress with Ubivox"
+msgstr "Integrates your Wordpress with Ubivox"
+
+msgid "Ubivox Developers"
+msgstr "Ubivox Developers"
+
+msgid "https://www.ubivox.com"
+msgstr "https://www.ubivox.com"
+

@@ -1,0 +1,218 @@
+
+#uvx_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 999998;
+    display:none;
+}
+
+#uvx_popup{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 600px;
+    height: 400px;
+    background: #fff;
+    border-radius: 3px;
+    z-index: 999999;
+    padding: 4px;
+    opacity: 0;
+    overflow: visible;
+
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+#uvx_popup iframe{
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+#uvx_popup_close{
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    border-radius: 100%;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    font: bold 16px arial, sans-serif;
+    text-align: center;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    cursor: pointer;
+}
+
+
+
+
+.uvx_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    z-index: 999998;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.widget_ubivox_subscription_widget{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none;    
+}
+
+.widget_ubivox_subscription_widget.uvx_placement_center,
+.widget_ubivox_subscription_widget.uvx_placement_top,
+.widget_ubivox_subscription_widget.uvx_placement_right,
+.widget_ubivox_subscription_widget.uvx_placement_bottom,
+.widget_ubivox_subscription_widget.uvx_placement_left
+{
+    z-index: 999999;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    left: 0px;
+    min-width: 100px;
+    min-height: 100px;
+
+
+}
+
+.uvx_dont_show{
+    font-size: 10px;
+    margin-left: 20px;
+}
+
+.uvx_close{
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    border-radius: 100%;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    font: bold 12px arial, sans-serif;
+    text-align: center;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+
+/* General widget styles */
+.widget_ubivox_subscription_widget .description,
+.widget_ubivox_unsubscription_widget .description,
+.widget_ubivox_control_panel_widget .description,
+.widget_ubivox_archive_widget .description{
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+
+/* WIDGET: Archive */
+.widget_ubivox_archive_widget ul{
+    margin: 10px 0;
+    padding: 0;
+}
+
+.widget_ubivox_archive_widget ul li{
+    margin: 15px 0;
+    padding: 0;
+}
+
+.widget_ubivox_archive_widget ul li small{
+    margin: 0 0 0px 0;
+    padding: 0;
+    display: block;
+}
+
+
+
+
+
+
+.widget_ubivox_subscription_widget form label{
+    font-weight: bold;
+}
+
+.widget_ubivox_subscription_widget form input,
+.widget_ubivox_subscription_widget form textarea{
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.uvx_shadow{
+    -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+
+.widget_ubivox_subscription_widget.uvx_not_inline h3.widget-title{
+    font-size: 25px;
+    line-height: 1;
+    margin: 0 0 10px 0;
+}
+
+.widget_ubivox_subscription_widget.uvx_not_inline p{
+    margin: 10px 0 !important;
+}
+
+.widget_ubivox_subscription_widget .uvx_button_row a{
+    display: inline-block;
+    font-size: 11px;
+}
+
+.widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_block{
+    margin-left: 15px;
+}
+
+.widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_hide{
+    margin-left: 15px;
+}
+
+
+
+.widget_ubivox_subscription_widget.uvx_submit_success .uvx_button_row a.uvx_link_hide{
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.widget_ubivox_subscription_widget .uvx_button_row a.uvx_link_block{
+    
+}
+
+.widget_ubivox_subscription_widget.uvx_border_rounded.uvx_placement_right{
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.widget_ubivox_subscription_widget.uvx_border_rounded.uvx_placement_left{
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.widget_ubivox_subscription_widget.uvx_border_rounded.uvx_placement_top{
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.widget_ubivox_subscription_widget.uvx_border_rounded.uvx_placement_bottom{
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}

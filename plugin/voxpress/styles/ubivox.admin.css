@@ -1,0 +1,104 @@
+
+.ubivox-widget-field{
+    margin: 0 0 2em;
+}
+
+
+.ubivox-background-opacity-slider-container{
+    position: relative;    
+    height: 35px;
+}
+
+.ubivox-background-opacity-counter{
+    width: 65px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    top: 0 ;
+    right: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+.ubivox-background-opacity-slider{
+    width: 60%;
+    position:relative;
+    top: 11px;
+}
+
+.cw-color-picker{
+    margin: 1em 0 1em;
+    text-align: center;
+}
+
+.farbtastic{
+    margin: auto;
+}
+
+.grid{
+    max-width: none;
+}
+
+.js .wrap.voxpress .postbox h3{
+    cursor: default;
+}
+
+
+.no-margin{
+    margin: 0 !important;
+}
+
+.no-margin-top{
+    margin-top: 0 !important;
+}
+
+.no-margin-bottom{
+    margin-bottom: 0 !important;
+}
+
+.no-margin-left{
+    margin-left: 0 !important;
+}
+
+.no-margin-right{
+    margin-right: 0 !important;
+}
+
+.center{
+    text-align: center !important;
+}
+
+.right{
+    text-align: right !important;
+}
+
+.left{
+    text-align: left !important;
+}
+
+.js .wrap.voxpress .widefat td{
+    vertical-align: middle;
+}
+
+.wrap.voxpress h2 a{
+    float:right; 
+    margin: 3px -15px 0 0;
+    color: #fff !important;
+    font-family: sans-serif;
+}
+
+.wrap.voxpress tr:hover td{
+    background: #dbf5bc;
+}
+
+.widget hr{
+    margin: 30px 0 15px;
+    border: none;
+    height: 1px;
+    font-size: 1px;
+    line-height: 1px;
+    overflow: hidden;
+    background: #ccc;
+}

@@ -1,0 +1,42 @@
+
+
+#ubivox_popup{
+    position: absolute;
+    top: 0;
+    left: 0;    
+    width: 600px;
+    height: 400px;
+    background: #fff;
+    border-radius: 3px;
+    z-index: 999999;
+    padding: 4px;
+    opacity: 0;
+
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+}
+
+#ubivox_popup iframe{
+    border: none;
+    height: 100%;
+    width: 100%;
+}
+
+#ubivox_popup_close{
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    border-radius: 100%;
+    background: #000;
+    border: 2px solid #fff;
+    color: #fff;
+    font: bold 16px arial, sans-serif;
+    text-align: center;
+    height: 24px;
+    width: 24px;
+    line-height: 24px;
+    cursor: pointer;
+
+    -webkit-box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.4);
+}

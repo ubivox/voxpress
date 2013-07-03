@@ -1,7 +1,5 @@
 <?php
 
-require_once(WP_CONTENT_DIR."/../wp-includes/class-IXR.php");
-
 class UbivoxAPIException extends Exception { }
 class UbivoxAPIUnavailable extends UbivoxAPIException { }
 class UbivoxAPIError extends UbivoxAPIException { }

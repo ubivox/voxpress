@@ -12,6 +12,8 @@ License: GPL2
 
 define("VOXPRESS_VERSION", "1.0");    // Set version for plugin
 
+require "libs/IXR_Library.php";
+
 require "api.php";                    // Ubivox API
 require "ajax.php";                   // Ubivox ajax backend
 require "archive.php";                // Ubivox archive handling

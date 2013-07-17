@@ -90,8 +90,15 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.0 =
 * Initial release
+
+= 1.0.1 =
+* Bugfix in API
+
+= 1.0.2 =
+* Versioning fix
+
 
 == Upgrade Notice ==
 

@@ -3,7 +3,7 @@ Contributors: (this should be a list of wordpress.org userid's)
 Tags: newsletter, newsletters, email-marketing, ubivox, email, e-mail, e-mail marketing, marketing, lists, subscribers
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ This widget will let you insert a subscription form into any of your widget area
 The pop up widget will let you create a modal box when the page is loaded (or after a given delay) to prompt the visitor to subscribe. The modal box can be styled individual through the widget and you can have multiple subscription widgets on a page.
 
 *Widget: Unsubscription*
-The ubsubscribe widget will insert a form for unsubscribing a mail list on Ubivox. You can have multiple unsubscribe widgets on a page.
+The unsubscribe widget will insert a form for unsubscribing a mail list on Ubivox. You can have multiple unsubscribe widgets on a page.
 
 *Widget: Archive*
 The archive widget will show a list of links to the most recent archived newsletters on a selected list. The archived newsletters will open in a new window and show the newsletter archive view from Ubivox

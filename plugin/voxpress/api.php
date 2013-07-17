@@ -51,7 +51,7 @@ class UbivoxAPI {
             $message->parse();
 
             if ($message->messageType == "fault") {
-                throw new UbivoxAPIError($message->faultCode, $message->faultString);
+                throw new UbivoxAPIError($message->faultString, $message->faultCode);
             }
 
             return $message->params[0];

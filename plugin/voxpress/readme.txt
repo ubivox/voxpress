@@ -99,6 +99,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 1.0.2 =
 * Versioning fix
 
+= 1.1.0 =
+* Support for Ubivox Verified Sender Seal
 
 == Upgrade Notice ==
 

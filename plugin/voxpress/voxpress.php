@@ -10,21 +10,22 @@ Author URI: https://www.ubivox.com
 License: GPL2
 */
 
-define("VOXPRESS_VERSION", "1.0.2");    // Set version for plugin
+define("VOXPRESS_VERSION", "1.1.0");   // Set version for plugin
 
 require "libs/IXR_Library.php";
 
-require "api.php";                    // Ubivox API
-require "ajax.php";                   // Ubivox ajax backend
-require "archive.php";                // Ubivox archive handling
-require "urls.php";                   // Ubivox URLs
+require "api.php";                     // Ubivox API
+require "ajax.php";                    // Ubivox ajax backend
+require "archive.php";                 // Ubivox archive handling
+require "urls.php";                    // Ubivox URLs
 
-require "widgets/subscription.php";   // Ubivox subscription widget
-require "widgets/unsubscription.php"; // Ubivox unsubscription widget
-require "widgets/archive.php";        // Ubivox archive widget
-require "widgets/control_panel.php";  // Ubivox control panel widget
+require "widgets/subscription.php";    // Ubivox subscription widget
+require "widgets/unsubscription.php";  // Ubivox unsubscription widget
+require "widgets/archive.php";         // Ubivox archive widget
+require "widgets/control_panel.php";   // Ubivox control panel widget
+require "widgets/verified_sender.php"; // Ubivox verified sender widget
 
-require "woocommerce.php";            // Woocommerce integration
+require "woocommerce.php";             // Woocommerce integration
 
 require "admin/init.php";
 
@@ -47,6 +48,7 @@ function ubivox_register_widgets() {
     register_widget("Ubivox_Unsubscription_Widget");
     register_widget("Ubivox_Archive_Widget");
     register_widget("Ubivox_Control_Panel_Widget");    
+    register_widget("Ubivox_Verified_Sender_Widget");    
 }
 
 if (UBIVOX_API_CONFIGURED) {

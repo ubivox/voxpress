@@ -3,7 +3,7 @@ Contributors: (this should be a list of wordpress.org userid's)
 Tags: newsletter, newsletters, email-marketing, ubivox, email, e-mail, e-mail marketing, marketing, lists, subscribers
 Requires at least: 3.4
 Tested up to: 3.5.1
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ When Voxpress is installed you will get access to the following widgets:
 *   Ubivox Unsubscription
 *   Ubivox Archive
 *   Ubivox Control Panel
+*   Ubivox Verified Sender Seal
 
 *Widget: Subscription*
 This widget will let you insert a subscription form into any of your widget areas. The widget can either be an inline widget but can also be a pop up widget. 
@@ -35,6 +36,9 @@ The archive widget will show a list of links to the most recent archived newslet
 
 *Widget: Control Panel*
 The control panel widget will provide a link to your Ubivox Subscriber control panel, where your subscribers can login and manage their subscriptions and data given to your.
+
+*Widget: Verified Sender Seal*
+The verified sender widget will display your verified sender seal on your website.
 
 = Modal view of firect links to archived newsletters =
 
@@ -104,5 +108,5 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Upgrade Notice ==
 
-This is the first initial version. Nothing special is needed.
+No known issues.
 

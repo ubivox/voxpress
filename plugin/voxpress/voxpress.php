@@ -3,7 +3,7 @@
 Plugin Name: Voxpress
 Plugin URI: https://bitbucket.org/ubivox/voxpress
 Description: Integrates your Wordpress with Ubivox
-Version: 1.0.2
+Version: 1.1.0
 Text Domain: voxpress
 Author: Ubivox Developers
 Author URI: https://www.ubivox.com

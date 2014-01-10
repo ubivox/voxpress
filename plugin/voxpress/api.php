@@ -24,7 +24,11 @@ class UbivoxAPI {
         $auth = get_option("uvx_api_username").":".
             get_option("uvx_api_password");
 
-        $request = new IXR_Request($method, $params);
+        if ($params == null) {
+            $params = array();
+        }
+
+        $request = new UX_IXR_Request($method, $params);
         $post = $request->xml;
 
         $c = curl_init(get_option("uvx_api_url"));
@@ -47,7 +51,7 @@ class UbivoxAPI {
 
         if ($info["http_code"] == 200) {
 
-            $message = new IXR_Message($data);
+            $message = new UX_IXR_Message($data);
             $message->parse();
 
             if ($message->messageType == "fault") {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * IXR - The Incutio XML-RPC Library
  *
@@ -39,12 +40,12 @@
  */
 
 
-class IXR_Value
+class UX_IXR_Value
 {
     var $data;
     var $type;
 
-    function IXR_Value($data, $type = false)
+    function UX_IXR_Value($data, $type = false)
     {
         $this->data = $data;
         if (!$type) {
@@ -52,14 +53,14 @@ class IXR_Value
         }
         $this->type = $type;
         if ($type == 'struct') {
-            // Turn all the values in the array in to new IXR_Value objects
+            // Turn all the values in the array in to new UX_IXR_Value objects
             foreach ($this->data as $key => $value) {
-                $this->data[$key] = new IXR_Value($value);
+                $this->data[$key] = new UX_IXR_Value($value);
             }
         }
         if ($type == 'array') {
             for ($i = 0, $j = count($this->data); $i < $j; $i++) {
-                $this->data[$i] = new IXR_Value($this->data[$i]);
+                $this->data[$i] = new UX_IXR_Value($this->data[$i]);
             }
         }
     }
@@ -77,10 +78,10 @@ class IXR_Value
         }
 
         // Deal with IXR object types base64 and date
-        if (is_object($this->data) && is_a($this->data, 'IXR_Date')) {
+        if (is_object($this->data) && is_a($this->data, 'UX_IXR_Date')) {
             return 'date';
         }
-        if (is_object($this->data) && is_a($this->data, 'IXR_Base64')) {
+        if (is_object($this->data) && is_a($this->data, 'UX_IXR_Base64')) {
             return 'base64';
         }
 
@@ -162,13 +163,13 @@ class IXR_Value
 }
 
 /**
- * IXR_MESSAGE
+ * UX_IXR_MESSAGE
  *
  * @package IXR
  * @since 1.5
  *
  */
-class IXR_Message
+class UX_IXR_Message
 {
     var $message;
     var $messageType;  // methodCall / methodResponse / fault
@@ -188,7 +189,7 @@ class IXR_Message
     // The XML parser
     var $_parser;
 
-    function IXR_Message($message)
+    function UX_IXR_Message($message)
     {
         $this->message =& $message;
     }
@@ -278,7 +279,7 @@ class IXR_Message
                 $valueFlag = true;
                 break;
             case 'dateTime.iso8601':
-                $value = new IXR_Date(trim($this->_currentTagContents));
+                $value = new UX_IXR_Date(trim($this->_currentTagContents));
                 $valueFlag = true;
                 break;
             case 'value':
@@ -334,19 +335,19 @@ class IXR_Message
 }
 
 /**
- * IXR_Server
+ * UX_IXR_Server
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_Server
+class UX_IXR_Server
 {
     var $data;
     var $callbacks = array();
     var $message;
     var $capabilities;
 
-    function IXR_Server($callbacks = false, $data = false, $wait = false)
+    function UX_IXR_Server($callbacks = false, $data = false, $wait = false)
     {
         $this->setCapabilities();
         if ($callbacks) {
@@ -374,7 +375,7 @@ class IXR_Server
                 $data =& $HTTP_RAW_POST_DATA;
             }
         }
-        $this->message = new IXR_Message($data);
+        $this->message = new UX_IXR_Message($data);
         if (!$this->message->parse()) {
             $this->error(-32700, 'parse error. not well formed');
         }
@@ -384,12 +385,12 @@ class IXR_Server
         $result = $this->call($this->message->methodName, $this->message->params);
 
         // Is the result an error?
-        if (is_a($result, 'IXR_Error')) {
+        if (is_a($result, 'UX_IXR_Error')) {
             $this->error($result);
         }
 
         // Encode the result
-        $r = new IXR_Value($result);
+        $r = new UX_IXR_Value($result);
         $resultxml = $r->getXml();
 
         // Create the XML
@@ -412,7 +413,7 @@ EOD;
     function call($methodname, $args)
     {
         if (!$this->hasMethod($methodname)) {
-            return new IXR_Error(-32601, 'server error. requested method '.$methodname.' does not exist.');
+            return new UX_IXR_Error(-32601, 'server error. requested method '.$methodname.' does not exist.');
         }
         $method = $this->callbacks[$methodname];
 
@@ -427,7 +428,7 @@ EOD;
             // It's a class method - check it exists
             $method = substr($method, 5);
             if (!method_exists($this, $method)) {
-                return new IXR_Error(-32601, 'server error. requested class method "'.$method.'" does not exist.');
+                return new UX_IXR_Error(-32601, 'server error. requested class method "'.$method.'" does not exist.');
             }
 
             //Call the method
@@ -436,10 +437,10 @@ EOD;
             // It's a function - does it exist?
             if (is_array($method)) {
                 if (!method_exists($method[0], $method[1])) {
-                    return new IXR_Error(-32601, 'server error. requested object method "'.$method[1].'" does not exist.');
+                    return new UX_IXR_Error(-32601, 'server error. requested object method "'.$method[1].'" does not exist.');
                 }
             } else if (!function_exists($method)) {
-                return new IXR_Error(-32601, 'server error. requested function "'.$method.'" does not exist.');
+                return new UX_IXR_Error(-32601, 'server error. requested function "'.$method.'" does not exist.');
             }
 
             // Call the function
@@ -452,7 +453,7 @@ EOD;
     {
         // Accepts either an error object or an error code and message
         if ($message && !is_object($error)) {
-            $error = new IXR_Error($error, $message);
+            $error = new UX_IXR_Error($error, $message);
         }
         $this->output($error->getXml());
     }
@@ -520,11 +521,11 @@ EOD;
             $method = $call['methodName'];
             $params = $call['params'];
             if ($method == 'system.multicall') {
-                $result = new IXR_Error(-32600, 'Recursive calls to system.multicall are forbidden');
+                $result = new UX_IXR_Error(-32600, 'Recursive calls to system.multicall are forbidden');
             } else {
                 $result = $this->call($method, $params);
             }
-            if (is_a($result, 'IXR_Error')) {
+            if (is_a($result, 'UX_IXR_Error')) {
                 $return[] = array(
                     'faultCode' => $result->code,
                     'faultString' => $result->message
@@ -538,18 +539,18 @@ EOD;
 }
 
 /**
- * IXR_Request
+ * UX_IXR_Request
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_Request
+class UX_IXR_Request
 {
     var $method;
     var $args;
     var $xml;
 
-    function IXR_Request($method, $args)
+    function UX_IXR_Request($method, $args)
     {
         $this->method = $method;
         $this->args = $args;
@@ -562,7 +563,7 @@ class IXR_Request
 EOD;
         foreach ($this->args as $arg) {
             $this->xml .= '<param><value>';
-            $v = new IXR_Value($arg);
+            $v = new UX_IXR_Value($arg);
             $this->xml .= $v->getXml();
             $this->xml .= "</value></param>\n";
         }
@@ -581,13 +582,13 @@ EOD;
 }
 
 /**
- * IXR_Client
+ * UX_IXR_Client
  *
  * @package IXR
  * @since 1.5
  *
  */
-class IXR_Client
+class UX_IXR_Client
 {
     var $server;
     var $port;
@@ -601,7 +602,7 @@ class IXR_Client
     // Storage place for an error message
     var $error = false;
 
-    function IXR_Client($server, $path = false, $port = 80, $timeout = 15)
+    function UX_IXR_Client($server, $path = false, $port = 80, $timeout = 15)
     {
         if (!$path) {
             // Assume we have been given a URL instead
@@ -627,7 +628,7 @@ class IXR_Client
     {
         $args = func_get_args();
         $method = array_shift($args);
-        $request = new IXR_Request($method, $args);
+        $request = new UX_IXR_Request($method, $args);
         $length = $request->getLength();
         $xml = $request->getXml();
         $r = "\r\n";
@@ -657,7 +658,7 @@ class IXR_Client
             $fp = @fsockopen($this->server, $this->port, $errno, $errstr);
         }
         if (!$fp) {
-            $this->error = new IXR_Error(-32300, 'transport error - could not open socket');
+            $this->error = new UX_IXR_Error(-32300, 'transport error - could not open socket');
             return false;
         }
         fputs($fp, $request);
@@ -670,7 +671,7 @@ class IXR_Client
             if (!$gotFirstLine) {
                 // Check line for '200'
                 if (strstr($line, '200') === false) {
-                    $this->error = new IXR_Error(-32300, 'transport error - HTTP status code was not 200');
+                    $this->error = new UX_IXR_Error(-32300, 'transport error - HTTP status code was not 200');
                     return false;
                 }
                 $gotFirstLine = true;
@@ -691,16 +692,16 @@ class IXR_Client
         }
 
         // Now parse what we've got back
-        $this->message = new IXR_Message($contents);
+        $this->message = new UX_IXR_Message($contents);
         if (!$this->message->parse()) {
             // XML error
-            $this->error = new IXR_Error(-32700, 'parse error. not well formed');
+            $this->error = new UX_IXR_Error(-32700, 'parse error. not well formed');
             return false;
         }
 
         // Is the message a fault?
         if ($this->message->messageType == 'fault') {
-            $this->error = new IXR_Error($this->message->faultCode, $this->message->faultString);
+            $this->error = new UX_IXR_Error($this->message->faultCode, $this->message->faultString);
             return false;
         }
 
@@ -732,17 +733,17 @@ class IXR_Client
 
 
 /**
- * IXR_Error
+ * UX_IXR_Error
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_Error
+class UX_IXR_Error
 {
     var $code;
     var $message;
 
-    function IXR_Error($code, $message)
+    function UX_IXR_Error($code, $message)
     {
         $this->code = $code;
         $this->message = htmlspecialchars($message);
@@ -774,12 +775,12 @@ EOD;
 }
 
 /**
- * IXR_Date
+ * UX_IXR_Date
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_Date {
+class UX_IXR_Date {
     var $year;
     var $month;
     var $day;
@@ -788,7 +789,7 @@ class IXR_Date {
     var $second;
     var $timezone;
 
-    function IXR_Date($time)
+    function UX_IXR_Date($time)
     {
         // $time can be a PHP timestamp or an ISO one
         if (is_numeric($time)) {
@@ -837,16 +838,16 @@ class IXR_Date {
 }
 
 /**
- * IXR_Base64
+ * UX_IXR_Base64
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_Base64
+class UX_IXR_Base64
 {
     var $data;
 
-    function IXR_Base64($data)
+    function UX_IXR_Base64($data)
     {
         $this->data = $data;
     }
@@ -858,17 +859,17 @@ class IXR_Base64
 }
 
 /**
- * IXR_IntrospectionServer
+ * UX_IXR_IntrospectionServer
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_IntrospectionServer extends IXR_Server
+class UX_IXR_IntrospectionServer extends UX_IXR_Server
 {
     var $signatures;
     var $help;
 
-    function IXR_IntrospectionServer()
+    function UX_IXR_IntrospectionServer()
     {
         $this->setCallbacks();
         $this->setCapabilities();
@@ -918,7 +919,7 @@ class IXR_IntrospectionServer extends IXR_Server
 
         // Over-rides default call method, adds signature check
         if (!$this->hasMethod($methodname)) {
-            return new IXR_Error(-32601, 'server error. requested method "'.$this->message->methodName.'" not specified.');
+            return new UX_IXR_Error(-32601, 'server error. requested method "'.$this->message->methodName.'" not specified.');
         }
         $method = $this->callbacks[$methodname];
         $signature = $this->signatures[$methodname];
@@ -926,7 +927,7 @@ class IXR_IntrospectionServer extends IXR_Server
 
         // Check the number of arguments
         if (count($args) != count($signature)) {
-            return new IXR_Error(-32602, 'server error. wrong number of method parameters');
+            return new UX_IXR_Error(-32602, 'server error. wrong number of method parameters');
         }
 
         // Check the argument types
@@ -961,13 +962,13 @@ class IXR_IntrospectionServer extends IXR_Server
                     break;
                 case 'date':
                 case 'dateTime.iso8601':
-                    if (!is_a($arg, 'IXR_Date')) {
+                    if (!is_a($arg, 'UX_IXR_Date')) {
                         $ok = false;
                     }
                     break;
             }
             if (!$ok) {
-                return new IXR_Error(-32602, 'server error. invalid method parameters');
+                return new UX_IXR_Error(-32602, 'server error. invalid method parameters');
             }
         }
         // It passed the test - run the "real" method call
@@ -977,7 +978,7 @@ class IXR_IntrospectionServer extends IXR_Server
     function methodSignature($method)
     {
         if (!$this->hasMethod($method)) {
-            return new IXR_Error(-32601, 'server error. requested method "'.$method.'" not specified.');
+            return new UX_IXR_Error(-32601, 'server error. requested method "'.$method.'" not specified.');
         }
         // We should be returning an array of types
         $types = $this->signatures[$method];
@@ -995,13 +996,13 @@ class IXR_IntrospectionServer extends IXR_Server
                     $return[] = 3.1415;
                     break;
                 case 'dateTime.iso8601':
-                    $return[] = new IXR_Date(time());
+                    $return[] = new UX_IXR_Date(time());
                     break;
                 case 'boolean':
                     $return[] = true;
                     break;
                 case 'base64':
-                    $return[] = new IXR_Base64('base64');
+                    $return[] = new UX_IXR_Base64('base64');
                     break;
                 case 'array':
                     $return[] = array('array');
@@ -1021,18 +1022,18 @@ class IXR_IntrospectionServer extends IXR_Server
 }
 
 /**
- * IXR_ClientMulticall
+ * UX_IXR_ClientMulticall
  *
  * @package IXR
  * @since 1.5
  */
-class IXR_ClientMulticall extends IXR_Client
+class UX_IXR_ClientMulticall extends UX_IXR_Client
 {
     var $calls = array();
 
-    function IXR_ClientMulticall($server, $path = false, $port = 80)
+    function UX_IXR_ClientMulticall($server, $path = false, $port = 80)
     {
-        parent::IXR_Client($server, $path, $port);
+        parent::UX_IXR_Client($server, $path, $port);
         $this->useragent = 'The Incutio XML-RPC PHP Library (multicall client)';
     }
 
@@ -1062,7 +1063,7 @@ class IXR_ClientMulticall extends IXR_Client
  * @copyright (c) 2004-2005 Jason Stirk
  * @package IXR
  */
-class IXR_ClientSSL extends IXR_Client
+class UX_IXR_ClientSSL extends UX_IXR_Client
 {
     /**
      * Filename of the SSL Client Certificate
@@ -1101,9 +1102,9 @@ class IXR_ClientSSL extends IXR_Client
      * @param string $server URL of the Server to connect to
      * @since 0.1.0
      */
-    function IXR_ClientSSL($server, $path = false, $port = 443, $timeout = false)
+    function UX_IXR_ClientSSL($server, $path = false, $port = 443, $timeout = false)
     {
-        parent::IXR_Client($server, $path, $port, $timeout);
+        parent::UX_IXR_Client($server, $path, $port, $timeout);
         $this->useragent = 'The Incutio XML-RPC PHP Library for SSL';
 
         // Set class fields
@@ -1177,7 +1178,7 @@ class IXR_ClientSSL extends IXR_Client
     {
         $args = func_get_args();
         $method = array_shift($args);
-        $request = new IXR_Request($method, $args);
+        $request = new UX_IXR_Request($method, $args);
         $length = $request->getLength();
         $xml = $request->getXml();
 
@@ -1242,7 +1243,7 @@ class IXR_ClientSSL extends IXR_Client
         // Check for 200 Code in $contents
         if (!strstr($contents, '200 OK')) {
             //There was no "200 OK" returned - we failed
-            $this->error = new IXR_Error(-32300, 'transport error - HTTP status code was not 200');
+            $this->error = new UX_IXR_Error(-32300, 'transport error - HTTP status code was not 200');
             return false;
         }
 
@@ -1255,15 +1256,15 @@ class IXR_ClientSSL extends IXR_Client
         // So, remove everything before the first <
         $contents = substr($contents,strpos($contents, '<'));
 
-        $this->message = new IXR_Message($contents);
+        $this->message = new UX_IXR_Message($contents);
         if (!$this->message->parse()) {
             // XML error
-            $this->error = new IXR_Error(-32700, 'parse error. not well formed');
+            $this->error = new UX_IXR_Error(-32700, 'parse error. not well formed');
             return false;
         }
         // Is the message a fault?
         if ($this->message->messageType == 'fault') {
-            $this->error = new IXR_Error($this->message->faultCode, $this->message->faultString);
+            $this->error = new UX_IXR_Error($this->message->faultCode, $this->message->faultString);
             return false;
         }
 
@@ -1273,7 +1274,7 @@ class IXR_ClientSSL extends IXR_Client
 }
 
 /**
- * Extension of the {@link IXR_Server} class to easily wrap objects.
+ * Extension of the {@link UX_IXR_Server} class to easily wrap objects.
  *
  * Class is designed to extend the existing XML-RPC server to allow the
  * presentation of methods from a variety of different objects via an
@@ -1286,14 +1287,14 @@ class IXR_ClientSSL extends IXR_Client
  * @copyright Copyright (c) 2005 Jason Stirk
  * @package IXR
  */
-class IXR_ClassServer extends IXR_Server
+class UX_IXR_ClassServer extends UX_IXR_Server
 {
     var $_objects;
     var $_delim;
 
-    function IXR_ClassServer($delim = '.', $wait = false)
+    function UX_IXR_ClassServer($delim = '.', $wait = false)
     {
-        $this->IXR_Server(array(), false, $wait);
+        $this->UX_IXR_Server(array(), false, $wait);
         $this->_delimiter = $delim;
         $this->_objects = array();
     }
@@ -1330,7 +1331,7 @@ class IXR_ClassServer extends IXR_Server
     function call($methodname, $args)
     {
         if (!$this->hasMethod($methodname)) {
-            return new IXR_Error(-32601, 'server error. requested method '.$methodname.' does not exist.');
+            return new UX_IXR_Error(-32601, 'server error. requested method '.$methodname.' does not exist.');
         }
         $method = $this->callbacks[$methodname];
 
@@ -1352,7 +1353,7 @@ class IXR_ClassServer extends IXR_Server
 
             // It's a class method - check it exists
             if (!method_exists($object, $method)) {
-                return new IXR_Error(-32601, 'server error. requested class method "'.$method.'" does not exist.');
+                return new UX_IXR_Error(-32601, 'server error. requested class method "'.$method.'" does not exist.');
             }
 
             // Call the method
@@ -1360,7 +1361,7 @@ class IXR_ClassServer extends IXR_Server
         } else {
             // It's a function - does it exist?
             if (!function_exists($method)) {
-                return new IXR_Error(-32601, 'server error. requested function "'.$method.'" does not exist.');
+                return new UX_IXR_Error(-32601, 'server error. requested function "'.$method.'" does not exist.');
             }
 
             // Call the function

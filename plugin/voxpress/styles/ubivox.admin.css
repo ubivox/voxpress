@@ -28,19 +28,6 @@
     top: 11px;
 }
 
-.cw-color-picker{
-    margin: 1em 0 1em;
-    text-align: center;
-}
-
-.farbtastic{
-    margin: auto;
-}
-
-.grid{
-    max-width: none;
-}
-
 .js .wrap.voxpress .postbox h3{
     cursor: default;
 }
@@ -93,12 +80,3 @@
     background: #dbf5bc;
 }
 
-.widget hr{
-    margin: 30px 0 15px;
-    border: none;
-    height: 1px;
-    font-size: 1px;
-    line-height: 1px;
-    overflow: hidden;
-    background: #ccc;
-}

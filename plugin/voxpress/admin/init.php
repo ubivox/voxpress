@@ -9,12 +9,12 @@ add_action("admin_menu", "uvx_setup_menu");
 function uvx_setup_menu() {
 
     add_menu_page(
-        "Newsletters", 
-        "Newsletters",
+        "Voxpress", 
+        "Voxpress",
         "manage_options",
         "voxpress",
         "uvx_latest_page",
-        plugins_url("/voxpress/images/icon-admin.png")
+        "dashicons-email-alt"
     );    
 
     add_submenu_page(
@@ -187,7 +187,6 @@ function check_missing_config() {
     // Register admin styles
     // ------------------------------------------------------------------
     function uvx_register_admin_styles() {    
-        wp_enqueue_style("simple-grid", plugins_url("voxpress/libs/simplegrid.css"), array(), VOXPRESS_VERSION, false);
         wp_enqueue_style("ubivox-style-admin", plugins_url("voxpress/styles/ubivox.admin.css"), array(), VOXPRESS_VERSION, false);
     }
 

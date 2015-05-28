@@ -3,7 +3,7 @@ Contributors: (this should be a list of wordpress.org userid's)
 Tags: newsletter, newsletters, email-marketing, ubivox, email, e-mail, e-mail marketing, marketing, lists, subscribers
 Requires at least: 3.4
 Tested up to: 3.8
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,6 +109,14 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 1.1.1 =
 * Fixed conflicts with Jetpack.
 * Fixed a couple of warnings.
+
+= 1.1.2 =
+
+* Removing unused simplegrid which caused interface conflicts
+* Clean up other css
+* Changed menu icon to built in envelope icon for better future support
+* Renamed menu item from newsletters to Voxpress
+* Removed menu position so it doesn't conflict with avada theme and other plugins taking the 3rd position
 
 == Upgrade Notice ==
 

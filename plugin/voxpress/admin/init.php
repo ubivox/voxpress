@@ -14,8 +14,7 @@ function uvx_setup_menu() {
         "manage_options",
         "voxpress",
         "uvx_latest_page",
-        plugins_url("/voxpress/images/icon-admin.png"),
-        3
+        plugins_url("/voxpress/images/icon-admin.png")
     );    
 
     add_submenu_page(

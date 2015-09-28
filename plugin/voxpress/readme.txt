@@ -2,8 +2,8 @@
 Contributors: (this should be a list of wordpress.org userid's)
 Tags: newsletter, newsletters, email-marketing, ubivox, email, e-mail, e-mail marketing, marketing, lists, subscribers
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 1.1.2
+Tested up to: 4.3
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,6 +117,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 * Changed menu icon to built in envelope icon for better future support
 * Renamed menu item from newsletters to Voxpress
 * Removed menu position so it doesn't conflict with avada theme and other plugins taking the 3rd position
+
+= 1.1.3 =
+
+* Fixing bug with missing subscriber data on new subscriptions
 
 == Upgrade Notice ==
 

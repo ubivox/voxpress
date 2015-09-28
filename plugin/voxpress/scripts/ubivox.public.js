@@ -481,7 +481,7 @@ var uvx = {
             list_id: $form.find("input[name=list_id]").val(),
         };
 
-        var settings = {};
+        var data = {};
 
         $form.find(".uvx_input").each(function () {
 
@@ -489,36 +489,36 @@ var uvx = {
             var $input = $p.find("input");
 
             if ($p.hasClass("uvx_text")) {
-                settings[$input.attr("name")] = $input.val();
+                data[$input.attr("name")] = $input.val();
                 return;
             }
 
             if ($p.hasClass("uvx_textarea")) {
                 var $textarea = $p.find("textarea");
-                settings[$textarea.attr("name")] = $textarea.val();
+                data[$textarea.attr("name")] = $textarea.val();
                 return;
             }
 
             if ($p.hasClass("uvx_checkbox") && $p.find("input:checked").length > 0) {
-                settings[$input.attr("name")] = "True";
+                data[$input.attr("name")] = "True";
                 return;
             }
 
             if ($p.hasClass("uvx_select")) {
                 var $select = $p.find("select");
-                settings[$select.attr("name")] = $select.val();
+                data[$select.attr("name")] = $select.val();
                 return;
             }
 
             if ($p.hasClass("uvx_select_multiple")) {
                 var $select = $p.find("select");
-                settings[$select.attr("name")] = $select.val().join(",");
+                data[$select.attr("name")] = $select.val().join(",");
                 return;
             }
 
             if ($p.hasClass("uvx_select_radio")) {
                 var $input = $p.find("input:checked");
-                settings[$input.attr("name")] = $input.val();
+                data[$input.attr("name")] = $input.val();
                 return;
             }
 
@@ -530,14 +530,14 @@ var uvx = {
                     checked.push(jQuery(e).val());
                 });
 
-                settings[$input.attr("name")] = checked.join(",");
+                data[$input.attr("name")] = checked.join(",");
 
                 return;
             }
 
         });
 
-        params["settings"] = JSON.stringify(settings);
+        params["data"] = JSON.stringify(data);
 
         jQuery.post(uvx_settings.ajaxurl, params, function(response) {
             if (response["status"] == "ok") {

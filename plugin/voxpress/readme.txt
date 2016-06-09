@@ -3,7 +3,7 @@ Contributors: (this should be a list of wordpress.org userid's)
 Tags: newsletter, newsletters, email-marketing, ubivox, email, e-mail, e-mail marketing, marketing, lists, subscribers
 Requires at least: 3.4
 Tested up to: 4.3
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,6 +121,10 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 = 1.1.3 =
 
 * Fixing bug with missing subscriber data on new subscriptions
+
+= 1.1.4 =
+
+* Fixing bug with cookie javascript
 
 == Upgrade Notice ==
 

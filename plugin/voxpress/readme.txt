@@ -82,7 +82,7 @@ We might provide consultancy install service of the plugin, depending on how com
 Ubivox is a service for designing, writing, sending and evaluating newsletters. To use the Voxpress plugin you must have 
 an Ubivox account to connect the plugin to.
 
-You can sign up for an Ubivox account at *[www.ubivox.com](https://www.ubivox.om)*
+You can sign up for an Ubivox account at *[https://www.ubivox.com](https://www.ubivox.om)*
 
 == Screenshots ==
 

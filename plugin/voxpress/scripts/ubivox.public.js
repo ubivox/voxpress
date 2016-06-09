@@ -339,16 +339,17 @@ var uvx = {
                     var list_id = $widget.find('.uvx_list_id').val();
                     var cookie = jQuery.cookie("uvx_sub_widget_lid_" + $widget.attr('id') + "_" + list_id);
 
+                    if (!cookie) return false;
+
                     try
                     {
-                       var json = JSON.parse(cookie);
+                       return JSON.parse(cookie);
                     }
                     catch(e)
                     {
-                       return false;                       
+                       return false;
                     }
 
-                    return JSON.parse(cookie);
                 }
 
             }
